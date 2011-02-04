@@ -1,0 +1,43 @@
+#!/bin/bash
+
+################################################################################
+# This scripts is an interface to the nvcc compiler, that adds our passes,
+# run via Ocelot, to the normal compilation pipeline.
+# Usage: mynvcc <compiler-param-line>
+# Example: ./mynvcc -O2 matrixMul.cu matrixMul_gold.cpp -lcutil -L. -o matrixMul
+################################################################################
+
+set -x
+
+# generate ptx code
+nvcc -arch compute_13 -int=none -ext=all -dir=matrixMul.devcode $@
+
+# extract ptx
+for codeDir in *.devcode/*
+do
+	suffix=${codeDir#*\.devcode/}
+	mv -f $codeDir/compute_13 ./compute_13_ori_${suffix}
+#	./prepare_code.py "compute_13_ori_${suffix}" > "compute_13_prep_${suffix}"
+done
+
+
+# instrument ptx
+for prepFile in compute_13_ori_*
+do
+#	instFile=${prepFile/prep/inst}
+	instFile=${prepFile/ori/inst}
+	../../ocelot-new/iptx -b -i $prepFile -o $instFile 
+done
+
+
+for codeDir in *.devcode/*
+do
+	suffix=${codeDir#*\.devcode/}
+	ptxas -O0 -arch sm_13 "compute_13_inst_${suffix}" -o $codeDir/sm_13
+	#rm -f ${codeDir}/compute_13
+done
+
+
+# remove temporary files
+#rm -f compute_13_*
+

@@ -1,0 +1,4 @@
+libocelot_la-Dim3.lo: ocelot/ir/implementation/Dim3.cpp \
+ ocelot/ir/interface/Dim3.h
+
+ocelot/ir/interface/Dim3.h:

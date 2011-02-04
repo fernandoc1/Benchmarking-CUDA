@@ -1,0 +1,1 @@
+./SobolQRNG --vectors=23147 --dimensions=1024

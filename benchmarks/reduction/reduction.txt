@@ -1,0 +1,11 @@
+./reduction Starting...
+
+Using Device 0: GeForce GTX 470
+
+Reducing array of type int
+
+16777216 elements
+256 threads (max)
+64 blocks
+
+Reduction, Throughput = 95.1669 GB/s, Time = 0.00071 s, Size = 16777216 Elements, NumDevsUsed = 1, Workgroup = 256

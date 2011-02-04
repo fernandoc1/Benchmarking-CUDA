@@ -1,0 +1,2849 @@
+.version 1.4
+.target sm_13
+/* Module compute_13_ori_6ec8b7f5cf198a5f */
+
+/* Globals */
+.global .u64 prof_data_pt[1] = { 0 };
+.global .u32 prof_data_sz[1] = { 0 };
+
+/* Textures */
+
+/*
+* Ocelot Version : 1.1.560
+*/
+.entry _Z21mergeSortSharedKernelILj0EEvPjS0_S0_S0_j(.param  .u64 __cudaparm__Z21mergeSortSharedKernelILj0EEvPjS0_S0_S0_j___val_paramd_DstKey,
+		.param  .u64 __cudaparm__Z21mergeSortSharedKernelILj0EEvPjS0_S0_S0_j___val_paramd_DstVal,
+		.param  .u64 __cudaparm__Z21mergeSortSharedKernelILj0EEvPjS0_S0_S0_j___val_paramd_SrcKey,
+		.param  .u64 __cudaparm__Z21mergeSortSharedKernelILj0EEvPjS0_S0_S0_j___val_paramd_SrcVal,
+		.param  .u32 __cudaparm__Z21mergeSortSharedKernelILj0EEvPjS0_S0_S0_j_arrayLength)
+{
+	.shared .align 4 .b8 __cuda_s_key12364[4096];
+	.shared .align 4 .b8 __cuda_s_val8268[4096];
+	.reg .u64 %r0;
+	.reg .u64 %r1;
+	.reg .u16 %r2;
+	.reg .u32 %r3;
+	.reg .u32 %r4;
+	.reg .u64 %r5;
+	.reg .u64 %r6;
+	.reg .u64 %r7;
+	.reg .u32 %r8;
+	.reg .u64 %r9;
+	.reg .u64 %r10;
+	.reg .u64 %r11;
+	.reg .u64 %r12;
+	.reg .u32 %r13;
+	.reg .u64 %r14;
+	.reg .u64 %r15;
+	.reg .u64 %r16;
+	.reg .u32 %r17;
+	.reg .u32 %r18;
+	.reg .u64 %r19;
+	.reg .u64 %r20;
+	.reg .u64 %r21;
+	.reg .u32 %r22;
+	.reg .u64 %r23;
+	.reg .u32 %r24;
+	.reg .u32 %r25;
+	.reg .u32 %r26;
+	.reg .pred %p27;
+	.reg .u32 %r36;
+	.reg .u32 %r46;
+	.reg .u32 %r47;
+	.reg .u32 %r48;
+	.reg .u64 %r49;
+	.reg .u64 %r50;
+	.reg .u32 %r51;
+	.reg .u64 %r52;
+	.reg .u64 %r53;
+	.reg .u64 %r54;
+	.reg .u64 %r55;
+	.reg .u32 %r56;
+	.reg .u64 %r57;
+	.reg .u64 %r58;
+	.reg .u32 %r59;
+	.reg .u32 %r60;
+	.reg .u64 %r61;
+	.reg .u64 %r62;
+	.reg .u64 %r63;
+	.reg .u32 %r64;
+	.reg .u64 %r65;
+	.reg .u32 %r66;
+	.reg .u32 %r67;
+	.reg .u32 %r68;
+	.reg .pred %p69;
+	.reg .u32 %r87;
+	.reg .u64 %r106;
+	.reg .u64 %r107;
+	.reg .u64 %r108;
+	.reg .u32 %r109;
+	.reg .u32 %r130;
+	.reg .u32 %r131;
+	.reg .u32 %r132;
+	.reg .u64 %r133;
+	.reg .u64 %r134;
+	.reg .u64 %r135;
+	.reg .u32 %r136;
+	.reg .pred %p138;
+	.reg .u32 %r141;
+	.reg .pred %p142;
+	.reg .u32 %r180;
+	.reg .u32 %r198;
+	.reg .u32 %r217;
+	.reg .u32 %r237;
+	.reg .u32 %r238;
+	.reg .u32 %r239;
+	.reg .u64 %r240;
+	.reg .u64 %r241;
+	.reg .u64 %r242;
+	.reg .u32 %r243;
+	.reg .pred %p244;
+	.reg .u32 %r247;
+	.reg .pred %p248;
+	.reg .u32 %r286;
+	.reg .u64 %r287;
+	.reg .u64 %r288;
+	.reg .u64 %r289;
+	.reg .u64 %r290;
+	.reg .u32 %r291;
+	.reg .u64 %r292;
+	.reg .u64 %r293;
+	.reg .u64 %r294;
+	.reg .u64 %r295;
+	.reg .u32 %r297;
+	.reg .pred %p298;
+	.reg .u64 %r304;
+	.reg .u64 %r305;
+	.reg .u32 %r306;
+	.reg .u64 %r307;
+	.reg .u64 %r308;
+	.reg .u32 %r309;
+	.reg .u32 %r310;
+	.reg .u32 %r311;
+$BB_2_0:				/* $LBB1__Z21mergeSortSharedKernelILj0EEvPjS0_S0_S0_j */ 
+	mov.u64 %r0, __cuda_s_val8268;
+	mov.u64 %r1, __cuda_s_key12364;
+	mov.u16 %r2, %ctaid.x;
+	mul.wide.u16 %r3, %r2, 1024;
+	cvt.u32.u16 %r4, %tid.x;
+	cvt.u64.u32 %r5, %r4;
+	mul.lo.u64 %r6, %r5, 4;
+	add.u64 %r7, %r6, %r1;
+	add.u32 %r8, %r3, %r4;
+	cvt.u64.u32 %r9, %r8;
+	mul.lo.u64 %r10, %r9, 4;
+	ld.param.u64 %r11, [__cudaparm__Z21mergeSortSharedKernelILj0EEvPjS0_S0_S0_j___val_paramd_SrcKey];
+	add.u64 %r12, %r11, %r10;
+	ld.global.u32 %r13, [%r12 + 0];
+	st.shared.u32 [%r7 + 0], %r13;
+	add.u64 %r14, %r6, %r0;
+	ld.param.u64 %r15, [__cudaparm__Z21mergeSortSharedKernelILj0EEvPjS0_S0_S0_j___val_paramd_SrcVal];
+	add.u64 %r16, %r15, %r10;
+	ld.global.u32 %r17, [%r16 + 0];
+	st.shared.u32 [%r14 + 0], %r17;
+	add.u32 %r18, %r4, 512;
+	cvt.u64.u32 %r19, %r18;
+	mul.lo.u64 %r20, %r19, 4;
+	add.u64 %r21, %r20, %r1;
+	ld.global.u32 %r22, [%r12 + 2048];
+	st.shared.u32 [%r21 + 0], %r22;
+	add.u64 %r23, %r20, %r0;
+	ld.global.u32 %r24, [%r16 + 2048];
+	st.shared.u32 [%r23 + 0], %r24;
+	ld.param.u32 %r25, [__cudaparm__Z21mergeSortSharedKernelILj0EEvPjS0_S0_S0_j_arrayLength];
+	mov.u32 %r26, 1;
+	setp.le.u32 %p27, %r25, %r26;
+	@%p27 bra $BB_2_13;
+$BB_2_1:
+	mov.u32 %r36, 1;
+$BB_2_2:				/* $Lt_1_7938 */ 
+	bar.sync 0;
+	sub.u32 %r46, %r36, 1;
+	and.b32 %r47, %r46, %r4;
+	sub.u32 %r48, %r4, %r47;
+	cvt.u64.u32 %r49, %r47;
+	mul.lo.u64 %r50, %r49, 4;
+	mul.lo.u32 %r51, %r48, 2;
+	cvt.u64.u32 %r52, %r51;
+	mul.lo.u64 %r53, %r52, 4;
+	add.u64 %r54, %r53, %r1;
+	add.u64 %r55, %r50, %r54;
+	ld.shared.u32 %r56, [%r55 + 0];
+	add.u64 %r57, %r53, %r0;
+	add.u64 %r58, %r50, %r57;
+	ld.shared.u32 %r59, [%r58 + 0];
+	add.u32 %r60, %r47, %r36;
+	cvt.u64.u32 %r61, %r60;
+	mul.lo.u64 %r62, %r61, 4;
+	add.u64 %r63, %r62, %r54;
+	ld.shared.u32 %r64, [%r63 + 0];
+	add.u64 %r65, %r62, %r57;
+	ld.shared.u32 %r66, [%r65 + 0];
+	mov.s32 %r67, %r36;
+	mov.u32 %r68, 0;
+	setp.eq.u32 %p69, %r36, %r68;
+	@!%p69 bra $BB_2_4;
+$BB_2_3:
+	mov.u32 %r87, 0;
+	bra.uni $BB_2_7;
+$BB_2_4:				/* $Lt_1_8962 */ 
+	cvt.u64.u32 %r106, %r36;
+	mul.lo.u64 %r107, %r106, 4;
+	add.u64 %r108, %r54, %r107;
+	mov.u32 %r109, 0;
+$BB_2_5:				/* $Lt_1_9218 */ 
+	add.u32 %r130, %r67, %r109;
+	min.u32 %r131, %r130, %r36;
+	sub.u32 %r132, %r131, 1;
+	cvt.u64.u32 %r133, %r132;
+	mul.lo.u64 %r134, %r133, 4;
+	add.u64 %r135, %r108, %r134;
+	ld.shared.u32 %r136, [%r135 + 0];
+	ld.shared.u32 %r56, [%r55 + 0];
+	setp.gt.u32 %p138, %r136, %r56;
+	selp.u32 %r109, %r131, %r109, %p138;
+	shr.u32 %r67, %r67, 1;
+	mov.u32 %r141, 0;
+	setp.ne.u32 %p142, %r67, %r141;
+	@%p142 bra $BB_2_5;
+$BB_2_6:
+	mov.s32 %r87, %r109;
+$BB_2_7:				/* $Lt_1_770 */ 
+	mov.s32 %r180, %r36;
+	@!%p69 bra $BB_2_9;
+$BB_2_8:
+	mov.u32 %r198, 0;
+	bra.uni $BB_2_12;
+$BB_2_9:				/* $Lt_1_10498 */ 
+	mov.u32 %r217, 0;
+$BB_2_10:				/* $Lt_1_10754 */ 
+	add.u32 %r237, %r180, %r217;
+	min.u32 %r238, %r237, %r36;
+	sub.u32 %r239, %r238, 1;
+	cvt.u64.u32 %r240, %r239;
+	mul.lo.u64 %r241, %r240, 4;
+	add.u64 %r242, %r54, %r241;
+	ld.shared.u32 %r243, [%r242 + 0];
+	setp.ge.u32 %p244, %r243, %r64;
+	selp.u32 %r217, %r238, %r217, %p244;
+	shr.u32 %r180, %r180, 1;
+	mov.u32 %r247, 0;
+	setp.ne.u32 %p248, %r180, %r247;
+	@%p248 bra $BB_2_10;
+$BB_2_11:
+	mov.s32 %r198, %r217;
+$BB_2_12:				/* $Lt_1_258 */ 
+	bar.sync 0;
+	add.u32 %r286, %r87, %r47;
+	cvt.u64.u32 %r287, %r286;
+	mul.lo.u64 %r288, %r287, 4;
+	add.u64 %r289, %r288, %r54;
+	st.shared.u32 [%r289 + 0], %r56;
+	add.u64 %r290, %r288, %r57;
+	st.shared.u32 [%r290 + 0], %r59;
+	add.u32 %r291, %r198, %r47;
+	cvt.u64.u32 %r292, %r291;
+	mul.lo.u64 %r293, %r292, 4;
+	add.u64 %r294, %r293, %r54;
+	st.shared.u32 [%r294 + 0], %r64;
+	add.u64 %r295, %r293, %r57;
+	st.shared.u32 [%r295 + 0], %r66;
+	shl.b32 %r36, %r36, 1;
+	ld.param.u32 %r297, [__cudaparm__Z21mergeSortSharedKernelILj0EEvPjS0_S0_S0_j_arrayLength];
+	setp.gt.u32 %p298, %r297, %r36;
+	@%p298 bra $BB_2_2;
+$BB_2_13:				/* $Lt_1_7426 */ 
+	bar.sync 0;
+	ld.param.u64 %r304, [__cudaparm__Z21mergeSortSharedKernelILj0EEvPjS0_S0_S0_j___val_paramd_DstKey];
+	add.u64 %r305, %r304, %r10;
+	ld.shared.u32 %r306, [%r7 + 0];
+	st.global.u32 [%r305 + 0], %r306;
+	ld.param.u64 %r307, [__cudaparm__Z21mergeSortSharedKernelILj0EEvPjS0_S0_S0_j___val_paramd_DstVal];
+	add.u64 %r308, %r307, %r10;
+	ld.shared.u32 %r309, [%r14 + 0];
+	st.global.u32 [%r308 + 0], %r309;
+	ld.shared.u32 %r310, [%r21 + 0];
+	st.global.u32 [%r305 + 2048], %r310;
+	ld.shared.u32 %r311, [%r23 + 0];
+	st.global.u32 [%r308 + 2048], %r311;
+	exit;
+}
+/*
+* Ocelot Version : 1.1.560
+*/
+.entry _Z21mergeSortSharedKernelILj1EEvPjS0_S0_S0_j(.param  .u64 __cudaparm__Z21mergeSortSharedKernelILj1EEvPjS0_S0_S0_j___val_paramd_DstKey,
+		.param  .u64 __cudaparm__Z21mergeSortSharedKernelILj1EEvPjS0_S0_S0_j___val_paramd_DstVal,
+		.param  .u64 __cudaparm__Z21mergeSortSharedKernelILj1EEvPjS0_S0_S0_j___val_paramd_SrcKey,
+		.param  .u64 __cudaparm__Z21mergeSortSharedKernelILj1EEvPjS0_S0_S0_j___val_paramd_SrcVal,
+		.param  .u32 __cudaparm__Z21mergeSortSharedKernelILj1EEvPjS0_S0_S0_j_arrayLength)
+{
+	.shared .align 4 .b8 __cuda_s_key4132[4096];
+	.shared .align 4 .b8 __cuda_s_val36[4096];
+	.reg .u64 %r0;
+	.reg .u64 %r1;
+	.reg .u16 %r2;
+	.reg .u32 %r3;
+	.reg .u32 %r4;
+	.reg .u64 %r5;
+	.reg .u64 %r6;
+	.reg .u64 %r7;
+	.reg .u32 %r8;
+	.reg .u64 %r9;
+	.reg .u64 %r10;
+	.reg .u64 %r11;
+	.reg .u64 %r12;
+	.reg .u32 %r13;
+	.reg .u64 %r14;
+	.reg .u64 %r15;
+	.reg .u64 %r16;
+	.reg .u32 %r17;
+	.reg .u32 %r18;
+	.reg .u64 %r19;
+	.reg .u64 %r20;
+	.reg .u64 %r21;
+	.reg .u32 %r22;
+	.reg .u64 %r23;
+	.reg .u32 %r24;
+	.reg .u32 %r25;
+	.reg .u32 %r26;
+	.reg .pred %p27;
+	.reg .u32 %r36;
+	.reg .u32 %r46;
+	.reg .u32 %r47;
+	.reg .u32 %r48;
+	.reg .u64 %r49;
+	.reg .u64 %r50;
+	.reg .u32 %r51;
+	.reg .u64 %r52;
+	.reg .u64 %r53;
+	.reg .u64 %r54;
+	.reg .u64 %r55;
+	.reg .u32 %r56;
+	.reg .u64 %r57;
+	.reg .u64 %r58;
+	.reg .u32 %r59;
+	.reg .u32 %r60;
+	.reg .u64 %r61;
+	.reg .u64 %r62;
+	.reg .u64 %r63;
+	.reg .u32 %r64;
+	.reg .u64 %r65;
+	.reg .u32 %r66;
+	.reg .u32 %r67;
+	.reg .u32 %r68;
+	.reg .pred %p69;
+	.reg .u32 %r87;
+	.reg .u32 %r105;
+	.reg .u32 %r106;
+	.reg .u32 %r126;
+	.reg .u32 %r127;
+	.reg .u32 %r128;
+	.reg .u64 %r129;
+	.reg .u64 %r130;
+	.reg .u64 %r131;
+	.reg .u32 %r132;
+	.reg .pred %p133;
+	.reg .u32 %r136;
+	.reg .pred %p137;
+	.reg .u32 %r156;
+	.reg .u32 %r175;
+	.reg .u64 %r176;
+	.reg .u64 %r177;
+	.reg .u64 %r178;
+	.reg .u64 %r179;
+	.reg .u32 %r180;
+	.reg .u64 %r181;
+	.reg .u64 %r182;
+	.reg .u64 %r183;
+	.reg .u64 %r184;
+	.reg .u32 %r186;
+	.reg .pred %p187;
+	.reg .u64 %r193;
+	.reg .u64 %r194;
+	.reg .u32 %r195;
+	.reg .u64 %r196;
+	.reg .u64 %r197;
+	.reg .u32 %r198;
+	.reg .u32 %r199;
+	.reg .u32 %r200;
+	.reg .u64 %r219;
+	.reg .u64 %r220;
+	.reg .u64 %r221;
+	.reg .u32 %r222;
+	.reg .u32 %r243;
+	.reg .u32 %r244;
+	.reg .u32 %r245;
+	.reg .u64 %r246;
+	.reg .u64 %r247;
+	.reg .u64 %r248;
+	.reg .u32 %r249;
+	.reg .pred %p251;
+	.reg .u32 %r254;
+	.reg .pred %p255;
+$BB_1_0:				/* $LBB1__Z21mergeSortSharedKernelILj1EEvPjS0_S0_S0_j */ 
+	mov.u64 %r0, __cuda_s_val36;
+	mov.u64 %r1, __cuda_s_key4132;
+	mov.u16 %r2, %ctaid.x;
+	mul.wide.u16 %r3, %r2, 1024;
+	cvt.u32.u16 %r4, %tid.x;
+	cvt.u64.u32 %r5, %r4;
+	mul.lo.u64 %r6, %r5, 4;
+	add.u64 %r7, %r6, %r1;
+	add.u32 %r8, %r3, %r4;
+	cvt.u64.u32 %r9, %r8;
+	mul.lo.u64 %r10, %r9, 4;
+	ld.param.u64 %r11, [__cudaparm__Z21mergeSortSharedKernelILj1EEvPjS0_S0_S0_j___val_paramd_SrcKey];
+	add.u64 %r12, %r11, %r10;
+	ld.global.u32 %r13, [%r12 + 0];
+	st.shared.u32 [%r7 + 0], %r13;
+	add.u64 %r14, %r6, %r0;
+	ld.param.u64 %r15, [__cudaparm__Z21mergeSortSharedKernelILj1EEvPjS0_S0_S0_j___val_paramd_SrcVal];
+	add.u64 %r16, %r15, %r10;
+	ld.global.u32 %r17, [%r16 + 0];
+	st.shared.u32 [%r14 + 0], %r17;
+	add.u32 %r18, %r4, 512;
+	cvt.u64.u32 %r19, %r18;
+	mul.lo.u64 %r20, %r19, 4;
+	add.u64 %r21, %r20, %r1;
+	ld.global.u32 %r22, [%r12 + 2048];
+	st.shared.u32 [%r21 + 0], %r22;
+	add.u64 %r23, %r20, %r0;
+	ld.global.u32 %r24, [%r16 + 2048];
+	st.shared.u32 [%r23 + 0], %r24;
+	ld.param.u32 %r25, [__cudaparm__Z21mergeSortSharedKernelILj1EEvPjS0_S0_S0_j_arrayLength];
+	mov.u32 %r26, 1;
+	setp.le.u32 %p27, %r25, %r26;
+	@%p27 bra $BB_1_13;
+$BB_1_1:
+	mov.u32 %r36, 1;
+$BB_1_2:				/* $Lt_0_7938 */ 
+	bar.sync 0;
+	sub.u32 %r46, %r36, 1;
+	and.b32 %r47, %r46, %r4;
+	sub.u32 %r48, %r4, %r47;
+	cvt.u64.u32 %r49, %r47;
+	mul.lo.u64 %r50, %r49, 4;
+	mul.lo.u32 %r51, %r48, 2;
+	cvt.u64.u32 %r52, %r51;
+	mul.lo.u64 %r53, %r52, 4;
+	add.u64 %r54, %r53, %r1;
+	add.u64 %r55, %r50, %r54;
+	ld.shared.u32 %r56, [%r55 + 0];
+	add.u64 %r57, %r53, %r0;
+	add.u64 %r58, %r50, %r57;
+	ld.shared.u32 %r59, [%r58 + 0];
+	add.u32 %r60, %r47, %r36;
+	cvt.u64.u32 %r61, %r60;
+	mul.lo.u64 %r62, %r61, 4;
+	add.u64 %r63, %r62, %r54;
+	ld.shared.u32 %r64, [%r63 + 0];
+	add.u64 %r65, %r62, %r57;
+	ld.shared.u32 %r66, [%r65 + 0];
+	mov.s32 %r67, %r36;
+	mov.u32 %r68, 0;
+	setp.eq.u32 %p69, %r36, %r68;
+	@!%p69 bra $BB_1_4;
+$BB_1_3:
+	mov.u32 %r87, 0;
+	bra.uni $BB_1_7;
+$BB_1_9:				/* $Lt_0_10498 */ 
+	mov.u32 %r106, 0;
+$BB_1_10:				/* $Lt_0_10754 */ 
+	add.u32 %r126, %r105, %r106;
+	min.u32 %r127, %r126, %r36;
+	sub.u32 %r128, %r127, 1;
+	cvt.u64.u32 %r129, %r128;
+	mul.lo.u64 %r130, %r129, 4;
+	add.u64 %r131, %r54, %r130;
+	ld.shared.u32 %r132, [%r131 + 0];
+	setp.le.u32 %p133, %r132, %r64;
+	selp.u32 %r106, %r127, %r106, %p133;
+	shr.u32 %r105, %r105, 1;
+	mov.u32 %r136, 0;
+	setp.ne.u32 %p137, %r105, %r136;
+	@%p137 bra $BB_1_10;
+$BB_1_11:
+	mov.s32 %r156, %r106;
+$BB_1_12:				/* $Lt_0_258 */ 
+	bar.sync 0;
+	add.u32 %r175, %r87, %r47;
+	cvt.u64.u32 %r176, %r175;
+	mul.lo.u64 %r177, %r176, 4;
+	add.u64 %r178, %r177, %r54;
+	st.shared.u32 [%r178 + 0], %r56;
+	add.u64 %r179, %r177, %r57;
+	st.shared.u32 [%r179 + 0], %r59;
+	add.u32 %r180, %r156, %r47;
+	cvt.u64.u32 %r181, %r180;
+	mul.lo.u64 %r182, %r181, 4;
+	add.u64 %r183, %r182, %r54;
+	st.shared.u32 [%r183 + 0], %r64;
+	add.u64 %r184, %r182, %r57;
+	st.shared.u32 [%r184 + 0], %r66;
+	shl.b32 %r36, %r36, 1;
+	ld.param.u32 %r186, [__cudaparm__Z21mergeSortSharedKernelILj1EEvPjS0_S0_S0_j_arrayLength];
+	setp.gt.u32 %p187, %r186, %r36;
+	@%p187 bra $BB_1_2;
+$BB_1_13:				/* $Lt_0_7426 */ 
+	bar.sync 0;
+	ld.param.u64 %r193, [__cudaparm__Z21mergeSortSharedKernelILj1EEvPjS0_S0_S0_j___val_paramd_DstKey];
+	add.u64 %r194, %r193, %r10;
+	ld.shared.u32 %r195, [%r7 + 0];
+	st.global.u32 [%r194 + 0], %r195;
+	ld.param.u64 %r196, [__cudaparm__Z21mergeSortSharedKernelILj1EEvPjS0_S0_S0_j___val_paramd_DstVal];
+	add.u64 %r197, %r196, %r10;
+	ld.shared.u32 %r198, [%r14 + 0];
+	st.global.u32 [%r197 + 0], %r198;
+	ld.shared.u32 %r199, [%r21 + 0];
+	st.global.u32 [%r194 + 2048], %r199;
+	ld.shared.u32 %r200, [%r23 + 0];
+	st.global.u32 [%r197 + 2048], %r200;
+	exit;
+$BB_1_4:				/* $Lt_0_8962 */ 
+	cvt.u64.u32 %r219, %r36;
+	mul.lo.u64 %r220, %r219, 4;
+	add.u64 %r221, %r54, %r220;
+	mov.u32 %r222, 0;
+$BB_1_5:				/* $Lt_0_9218 */ 
+	add.u32 %r243, %r67, %r222;
+	min.u32 %r244, %r243, %r36;
+	sub.u32 %r245, %r244, 1;
+	cvt.u64.u32 %r246, %r245;
+	mul.lo.u64 %r247, %r246, 4;
+	add.u64 %r248, %r221, %r247;
+	ld.shared.u32 %r249, [%r248 + 0];
+	ld.shared.u32 %r56, [%r55 + 0];
+	setp.lt.u32 %p251, %r249, %r56;
+	selp.u32 %r222, %r244, %r222, %p251;
+	shr.u32 %r67, %r67, 1;
+	mov.u32 %r254, 0;
+	setp.ne.u32 %p255, %r67, %r254;
+	@%p255 bra $BB_1_5;
+$BB_1_6:
+	mov.s32 %r87, %r222;
+$BB_1_7:				/* $Lt_0_770 */ 
+	mov.s32 %r105, %r36;
+	@!%p69 bra $BB_1_9;
+$BB_1_8:
+	mov.u32 %r156, 0;
+	bra.uni $BB_1_12;
+}
+/*
+* Ocelot Version : 1.1.560
+*/
+.entry _Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj(.param  .u64 __cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj___val_paramd_RanksA,
+		.param  .u64 __cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj___val_paramd_RanksB,
+		.param  .u64 __cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj___val_paramd_SrcKey,
+		.param  .u32 __cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj_stride,
+		.param  .u32 __cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj_N,
+		.param  .u32 __cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj_threadCount)
+{
+	.reg .u16 %r0;
+	.reg .u16 %r1;
+	.reg .u32 %r2;
+	.reg .u32 %r3;
+	.reg .u32 %r4;
+	.reg .u32 %r5;
+	.reg .pred %p6;
+	.reg .u32 %r7;
+	.reg .u32 %r8;
+	.reg .u32 %r9;
+	.reg .u64 %r10;
+	.reg .u32 %r11;
+	.reg .u32 %r12;
+	.reg .u64 %r13;
+	.reg .u32 %r14;
+	.reg .u64 %r22;
+	.reg .u64 %r23;
+	.reg .u64 %r24;
+	.reg .pred %p29;
+	.reg .u32 %r33;
+	.reg .u32 %r34;
+	.reg .u32 %r35;
+	.reg .u64 %r36;
+	.reg .u64 %r37;
+	.reg .u64 %r38;
+	.reg .u64 %r39;
+	.reg .u64 %r40;
+	.reg .u64 %r41;
+	.reg .u64 %r42;
+	.reg .u32 %r43;
+	.reg .u32 %r44;
+	.reg .pred %p45;
+	.reg .u32 %r50;
+	.reg .u32 %r51;
+	.reg .f32 %r52;
+	.reg .u32 %r53;
+	.reg .u32 %r54;
+	.reg .u32 %r55;
+	.reg .u32 %r56;
+	.reg .u32 %r57;
+	.reg .u32 %r58;
+	.reg .u32 %r60;
+	.reg .u32 %r66;
+	.reg .u32 %r67;
+	.reg .pred %p68;
+	.reg .u64 %r80;
+	.reg .u64 %r81;
+	.reg .u64 %r82;
+	.reg .u64 %r83;
+	.reg .u64 %r84;
+	.reg .u64 %r85;
+	.reg .u64 %r86;
+	.reg .u32 %r87;
+	.reg .u64 %r88;
+	.reg .u64 %r89;
+	.reg .u64 %r90;
+	.reg .u32 %r91;
+	.reg .u32 %r103;
+	.reg .u32 %r104;
+	.reg .u32 %r105;
+	.reg .u64 %r106;
+	.reg .u64 %r107;
+	.reg .u64 %r108;
+	.reg .u32 %r109;
+	.reg .pred %p110;
+	.reg .u32 %r113;
+	.reg .pred %p114;
+	.reg .u32 %r125;
+	.reg .u32 %r126;
+	.reg .u32 %r128;
+	.reg .pred %p129;
+	.reg .u32 %r130;
+	.reg .u64 %r137;
+	.reg .u64 %r138;
+	.reg .u64 %r139;
+	.reg .u64 %r140;
+	.reg .u32 %r141;
+	.reg .u32 %r142;
+	.reg .u64 %r143;
+	.reg .u64 %r144;
+	.reg .u64 %r145;
+	.reg .u32 %r146;
+	.reg .u32 %r153;
+	.reg .u32 %r154;
+	.reg .u32 %r155;
+	.reg .u32 %r156;
+	.reg .u64 %r157;
+	.reg .u64 %r158;
+	.reg .u64 %r159;
+	.reg .u32 %r160;
+	.reg .pred %p161;
+	.reg .u32 %r164;
+	.reg .pred %p165;
+	.reg .u32 %r171;
+	.reg .u32 %r175;
+	.reg .u32 %r177;
+	.reg .u32 %r179;
+	.reg .u32 %r180;
+	.reg .u32 %r181;
+	.reg .u32 %r182;
+	.reg .u32 %r184;
+	.reg .u32 %r185;
+	.reg .u32 %r186;
+	.reg .pred %p187;
+	.reg .u32 %r198;
+	.reg .u64 %r202;
+	.reg .u64 %r203;
+	.reg .u64 %r204;
+	.reg .u32 %r206;
+	.reg .u32 %r208;
+	.reg .u32 %r209;
+	.reg .pred %p210;
+	.reg .u32 %r224;
+	.reg .u32 %r225;
+	.reg .u32 %r228;
+	.reg .u32 %r229;
+	.reg .pred %p230;
+	.reg .pred %p247;
+	.reg .u64 %r254;
+	.reg .u32 %r256;
+	.reg .u64 %r257;
+	.reg .u64 %r259;
+	.reg .u64 %r260;
+	.reg .u64 %r261;
+	.reg .u32 %r262;
+	.reg .pred %p263;
+	.reg .u32 %r272;
+	.reg .f32 %r273;
+	.reg .u32 %r274;
+	.reg .u32 %r275;
+	.reg .u32 %r276;
+	.reg .u32 %r277;
+	.reg .u32 %r296;
+	.reg .u32 %r297;
+	.reg .u32 %r300;
+	.reg .pred %p301;
+$BB_4_0:				/* $LBB1__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj */ 
+	mov.u16 %r0, %ctaid.x;
+	mov.u16 %r1, %ntid.x;
+	mul.wide.u16 %r2, %r0, %r1;
+	cvt.u32.u16 %r3, %tid.x;
+	add.u32 %r4, %r3, %r2;
+	ld.param.u32 %r5, [__cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj_threadCount];
+	setp.gt.u32 %p6, %r5, %r4;
+	@%p6 bra $BB_4_2;
+$BB_4_1:
+	bra.uni $BB_4_32;
+$BB_4_18:				/* $Lt_3_14850 */ 
+	mov.s32 %r14, %r12;
+$BB_4_19:				/* $Lt_3_770 */ 
+	ld.param.u64 %r22, [__cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj___val_paramd_RanksB];
+	add.u64 %r23, %r22, %r13;
+	add.u64 %r24, %r10, %r23;
+	st.global.u32 [%r24 + 0], %r14;
+$BB_4_20:				/* $Lt_3_13314 */ 
+	setp.le.u32 %p29, %r7, %r8;
+	@%p29 bra $BB_4_32;
+$BB_4_21:
+	mul.lo.u32 %r33, %r8, 128;
+	shr.u32 %r34, %r9, 7;
+	add.u32 %r35, %r11, %r8;
+	cvt.u64.u32 %r36, %r35;
+	mul.lo.u64 %r37, %r36, 4;
+	cvt.u64.u32 %r38, %r34;
+	mul.lo.u64 %r39, %r38, 4;
+	ld.param.u64 %r40, [__cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj___val_paramd_RanksB];
+	add.u64 %r41, %r40, %r39;
+	add.u64 %r42, %r37, %r41;
+	st.global.u32 [%r42 + 0], %r33;
+	mov.u32 %r43, 1;
+	ld.param.u32 %r44, [__cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj_stride];
+	setp.eq.s32 %p45, %r44, %r43;
+	@%p45 bra $BB_4_23;
+$BB_4_22:
+	ld.param.u32 %r50, [__cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj_stride];
+	sub.s32 %r51, %r50, 1;
+	cvt.rz.f32.u32 %r52, %r51;
+	mov.b32 %r53, %r52;
+	shr.s32 %r54, %r53, 23;
+	mov.s32 %r55, 158;
+	sub.s32 %r56, %r55, %r54;
+	bra.uni $BB_4_24;
+$BB_4_14:				/* $Lt_3_14338 */ 
+	mov.u32 %r67, 0;
+	setp.eq.u32 %p68, %r57, %r67;
+	mov.u32 %r12, 0;
+	@%p68 bra $BB_4_18;
+$BB_4_15:
+	cvt.u64.u32 %r80, %r9;
+	ld.param.u64 %r81, [__cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj___val_paramd_SrcKey];
+	mul.lo.u64 %r82, %r80, 4;
+	add.u64 %r83, %r81, %r82;
+	cvt.u64.u32 %r84, %r60;
+	mul.lo.u64 %r85, %r84, 4;
+	add.u64 %r86, %r83, %r85;
+	ld.param.u32 %r87, [__cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj_stride];
+	cvt.u64.u32 %r88, %r87;
+	mul.lo.u64 %r89, %r88, 4;
+	add.u64 %r90, %r83, %r89;
+	ld.global.u32 %r91, [%r86 + 0];
+$BB_4_16:				/* $Lt_3_15362 */ 
+	add.u32 %r103, %r58, %r12;
+	min.u32 %r104, %r103, %r66;
+	sub.u32 %r105, %r104, 1;
+	cvt.u64.u32 %r106, %r105;
+	mul.lo.u64 %r107, %r106, 4;
+	add.u64 %r108, %r90, %r107;
+	ld.global.u32 %r109, [%r108 + 0];
+	setp.gt.u32 %p110, %r109, %r91;
+	selp.u32 %r12, %r104, %r12, %p110;
+	shr.u32 %r58, %r58, 1;
+	mov.u32 %r113, 0;
+	setp.ne.u32 %p114, %r58, %r113;
+	@%p114 bra $BB_4_16;
+$BB_4_17:
+	bra.uni $BB_4_18;
+$BB_4_26:				/* $Lt_3_16898 */ 
+	mov.u32 %r128, 0;
+	setp.eq.u32 %p129, %r125, %r128;
+	mov.u32 %r130, 0;
+	@%p129 bra $BB_4_30;
+$BB_4_27:
+	cvt.u64.u32 %r137, %r9;
+	mul.lo.u64 %r138, %r137, 4;
+	ld.param.u64 %r139, [__cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj___val_paramd_SrcKey];
+	add.u64 %r140, %r139, %r138;
+	ld.param.u32 %r141, [__cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj_stride];
+	add.u32 %r142, %r33, %r141;
+	cvt.u64.u32 %r143, %r142;
+	mul.lo.u64 %r144, %r143, 4;
+	add.u64 %r145, %r140, %r144;
+	ld.global.u32 %r146, [%r145 + 0];
+$BB_4_28:				/* $Lt_3_17922 */ 
+	add.u32 %r153, %r126, %r130;
+	ld.param.u32 %r154, [__cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj_stride];
+	min.u32 %r155, %r153, %r154;
+	sub.u32 %r156, %r155, 1;
+	cvt.u64.u32 %r157, %r156;
+	mul.lo.u64 %r158, %r157, 4;
+	add.u64 %r159, %r140, %r158;
+	ld.global.u32 %r160, [%r159 + 0];
+	setp.ge.u32 %p161, %r160, %r146;
+	selp.u32 %r130, %r155, %r130, %p161;
+	shr.u32 %r126, %r126, 1;
+	mov.u32 %r164, 0;
+	setp.ne.u32 %p165, %r126, %r164;
+	@%p165 bra $BB_4_28;
+$BB_4_29:
+	bra.uni $BB_4_30;
+$BB_4_4:				/* $Lt_3_12546 */ 
+	add.u32 %r171, %r11, 1;
+$BB_4_5:				/* $Lt_3_12290 */ 
+	sub.u32 %r175, %r11, 1;
+	and.b32 %r8, %r4, %r175;
+	sub.u32 %r177, %r4, %r8;
+	mul.lo.u32 %r9, %r177, 256;
+	ld.param.u32 %r179, [__cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj_N];
+	sub.u32 %r180, %r179, %r9;
+	ld.param.u32 %r181, [__cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj_stride];
+	sub.u32 %r182, %r180, %r181;
+	min.u32 %r66, %r182, %r181;
+	shr.u32 %r184, %r66, 7;
+	and.b32 %r185, %r66, 127;
+	mov.u32 %r186, 0;
+	setp.ne.u32 %p187, %r185, %r186;
+	@%p187 bra $BB_4_7;
+$BB_4_6:
+	mov.s32 %r7, %r184;
+	bra.uni $BB_4_8;
+$BB_4_30:				/* $Lt_3_17410 */ 
+	mov.s32 %r198, %r130;
+$BB_4_31:				/* $Lt_3_258 */ 
+	ld.param.u64 %r202, [__cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj___val_paramd_RanksA];
+	add.u64 %r203, %r202, %r39;
+	add.u64 %r204, %r37, %r203;
+	st.global.u32 [%r204 + 0], %r198;
+$BB_4_32:				/* $LBB36__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj */ 
+	exit;
+$BB_4_2:				/* $Lt_3_11778 */ 
+	ld.param.u32 %r206, [__cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj_stride];
+	shr.u32 %r11, %r206, 7;
+	and.b32 %r208, %r206, 127;
+	mov.u32 %r209, 0;
+	setp.ne.u32 %p210, %r208, %r209;
+	@%p210 bra $BB_4_4;
+$BB_4_3:
+	mov.s32 %r171, %r11;
+	bra.uni $BB_4_5;
+$BB_4_23:				/* $Lt_3_16642 */ 
+	mov.s32 %r56, 32;
+$BB_4_24:				/* $Lt_3_16386 */ 
+	mov.s32 %r224, 32;
+	sub.s32 %r225, %r224, %r56;
+	shl.b32 %r125, 1, %r225;
+	mov.s32 %r126, %r125;
+	mov.u32 %r228, 0;
+	ld.param.u32 %r229, [__cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj_stride];
+	setp.ne.u32 %p230, %r229, %r228;
+	@%p230 bra $BB_4_26;
+$BB_4_25:
+	mov.u32 %r198, 0;
+	bra.uni $BB_4_31;
+$BB_4_7:				/* $Lt_3_13058 */ 
+	add.u32 %r7, %r184, 1;
+$BB_4_8:				/* $Lt_3_12802 */ 
+	setp.le.u32 %p247, %r171, %r8;
+	@%p247 bra $BB_4_20;
+$BB_4_9:
+	mul.lo.u32 %r60, %r8, 128;
+	cvt.u64.u32 %r254, %r8;
+	mul.lo.u64 %r10, %r254, 4;
+	shr.u32 %r256, %r9, 7;
+	cvt.u64.u32 %r257, %r256;
+	mul.lo.u64 %r13, %r257, 4;
+	ld.param.u64 %r259, [__cudaparm__Z25generateSampleRanksKernelILj0EEvPjS0_S0_jjj___val_paramd_RanksA];
+	add.u64 %r260, %r259, %r13;
+	add.u64 %r261, %r10, %r260;
+	st.global.u32 [%r261 + 0], %r60;
+	mov.u32 %r262, 1;
+	setp.eq.s32 %p263, %r66, %r262;
+	@%p263 bra $BB_4_11;
+$BB_4_10:
+	sub.s32 %r272, %r66, 1;
+	cvt.rz.f32.u32 %r273, %r272;
+	mov.b32 %r274, %r273;
+	shr.s32 %r275, %r274, 23;
+	mov.s32 %r276, 158;
+	sub.s32 %r277, %r276, %r275;
+	bra.uni $BB_4_12;
+$BB_4_11:				/* $Lt_3_14082 */ 
+	mov.s32 %r277, 32;
+$BB_4_12:				/* $Lt_3_13826 */ 
+	mov.s32 %r296, 32;
+	sub.s32 %r297, %r296, %r277;
+	shl.b32 %r57, 1, %r297;
+	mov.s32 %r58, %r57;
+	mov.u32 %r300, 0;
+	setp.ne.u32 %p301, %r66, %r300;
+	@%p301 bra $BB_4_14;
+$BB_4_13:
+	mov.u32 %r14, 0;
+	bra.uni $BB_4_19;
+}
+/*
+* Ocelot Version : 1.1.560
+*/
+.entry _Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj(.param  .u64 __cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj___val_paramd_RanksA,
+		.param  .u64 __cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj___val_paramd_RanksB,
+		.param  .u64 __cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj___val_paramd_SrcKey,
+		.param  .u32 __cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj_stride,
+		.param  .u32 __cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj_N,
+		.param  .u32 __cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj_threadCount)
+{
+	.reg .u16 %r0;
+	.reg .u16 %r1;
+	.reg .u32 %r2;
+	.reg .u32 %r3;
+	.reg .u32 %r4;
+	.reg .u32 %r5;
+	.reg .pred %p6;
+	.reg .u32 %r7;
+	.reg .u32 %r8;
+	.reg .u32 %r9;
+	.reg .u32 %r10;
+	.reg .u32 %r11;
+	.reg .u32 %r12;
+	.reg .u32 %r13;
+	.reg .pred %p20;
+	.reg .u32 %r26;
+	.reg .u64 %r27;
+	.reg .u64 %r28;
+	.reg .u32 %r29;
+	.reg .u64 %r30;
+	.reg .u64 %r31;
+	.reg .u64 %r32;
+	.reg .u64 %r33;
+	.reg .u64 %r34;
+	.reg .u32 %r35;
+	.reg .pred %p36;
+	.reg .u32 %r45;
+	.reg .f32 %r46;
+	.reg .u32 %r47;
+	.reg .u32 %r48;
+	.reg .u32 %r49;
+	.reg .u32 %r50;
+	.reg .u32 %r51;
+	.reg .u32 %r52;
+	.reg .u32 %r61;
+	.reg .pred %p62;
+	.reg .u32 %r63;
+	.reg .u64 %r74;
+	.reg .u64 %r75;
+	.reg .u64 %r76;
+	.reg .u64 %r77;
+	.reg .u64 %r78;
+	.reg .u64 %r79;
+	.reg .u64 %r80;
+	.reg .u32 %r81;
+	.reg .u64 %r82;
+	.reg .u64 %r83;
+	.reg .u64 %r84;
+	.reg .u32 %r85;
+	.reg .u32 %r97;
+	.reg .u32 %r98;
+	.reg .u32 %r99;
+	.reg .u64 %r100;
+	.reg .u64 %r101;
+	.reg .u64 %r102;
+	.reg .u32 %r103;
+	.reg .pred %p104;
+	.reg .u32 %r107;
+	.reg .pred %p108;
+	.reg .u32 %r117;
+	.reg .u64 %r118;
+	.reg .u32 %r119;
+	.reg .u32 %r120;
+	.reg .u64 %r121;
+	.reg .u32 %r122;
+	.reg .pred %p123;
+	.reg .u32 %r124;
+	.reg .u64 %r131;
+	.reg .u64 %r132;
+	.reg .u64 %r133;
+	.reg .u64 %r134;
+	.reg .u32 %r135;
+	.reg .u32 %r136;
+	.reg .u64 %r137;
+	.reg .u64 %r138;
+	.reg .u64 %r139;
+	.reg .u32 %r140;
+	.reg .u32 %r147;
+	.reg .u32 %r148;
+	.reg .u32 %r149;
+	.reg .u32 %r150;
+	.reg .u64 %r151;
+	.reg .u64 %r152;
+	.reg .u64 %r153;
+	.reg .u32 %r154;
+	.reg .pred %p155;
+	.reg .u32 %r158;
+	.reg .pred %p159;
+	.reg .u32 %r170;
+	.reg .u64 %r178;
+	.reg .u64 %r179;
+	.reg .u64 %r180;
+	.reg .pred %p185;
+	.reg .u32 %r190;
+	.reg .u32 %r191;
+	.reg .u64 %r192;
+	.reg .u64 %r194;
+	.reg .u64 %r196;
+	.reg .u64 %r197;
+	.reg .u64 %r198;
+	.reg .u32 %r199;
+	.reg .u32 %r200;
+	.reg .pred %p201;
+	.reg .u32 %r206;
+	.reg .u32 %r207;
+	.reg .f32 %r208;
+	.reg .u32 %r209;
+	.reg .u32 %r210;
+	.reg .u32 %r211;
+	.reg .u32 %r212;
+	.reg .u32 %r216;
+	.reg .u64 %r220;
+	.reg .u64 %r221;
+	.reg .u64 %r222;
+	.reg .u32 %r241;
+	.reg .u32 %r242;
+	.reg .u32 %r245;
+	.reg .pred %p246;
+	.reg .u32 %r264;
+	.reg .u32 %r265;
+	.reg .u32 %r268;
+	.reg .u32 %r269;
+	.reg .pred %p270;
+	.reg .u32 %r280;
+	.reg .u32 %r282;
+	.reg .u32 %r284;
+	.reg .u32 %r285;
+	.reg .u32 %r286;
+	.reg .u32 %r287;
+	.reg .u32 %r290;
+	.reg .u32 %r291;
+	.reg .pred %p292;
+	.reg .u32 %r301;
+	.reg .u32 %r303;
+	.reg .u32 %r304;
+	.reg .pred %p305;
+$BB_3_0:				/* $LBB1__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj */ 
+	mov.u16 %r0, %ctaid.x;
+	mov.u16 %r1, %ntid.x;
+	mul.wide.u16 %r2, %r0, %r1;
+	cvt.u32.u16 %r3, %tid.x;
+	add.u32 %r4, %r3, %r2;
+	ld.param.u32 %r5, [__cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj_threadCount];
+	setp.gt.u32 %p6, %r5, %r4;
+	@%p6 bra $BB_3_2;
+$BB_3_1:
+	bra.uni $BB_3_32;
+$BB_3_7:				/* $Lt_2_13058 */ 
+	add.u32 %r13, %r12, 1;
+$BB_3_8:				/* $Lt_2_12802 */ 
+	setp.le.u32 %p20, %r7, %r8;
+	@%p20 bra $BB_3_20;
+$BB_3_9:
+	mul.lo.u32 %r26, %r8, 128;
+	cvt.u64.u32 %r27, %r8;
+	mul.lo.u64 %r28, %r27, 4;
+	shr.u32 %r29, %r9, 7;
+	cvt.u64.u32 %r30, %r29;
+	mul.lo.u64 %r31, %r30, 4;
+	ld.param.u64 %r32, [__cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj___val_paramd_RanksA];
+	add.u64 %r33, %r32, %r31;
+	add.u64 %r34, %r28, %r33;
+	st.global.u32 [%r34 + 0], %r26;
+	mov.u32 %r35, 1;
+	setp.eq.s32 %p36, %r11, %r35;
+	@%p36 bra $BB_3_11;
+$BB_3_10:
+	sub.s32 %r45, %r11, 1;
+	cvt.rz.f32.u32 %r46, %r45;
+	mov.b32 %r47, %r46;
+	shr.s32 %r48, %r47, 23;
+	mov.s32 %r49, 158;
+	sub.s32 %r50, %r49, %r48;
+	bra.uni $BB_3_12;
+$BB_3_14:				/* $Lt_2_14338 */ 
+	mov.u32 %r61, 0;
+	setp.eq.u32 %p62, %r51, %r61;
+	mov.u32 %r63, 0;
+	@%p62 bra $BB_3_18;
+$BB_3_15:
+	cvt.u64.u32 %r74, %r9;
+	ld.param.u64 %r75, [__cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj___val_paramd_SrcKey];
+	mul.lo.u64 %r76, %r74, 4;
+	add.u64 %r77, %r75, %r76;
+	cvt.u64.u32 %r78, %r26;
+	mul.lo.u64 %r79, %r78, 4;
+	add.u64 %r80, %r77, %r79;
+	ld.param.u32 %r81, [__cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj_stride];
+	cvt.u64.u32 %r82, %r81;
+	mul.lo.u64 %r83, %r82, 4;
+	add.u64 %r84, %r77, %r83;
+	ld.global.u32 %r85, [%r80 + 0];
+$BB_3_16:				/* $Lt_2_15362 */ 
+	add.u32 %r97, %r52, %r63;
+	min.u32 %r98, %r97, %r11;
+	sub.u32 %r99, %r98, 1;
+	cvt.u64.u32 %r100, %r99;
+	mul.lo.u64 %r101, %r100, 4;
+	add.u64 %r102, %r84, %r101;
+	ld.global.u32 %r103, [%r102 + 0];
+	setp.lt.u32 %p104, %r103, %r85;
+	selp.u32 %r63, %r98, %r63, %p104;
+	shr.u32 %r52, %r52, 1;
+	mov.u32 %r107, 0;
+	setp.ne.u32 %p108, %r52, %r107;
+	@%p108 bra $BB_3_16;
+$BB_3_17:
+	bra.uni $BB_3_18;
+$BB_3_26:				/* $Lt_2_16898 */ 
+	mov.u32 %r122, 0;
+	setp.eq.u32 %p123, %r119, %r122;
+	mov.u32 %r124, 0;
+	@%p123 bra $BB_3_30;
+$BB_3_27:
+	cvt.u64.u32 %r131, %r9;
+	mul.lo.u64 %r132, %r131, 4;
+	ld.param.u64 %r133, [__cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj___val_paramd_SrcKey];
+	add.u64 %r134, %r133, %r132;
+	ld.param.u32 %r135, [__cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj_stride];
+	add.u32 %r136, %r117, %r135;
+	cvt.u64.u32 %r137, %r136;
+	mul.lo.u64 %r138, %r137, 4;
+	add.u64 %r139, %r134, %r138;
+	ld.global.u32 %r140, [%r139 + 0];
+$BB_3_28:				/* $Lt_2_17922 */ 
+	add.u32 %r147, %r120, %r124;
+	ld.param.u32 %r148, [__cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj_stride];
+	min.u32 %r149, %r147, %r148;
+	sub.u32 %r150, %r149, 1;
+	cvt.u64.u32 %r151, %r150;
+	mul.lo.u64 %r152, %r151, 4;
+	add.u64 %r153, %r134, %r152;
+	ld.global.u32 %r154, [%r153 + 0];
+	setp.le.u32 %p155, %r154, %r140;
+	selp.u32 %r124, %r149, %r124, %p155;
+	shr.u32 %r120, %r120, 1;
+	mov.u32 %r158, 0;
+	setp.ne.u32 %p159, %r120, %r158;
+	@%p159 bra $BB_3_28;
+$BB_3_29:
+	bra.uni $BB_3_30;
+$BB_3_18:				/* $Lt_2_14850 */ 
+	mov.s32 %r170, %r63;
+$BB_3_19:				/* $Lt_2_770 */ 
+	ld.param.u64 %r178, [__cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj___val_paramd_RanksB];
+	add.u64 %r179, %r178, %r31;
+	add.u64 %r180, %r28, %r179;
+	st.global.u32 [%r180 + 0], %r170;
+$BB_3_20:				/* $Lt_2_13314 */ 
+	setp.le.u32 %p185, %r13, %r8;
+	@%p185 bra $BB_3_32;
+$BB_3_21:
+	mul.lo.u32 %r117, %r8, 128;
+	shr.u32 %r190, %r9, 7;
+	add.u32 %r191, %r10, %r8;
+	cvt.u64.u32 %r192, %r191;
+	mul.lo.u64 %r118, %r192, 4;
+	cvt.u64.u32 %r194, %r190;
+	mul.lo.u64 %r121, %r194, 4;
+	ld.param.u64 %r196, [__cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj___val_paramd_RanksB];
+	add.u64 %r197, %r196, %r121;
+	add.u64 %r198, %r118, %r197;
+	st.global.u32 [%r198 + 0], %r117;
+	mov.u32 %r199, 1;
+	ld.param.u32 %r200, [__cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj_stride];
+	setp.eq.s32 %p201, %r200, %r199;
+	@%p201 bra $BB_3_23;
+$BB_3_22:
+	ld.param.u32 %r206, [__cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj_stride];
+	sub.s32 %r207, %r206, 1;
+	cvt.rz.f32.u32 %r208, %r207;
+	mov.b32 %r209, %r208;
+	shr.s32 %r210, %r209, 23;
+	mov.s32 %r211, 158;
+	sub.s32 %r212, %r211, %r210;
+	bra.uni $BB_3_24;
+$BB_3_30:				/* $Lt_2_17410 */ 
+	mov.s32 %r216, %r124;
+$BB_3_31:				/* $Lt_2_258 */ 
+	ld.param.u64 %r220, [__cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj___val_paramd_RanksA];
+	add.u64 %r221, %r220, %r121;
+	add.u64 %r222, %r118, %r221;
+	st.global.u32 [%r222 + 0], %r216;
+$BB_3_32:				/* $LBB36__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj */ 
+	exit;
+$BB_3_11:				/* $Lt_2_14082 */ 
+	mov.s32 %r50, 32;
+$BB_3_12:				/* $Lt_2_13826 */ 
+	mov.s32 %r241, 32;
+	sub.s32 %r242, %r241, %r50;
+	shl.b32 %r51, 1, %r242;
+	mov.s32 %r52, %r51;
+	mov.u32 %r245, 0;
+	setp.ne.u32 %p246, %r11, %r245;
+	@%p246 bra $BB_3_14;
+$BB_3_13:
+	mov.u32 %r170, 0;
+	bra.uni $BB_3_19;
+$BB_3_23:				/* $Lt_2_16642 */ 
+	mov.s32 %r212, 32;
+$BB_3_24:				/* $Lt_2_16386 */ 
+	mov.s32 %r264, 32;
+	sub.s32 %r265, %r264, %r212;
+	shl.b32 %r119, 1, %r265;
+	mov.s32 %r120, %r119;
+	mov.u32 %r268, 0;
+	ld.param.u32 %r269, [__cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj_stride];
+	setp.ne.u32 %p270, %r269, %r268;
+	@%p270 bra $BB_3_26;
+$BB_3_25:
+	mov.u32 %r216, 0;
+	bra.uni $BB_3_31;
+$BB_3_4:				/* $Lt_2_12546 */ 
+	add.u32 %r7, %r10, 1;
+$BB_3_5:				/* $Lt_2_12290 */ 
+	sub.u32 %r280, %r10, 1;
+	and.b32 %r8, %r4, %r280;
+	sub.u32 %r282, %r4, %r8;
+	mul.lo.u32 %r9, %r282, 256;
+	ld.param.u32 %r284, [__cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj_N];
+	sub.u32 %r285, %r284, %r9;
+	ld.param.u32 %r286, [__cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj_stride];
+	sub.u32 %r287, %r285, %r286;
+	min.u32 %r11, %r287, %r286;
+	shr.u32 %r12, %r11, 7;
+	and.b32 %r290, %r11, 127;
+	mov.u32 %r291, 0;
+	setp.ne.u32 %p292, %r290, %r291;
+	@%p292 bra $BB_3_7;
+$BB_3_6:
+	mov.s32 %r13, %r12;
+	bra.uni $BB_3_8;
+$BB_3_2:				/* $Lt_2_11778 */ 
+	ld.param.u32 %r301, [__cudaparm__Z25generateSampleRanksKernelILj1EEvPjS0_S0_jjj_stride];
+	shr.u32 %r10, %r301, 7;
+	and.b32 %r303, %r301, 127;
+	mov.u32 %r304, 0;
+	setp.ne.u32 %p305, %r303, %r304;
+	@%p305 bra $BB_3_4;
+$BB_3_3:
+	mov.s32 %r7, %r10;
+	bra.uni $BB_3_5;
+}
+/*
+* Ocelot Version : 1.1.560
+*/
+.entry _Z26mergeRanksAndIndicesKernelPjS_jjj(.param  .u64 __cudaparm__Z26mergeRanksAndIndicesKernelPjS_jjj___val_paramd_Limits,
+		.param  .u64 __cudaparm__Z26mergeRanksAndIndicesKernelPjS_jjj___val_paramd_Ranks,
+		.param  .u32 __cudaparm__Z26mergeRanksAndIndicesKernelPjS_jjj_stride,
+		.param  .u32 __cudaparm__Z26mergeRanksAndIndicesKernelPjS_jjj_N,
+		.param  .u32 __cudaparm__Z26mergeRanksAndIndicesKernelPjS_jjj_threadCount)
+{
+	.reg .u16 %r0;
+	.reg .u16 %r1;
+	.reg .u32 %r2;
+	.reg .u32 %r3;
+	.reg .u32 %r4;
+	.reg .u32 %r5;
+	.reg .pred %p6;
+	.reg .u64 %r19;
+	.reg .u64 %r22;
+	.reg .u32 %r26;
+	.reg .u32 %r27;
+	.reg .u32 %r28;
+	.reg .u64 %r36;
+	.reg .u64 %r37;
+	.reg .u32 %r38;
+	.reg .u64 %r39;
+	.reg .u64 %r40;
+	.reg .u64 %r41;
+	.reg .pred %p46;
+	.reg .u32 %r50;
+	.reg .pred %p51;
+	.reg .u32 %r55;
+	.reg .f32 %r56;
+	.reg .u32 %r57;
+	.reg .u32 %r58;
+	.reg .u32 %r59;
+	.reg .u32 %r60;
+	.reg .u32 %r64;
+	.reg .u32 %r66;
+	.reg .u32 %r67;
+	.reg .pred %p68;
+	.reg .u64 %r83;
+	.reg .u64 %r84;
+	.reg .u64 %r85;
+	.reg .u64 %r86;
+	.reg .u32 %r97;
+	.reg .u32 %r98;
+	.reg .u32 %r99;
+	.reg .u64 %r100;
+	.reg .u64 %r101;
+	.reg .u64 %r102;
+	.reg .u32 %r103;
+	.reg .pred %p104;
+	.reg .u32 %r107;
+	.reg .pred %p108;
+	.reg .u32 %r117;
+	.reg .u32 %r122;
+	.reg .u32 %r125;
+	.reg .u32 %r126;
+	.reg .u32 %r127;
+	.reg .u32 %r128;
+	.reg .u32 %r129;
+	.reg .u32 %r130;
+	.reg .u32 %r132;
+	.reg .u32 %r133;
+	.reg .pred %p134;
+	.reg .u32 %r150;
+	.reg .u32 %r151;
+	.reg .u64 %r154;
+	.reg .u32 %r155;
+	.reg .pred %p156;
+	.reg .u64 %r162;
+	.reg .u32 %r163;
+	.reg .u64 %r164;
+	.reg .u64 %r165;
+	.reg .u64 %r167;
+	.reg .u64 %r168;
+	.reg .u64 %r169;
+	.reg .u32 %r172;
+	.reg .u32 %r174;
+	.reg .u32 %r175;
+	.reg .pred %p176;
+	.reg .u32 %r188;
+	.reg .u32 %r189;
+	.reg .u64 %r192;
+	.reg .u32 %r193;
+	.reg .pred %p194;
+	.reg .u32 %r199;
+	.reg .u32 %r200;
+	.reg .u64 %r201;
+	.reg .u64 %r202;
+	.reg .u64 %r203;
+	.reg .u64 %r204;
+	.reg .u64 %r205;
+	.reg .u64 %r206;
+	.reg .u64 %r207;
+	.reg .u32 %r208;
+	.reg .u32 %r209;
+	.reg .u32 %r210;
+	.reg .u32 %r211;
+	.reg .u32 %r212;
+	.reg .u32 %r213;
+	.reg .pred %p218;
+	.reg .u32 %r223;
+	.reg .pred %p224;
+	.reg .u32 %r229;
+	.reg .f32 %r230;
+	.reg .u32 %r231;
+	.reg .u32 %r232;
+	.reg .u32 %r233;
+	.reg .u32 %r234;
+	.reg .u32 %r238;
+	.reg .u32 %r239;
+	.reg .u32 %r240;
+	.reg .pred %p241;
+	.reg .u32 %r242;
+	.reg .u32 %r248;
+	.reg .u32 %r249;
+	.reg .u64 %r250;
+	.reg .u64 %r251;
+	.reg .u64 %r252;
+	.reg .u64 %r254;
+	.reg .u64 %r255;
+	.reg .u64 %r256;
+	.reg .u32 %r265;
+	.reg .u32 %r266;
+	.reg .u32 %r267;
+	.reg .u64 %r268;
+	.reg .u64 %r269;
+	.reg .u64 %r270;
+	.reg .u32 %r271;
+	.reg .pred %p272;
+	.reg .u32 %r275;
+	.reg .pred %p276;
+	.reg .u32 %r285;
+	.reg .u32 %r286;
+	.reg .u64 %r287;
+	.reg .u64 %r288;
+	.reg .u64 %r289;
+	.reg .u64 %r291;
+	.reg .u64 %r292;
+	.reg .u64 %r293;
+	.reg .u32 %r299;
+	.reg .u64 %r304;
+	.reg .u64 %r305;
+	.reg .u32 %r306;
+	.reg .u64 %r307;
+	.reg .u64 %r308;
+	.reg .u64 %r309;
+	.reg .u64 %r311;
+	.reg .u32 %r312;
+	.reg .u64 %r313;
+	.reg .u64 %r314;
+	.reg .u64 %r316;
+	.reg .u64 %r317;
+	.reg .u64 %r318;
+$BB_5_0:				/* $LBB1__Z26mergeRanksAndIndicesKernelPjS_jjj */ 
+	mov.u16 %r0, %ctaid.x;
+	mov.u16 %r1, %ntid.x;
+	mul.wide.u16 %r2, %r0, %r1;
+	cvt.u32.u16 %r3, %tid.x;
+	add.u32 %r4, %r3, %r2;
+	ld.param.u32 %r5, [__cudaparm__Z26mergeRanksAndIndicesKernelPjS_jjj_threadCount];
+	setp.gt.u32 %p6, %r5, %r4;
+	@%p6 bra $BB_5_2;
+$BB_5_1:
+	bra.uni $BB_5_34;
+$BB_5_19:				/* $Lt_4_14850 */ 
+	mov.s32 %r28, %r27;
+$BB_5_20:				/* $Lt_4_770 */ 
+	ld.param.u64 %r36, [__cudaparm__Z26mergeRanksAndIndicesKernelPjS_jjj___val_paramd_Limits];
+	add.u64 %r37, %r36, %r22;
+	add.u32 %r38, %r28, %r210;
+	cvt.u64.u32 %r39, %r38;
+	mul.lo.u64 %r40, %r39, 4;
+	add.u64 %r41, %r37, %r40;
+	st.global.u32 [%r41 + 0], %r26;
+$BB_5_21:				/* $Lt_4_13314 */ 
+	setp.le.u32 %p46, %r213, %r210;
+	@%p46 bra $BB_5_34;
+$BB_5_22:
+	mov.u32 %r50, 1;
+	setp.eq.s32 %p51, %r209, %r50;
+	@%p51 bra $BB_5_24;
+$BB_5_23:
+	sub.s32 %r55, %r209, 1;
+	cvt.rz.f32.u32 %r56, %r55;
+	mov.b32 %r57, %r56;
+	shr.s32 %r58, %r57, 23;
+	mov.s32 %r59, 158;
+	sub.s32 %r60, %r59, %r58;
+	bra.uni $BB_5_25;
+$BBweave_$BB_5_15_$BB_5_18_bra_2:
+$BBweave_$BB_5_15_$BB_5_18_uni_3:
+	selp.u64 %r318, %r19, %r83, %p68;
+	ld.global.u32 %r26, [%r318 + 0];
+$BB_5_16:				/* $Lt_4_15362 */ 
+	add.u32 %r97, %r66, %r27;
+	min.u32 %r98, %r213, %r97;
+	sub.u32 %r99, %r98, 1;
+	cvt.u64.u32 %r100, %r99;
+	mul.lo.u64 %r101, %r100, 4;
+	add.u64 %r102, %r86, %r101;
+	ld.global.u32 %r103, [%r102 + 0];
+	setp.lt.u32 %p104, %r103, %r26;
+	selp.u32 %r27, %r98, %r27, %p104;
+	shr.u32 %r66, %r66, 1;
+	mov.u32 %r107, 0;
+	setp.ne.u32 %p108, %r66, %r107;
+	@%p108 bra $BB_5_16;
+$BB_5_17:
+	bra.uni $BB_5_19;
+$BB_5_4:				/* $Lt_4_12546 */ 
+	add.u32 %r209, %r117, 1;
+$BB_5_5:				/* $Lt_4_12290 */ 
+	sub.u32 %r122, %r117, 1;
+	and.b32 %r210, %r4, %r122;
+	sub.u32 %r211, %r4, %r210;
+	mul.lo.u32 %r125, %r211, 256;
+	ld.param.u32 %r126, [__cudaparm__Z26mergeRanksAndIndicesKernelPjS_jjj_N];
+	sub.u32 %r127, %r126, %r125;
+	ld.param.u32 %r128, [__cudaparm__Z26mergeRanksAndIndicesKernelPjS_jjj_stride];
+	sub.u32 %r129, %r127, %r128;
+	min.u32 %r130, %r129, %r128;
+	shr.u32 %r212, %r130, 7;
+	and.b32 %r132, %r130, 127;
+	mov.u32 %r133, 0;
+	setp.ne.u32 %p134, %r132, %r133;
+	@%p134 bra $BB_5_7;
+$BB_5_6:
+	mov.s32 %r213, %r212;
+	bra.uni $BB_5_8;
+$BB_5_11:				/* $Lt_4_14082 */ 
+	mov.s32 %r234, 32;
+$BB_5_12:				/* $Lt_4_13826 */ 
+	mov.s32 %r150, 32;
+	sub.s32 %r151, %r150, %r234;
+	shl.b32 %r64, 1, %r151;
+	mov.s32 %r66, %r64;
+	ld.param.u64 %r154, [__cudaparm__Z26mergeRanksAndIndicesKernelPjS_jjj___val_paramd_Ranks];
+	mov.u32 %r155, 0;
+	setp.ne.u32 %p156, %r213, %r155;
+	@%p156 bra $BB_5_14;
+$BB_5_13:
+	mov.u32 %r28, 0;
+	cvt.u64.u32 %r162, %r210;
+	mul.lo.u32 %r163, %r211, 2;
+	mul.lo.u64 %r164, %r162, 4;
+	cvt.u64.u32 %r165, %r163;
+	mul.lo.u64 %r22, %r165, 4;
+	ld.param.u64 %r167, [__cudaparm__Z26mergeRanksAndIndicesKernelPjS_jjj___val_paramd_Ranks];
+	add.u64 %r168, %r22, %r167;
+	add.u64 %r169, %r164, %r168;
+	ld.global.u32 %r26, [%r169 + 0];
+	bra.uni $BB_5_20;
+$BB_5_2:				/* $Lt_4_11778 */ 
+	ld.param.u32 %r172, [__cudaparm__Z26mergeRanksAndIndicesKernelPjS_jjj_stride];
+	shr.u32 %r117, %r172, 7;
+	and.b32 %r174, %r172, 127;
+	mov.u32 %r175, 0;
+	setp.ne.u32 %p176, %r174, %r175;
+	@%p176 bra $BB_5_4;
+$BB_5_3:
+	mov.s32 %r209, %r117;
+	bra.uni $BB_5_5;
+$BB_5_24:				/* $Lt_4_16642 */ 
+	mov.s32 %r60, 32;
+$BB_5_25:				/* $Lt_4_16386 */ 
+	mov.s32 %r188, 32;
+	sub.s32 %r189, %r188, %r60;
+	shl.b32 %r238, 1, %r189;
+	mov.s32 %r239, %r238;
+	ld.param.u64 %r192, [__cudaparm__Z26mergeRanksAndIndicesKernelPjS_jjj___val_paramd_Ranks];
+	mov.u32 %r193, 0;
+	setp.ne.u32 %p194, %r209, %r193;
+	@%p194 bra $BB_5_27;
+$BB_5_26:
+	mov.u32 %r299, 0;
+	add.u32 %r199, %r209, %r210;
+	mul.lo.u32 %r200, %r211, 2;
+	cvt.u64.u32 %r201, %r199;
+	cvt.u64.u32 %r202, %r200;
+	mul.lo.u64 %r203, %r201, 4;
+	mul.lo.u64 %r204, %r202, 4;
+	ld.param.u64 %r205, [__cudaparm__Z26mergeRanksAndIndicesKernelPjS_jjj___val_paramd_Ranks];
+	add.u64 %r206, %r204, %r205;
+	add.u64 %r207, %r203, %r206;
+	ld.global.u32 %r208, [%r207 + 0];
+	bra.uni $BB_5_33;
+$BB_5_7:				/* $Lt_4_13058 */ 
+	add.u32 %r213, %r212, 1;
+$BB_5_8:				/* $Lt_4_12802 */ 
+	setp.le.u32 %p218, %r209, %r210;
+	@%p218 bra $BB_5_21;
+$BB_5_9:
+	mov.u32 %r223, 1;
+	setp.eq.s32 %p224, %r213, %r223;
+	@%p224 bra $BB_5_11;
+$BB_5_10:
+	sub.s32 %r229, %r213, 1;
+	cvt.rz.f32.u32 %r230, %r229;
+	mov.b32 %r231, %r230;
+	shr.s32 %r232, %r231, 23;
+	mov.s32 %r233, 158;
+	sub.s32 %r234, %r233, %r232;
+	bra.uni $BB_5_12;
+$BB_5_14:				/* $Lt_4_14338 */ 
+	mov.u32 %r67, 0;
+	setp.eq.u32 %p68, %r64, %r67;
+	mov.u32 %r27, 0;
+$BBweave_$BB_5_15_$BB_5_18_uni_0:
+	cvt.u64.u32 %r311, %r210;
+	mul.lo.u32 %r312, %r211, 2;
+	mul.lo.u64 %r313, %r311, 4;
+	cvt.u64.u32 %r314, %r312;
+	mul.lo.u64 %r22, %r314, 4;
+	ld.param.u64 %r316, [__cudaparm__Z26mergeRanksAndIndicesKernelPjS_jjj___val_paramd_Ranks];
+	add.u64 %r317, %r22, %r316;
+	@!%p68 add.u64 %r83, %r317, %r313;
+	@%p68 add.u64 %r19, %r313, %r317;
+	@%p68 bra $BBweave_$BB_5_15_$BB_5_18_bra_2;
+$BBweave_$BB_5_15_$BB_5_18_ft_1:
+	cvt.u64.u32 %r84, %r209;
+	mul.lo.u64 %r85, %r84, 4;
+	add.u64 %r86, %r317, %r85;
+	bra.uni $BBweave_$BB_5_15_$BB_5_18_uni_3;
+$BB_5_27:				/* $Lt_4_16898 */ 
+	mov.u32 %r240, 0;
+	setp.eq.u32 %p241, %r238, %r240;
+	mov.u32 %r242, 0;
+	@%p241 bra $BB_5_31;
+$BB_5_28:
+	add.u32 %r248, %r209, %r210;
+	mul.lo.u32 %r249, %r211, 2;
+	cvt.u64.u32 %r250, %r248;
+	cvt.u64.u32 %r251, %r249;
+	mul.lo.u64 %r252, %r250, 4;
+	mul.lo.u64 %r204, %r251, 4;
+	ld.param.u64 %r254, [__cudaparm__Z26mergeRanksAndIndicesKernelPjS_jjj___val_paramd_Ranks];
+	add.u64 %r255, %r204, %r254;
+	add.u64 %r256, %r252, %r255;
+	ld.global.u32 %r208, [%r256 + 0];
+$BB_5_29:				/* $Lt_4_17922 */ 
+	add.u32 %r265, %r239, %r242;
+	min.u32 %r266, %r209, %r265;
+	sub.u32 %r267, %r266, 1;
+	cvt.u64.u32 %r268, %r267;
+	mul.lo.u64 %r269, %r268, 4;
+	add.u64 %r270, %r255, %r269;
+	ld.global.u32 %r271, [%r270 + 0];
+	setp.le.u32 %p272, %r271, %r208;
+	selp.u32 %r242, %r266, %r242, %p272;
+	shr.u32 %r239, %r239, 1;
+	mov.u32 %r275, 0;
+	setp.ne.u32 %p276, %r239, %r275;
+	@%p276 bra $BB_5_29;
+$BB_5_30:
+	bra.uni $BB_5_32;
+$BB_5_31:				/* $Lt_4_18690 */ 
+	add.u32 %r285, %r209, %r210;
+	mul.lo.u32 %r286, %r211, 2;
+	cvt.u64.u32 %r287, %r285;
+	cvt.u64.u32 %r288, %r286;
+	mul.lo.u64 %r289, %r287, 4;
+	mul.lo.u64 %r204, %r288, 4;
+	ld.param.u64 %r291, [__cudaparm__Z26mergeRanksAndIndicesKernelPjS_jjj___val_paramd_Ranks];
+	add.u64 %r292, %r204, %r291;
+	add.u64 %r293, %r289, %r292;
+	ld.global.u32 %r208, [%r293 + 0];
+$BB_5_32:				/* $Lt_4_17410 */ 
+	mov.s32 %r299, %r242;
+$BB_5_33:				/* $Lt_4_258 */ 
+	ld.param.u64 %r304, [__cudaparm__Z26mergeRanksAndIndicesKernelPjS_jjj___val_paramd_Limits];
+	add.u64 %r305, %r304, %r204;
+	add.u32 %r306, %r299, %r210;
+	cvt.u64.u32 %r307, %r306;
+	mul.lo.u64 %r308, %r307, 4;
+	add.u64 %r309, %r305, %r308;
+	st.global.u32 [%r309 + 0], %r208;
+$BB_5_34:				/* $LBB36__Z26mergeRanksAndIndicesKernelPjS_jjj */ 
+	exit;
+}
+/*
+* Ocelot Version : 1.1.560
+*/
+.entry _Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj(.param  .u64 __cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj___val_paramd_DstKey,
+		.param  .u64 __cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj___val_paramd_DstVal,
+		.param  .u64 __cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj___val_paramd_SrcKey,
+		.param  .u64 __cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj___val_paramd_SrcVal,
+		.param  .u64 __cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj_d_LimitsA,
+		.param  .u64 __cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj_d_LimitsB,
+		.param  .u32 __cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj_stride,
+		.param  .u32 __cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj_N)
+{
+	.shared .align 1 .u32 __cuda_local_var_64193_34_startSrcA[1];
+	.shared .align 1 .u32 __cuda_local_var_64193_45_startSrcB[1];
+	.shared .align 1 .u32 __cuda_local_var_64193_56_lenSrcA[1];
+	.shared .align 1 .u32 __cuda_local_var_64193_65_lenSrcB[1];
+	.shared .align 1 .u32 __cuda_local_var_64193_74_startDstA[1];
+	.shared .align 1 .u32 __cuda_local_var_64193_85_startDstB[1];
+	.shared .align 4 .b8 __cuda_s_key18736[1024];
+	.shared .align 4 .b8 __cuda_s_val19760[1024];
+	.reg .u32 %r0;
+	.reg .u32 %r1;
+	.reg .u32 %r2;
+	.reg .u32 %r3;
+	.reg .u32 %r4;
+	.reg .u32 %r5;
+	.reg .u32 %r7;
+	.reg .pred %p8;
+	.reg .u32 %r16;
+	.reg .u32 %r17;
+	.reg .u32 %r18;
+	.reg .u32 %r19;
+	.reg .pred %p20;
+	.reg .u32 %r31;
+	.reg .u64 %r32;
+	.reg .u64 %r33;
+	.reg .u64 %r35;
+	.reg .u32 %r40;
+	.reg .u32 %r41;
+	.reg .u32 %r54;
+	.reg .u32 %r55;
+	.reg .u32 %r56;
+	.reg .u64 %r57;
+	.reg .u64 %r58;
+	.reg .u64 %r59;
+	.reg .u32 %r60;
+	.reg .u32 %r61;
+	.reg .pred %p62;
+	.reg .u32 %r65;
+	.reg .pred %p66;
+	.reg .u32 %r76;
+	.reg .u32 %r86;
+	.reg .u32 %r97;
+	.reg .pred %p98;
+	.reg .u32 %r108;
+	.reg .u64 %r109;
+	.reg .u64 %r110;
+	.reg .u32 %r111;
+	.reg .u64 %r112;
+	.reg .u32 %r113;
+	.reg .u64 %r114;
+	.reg .u32 %r121;
+	.reg .pred %p122;
+	.reg .u32 %r129;
+	.reg .u64 %r130;
+	.reg .u64 %r131;
+	.reg .u32 %r132;
+	.reg .u64 %r133;
+	.reg .u32 %r134;
+	.reg .u64 %r135;
+	.reg .u32 %r139;
+	.reg .pred %p140;
+	.reg .u32 %r144;
+	.reg .u32 %r145;
+	.reg .u64 %r146;
+	.reg .u32 %r147;
+	.reg .u64 %r148;
+	.reg .u32 %r149;
+	.reg .u32 %r150;
+	.reg .u32 %r151;
+	.reg .u64 %r152;
+	.reg .u64 %r153;
+	.reg .u32 %r154;
+	.reg .u32 %r155;
+	.reg .u32 %r156;
+	.reg .u32 %r157;
+	.reg .u64 %r158;
+	.reg .u64 %r159;
+	.reg .u64 %r160;
+	.reg .u32 %r161;
+	.reg .u64 %r162;
+	.reg .u64 %r163;
+	.reg .u64 %r164;
+	.reg .u64 %r165;
+	.reg .u32 %r166;
+	.reg .u64 %r167;
+	.reg .u64 %r168;
+	.reg .u64 %r169;
+	.reg .u32 %r173;
+	.reg .pred %p174;
+	.reg .u32 %r178;
+	.reg .u32 %r179;
+	.reg .u32 %r180;
+	.reg .u32 %r181;
+	.reg .u32 %r182;
+	.reg .u64 %r183;
+	.reg .u64 %r184;
+	.reg .u32 %r185;
+	.reg .u32 %r186;
+	.reg .u32 %r187;
+	.reg .u64 %r188;
+	.reg .u64 %r189;
+	.reg .u32 %r190;
+	.reg .u32 %r191;
+	.reg .u32 %r192;
+	.reg .u32 %r193;
+	.reg .u64 %r194;
+	.reg .u64 %r195;
+	.reg .u64 %r196;
+	.reg .u32 %r197;
+	.reg .u64 %r198;
+	.reg .u64 %r199;
+	.reg .u64 %r200;
+	.reg .u64 %r201;
+	.reg .u32 %r202;
+	.reg .u64 %r203;
+	.reg .u64 %r204;
+	.reg .u64 %r205;
+	.reg .u32 %r223;
+	.reg .u32 %r224;
+	.reg .u32 %r225;
+	.reg .u32 %r226;
+	.reg .u32 %r229;
+	.reg .u32 %r230;
+	.reg .u32 %r231;
+	.reg .u32 %r232;
+	.reg .u32 %r233;
+	.reg .u32 %r235;
+	.reg .u32 %r236;
+	.reg .u32 %r237;
+	.reg .pred %p238;
+	.reg .u32 %r264;
+	.reg .u32 %r290;
+	.reg .u64 %r291;
+	.reg .u64 %r292;
+	.reg .u64 %r293;
+	.reg .u64 %r294;
+	.reg .u32 %r306;
+	.reg .u32 %r307;
+	.reg .u32 %r320;
+	.reg .u32 %r322;
+	.reg .u32 %r323;
+	.reg .u64 %r324;
+	.reg .u64 %r325;
+	.reg .u64 %r326;
+	.reg .u32 %r327;
+	.reg .u32 %r328;
+	.reg .pred %p329;
+	.reg .u32 %r332;
+	.reg .pred %p333;
+	.reg .u32 %r357;
+	.reg .pred %p370;
+	.reg .u64 %r378;
+	.reg .u64 %r379;
+	.reg .u32 %r381;
+	.reg .u64 %r383;
+	.reg .u32 %r384;
+	.reg .u32 %r386;
+	.reg .pred %p387;
+	.reg .u32 %r409;
+	.reg .u32 %r410;
+	.reg .u32 %r412;
+	.reg .u32 %r416;
+	.reg .u32 %r417;
+	.reg .u32 %r421;
+	.reg .u64 %r422;
+	.reg .u64 %r423;
+	.reg .u64 %r424;
+	.reg .u64 %r425;
+	.reg .u32 %r426;
+	.reg .u64 %r427;
+	.reg .u64 %r428;
+	.reg .u32 %r429;
+	.reg .u32 %r430;
+	.reg .u32 %r431;
+	.reg .pred %p432;
+	.reg .u32 %r445;
+	.reg .u64 %r446;
+	.reg .u64 %r447;
+	.reg .u64 %r448;
+	.reg .u64 %r449;
+	.reg .u32 %r450;
+	.reg .u32 %r462;
+	.reg .u32 %r474;
+	.reg .u32 %r475;
+	.reg .u32 %r476;
+	.reg .u32 %r477;
+	.reg .u32 %r485;
+	.reg .pred %p486;
+	.reg .u64 %r494;
+	.reg .u64 %r495;
+	.reg .u32 %r496;
+	.reg .u32 %r497;
+	.reg .u64 %r498;
+	.reg .u32 %r499;
+	.reg .u64 %r500;
+	.reg .u32 %r501;
+	.reg .u32 %r502;
+	.reg .u32 %r503;
+	.reg .u64 %r504;
+	.reg .u64 %r505;
+	.reg .u32 %r506;
+	.reg .u32 %r507;
+	.reg .u32 %r508;
+	.reg .u32 %r509;
+	.reg .u64 %r510;
+	.reg .u64 %r511;
+	.reg .u64 %r512;
+	.reg .u64 %r513;
+	.reg .u64 %r514;
+	.reg .u32 %r515;
+	.reg .u64 %r516;
+	.reg .u64 %r517;
+	.reg .u64 %r518;
+	.reg .u64 %r519;
+	.reg .u32 %r520;
+	.reg .u64 %r521;
+	.reg .u32 %r531;
+	.reg .pred %p532;
+	.reg .u32 %r542;
+	.reg .u32 %r543;
+	.reg .u32 %r544;
+	.reg .u32 %r545;
+	.reg .u32 %r546;
+	.reg .u32 %r547;
+	.reg .u32 %r548;
+	.reg .u64 %r549;
+	.reg .u64 %r550;
+	.reg .u32 %r551;
+	.reg .u32 %r552;
+	.reg .u32 %r553;
+	.reg .u64 %r554;
+	.reg .u64 %r555;
+	.reg .u32 %r556;
+	.reg .u32 %r557;
+	.reg .u64 %r558;
+	.reg .u64 %r559;
+	.reg .u64 %r560;
+	.reg .u64 %r561;
+	.reg .u64 %r562;
+	.reg .u32 %r563;
+	.reg .u64 %r564;
+	.reg .u64 %r565;
+	.reg .u64 %r566;
+	.reg .u64 %r567;
+	.reg .u32 %r568;
+	.reg .u64 %r569;
+	.reg .u32 %r579;
+	.reg .pred %p581;
+	.reg .u64 %r589;
+	.reg .u64 %r590;
+	.reg .u64 %r591;
+	.reg .u32 %r592;
+	.reg .u64 %r594;
+	.reg .u32 %r595;
+	.reg .u32 %r597;
+	.reg .pred %p599;
+	.reg .u32 %r610;
+$BB_7_0:				/* $LBB1__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj */ 
+	cvt.u32.u16 %r410, %tid.x;
+	mov.u32 %r7, 0;
+	setp.ne.u32 %p8, %r410, %r7;
+	@%p8 bra $BB_7_14;
+$BB_7_1:
+	ld.param.u32 %r16, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj_stride];
+	shr.u32 %r17, %r16, 7;
+	and.b32 %r18, %r16, 127;
+	mov.u32 %r19, 0;
+	setp.ne.u32 %p20, %r18, %r19;
+	@%p20 bra $BB_7_3;
+$BB_7_2:
+	mov.s32 %r412, %r17;
+	bra.uni $BB_7_4;
+$BB_7_28:				/* $Lt_6_23298 */ 
+	mov.u32 %r40, 0;
+	mov.u32 %r41, 128;
+$BB_7_29:				/* $Lt_6_23554 */ 
+	add.u32 %r54, %r40, %r41;
+	min.u32 %r55, %r54, %r31;
+	sub.u32 %r56, %r55, 1;
+	cvt.u64.u32 %r57, %r56;
+	mul.lo.u64 %r58, %r57, 4;
+	add.u64 %r59, %r32, %r58;
+	ld.shared.u32 %r60, [%r59 + 0];
+	ld.shared.u32 %r61, [%r35 + 512];
+	setp.ge.u32 %p62, %r60, %r61;
+	selp.u32 %r40, %r55, %r40, %p62;
+	shr.u32 %r41, %r41, 1;
+	mov.u32 %r65, 0;
+	setp.ne.u32 %p66, %r41, %r65;
+	@%p66 bra $BB_7_29;
+$BB_7_30:
+	mov.s32 %r76, %r40;
+$BB_7_31:				/* $Lt_6_258 */ 
+	add.u32 %r86, %r76, %r410;
+	mov.s32 %r2, %r86;
+$BB_7_32:				/* $Lt_6_22018 */ 
+	bar.sync 0;
+	ld.shared.u32 %r97, [__cuda_local_var_64193_56_lenSrcA];
+	setp.le.u32 %p98, %r97, %r410;
+	@%p98 bra $BB_7_34;
+$BB_7_33:
+	mov.s32 %r108, %r0;
+	cvt.u64.u32 %r109, %r108;
+	mul.lo.u64 %r110, %r109, 4;
+	mov.s32 %r111, %r1;
+	add.u64 %r112, %r110, %r32;
+	st.shared.u32 [%r112 + 0], %r111;
+	mov.s32 %r113, %r3;
+	add.u64 %r114, %r110, %r33;
+	st.shared.u32 [%r114 + 0], %r113;
+$BB_7_34:				/* $Lt_6_24066 */ 
+	ld.shared.u32 %r121, [__cuda_local_var_64193_65_lenSrcB];
+	setp.le.u32 %p122, %r121, %r410;
+	@%p122 bra $BB_7_36;
+$BB_7_35:
+	mov.s32 %r129, %r2;
+	cvt.u64.u32 %r130, %r129;
+	mul.lo.u64 %r131, %r130, 4;
+	mov.s32 %r132, %r4;
+	add.u64 %r133, %r131, %r32;
+	st.shared.u32 [%r133 + 0], %r132;
+	mov.s32 %r134, %r5;
+	add.u64 %r135, %r131, %r33;
+	st.shared.u32 [%r135 + 0], %r134;
+$BB_7_36:				/* $Lt_6_24578 */ 
+	bar.sync 0;
+	ld.shared.u32 %r139, [__cuda_local_var_64193_56_lenSrcA];
+	setp.le.u32 %p140, %r139, %r410;
+	@%p140 bra $BB_7_38;
+$BB_7_37:
+	ld.param.u32 %r144, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj_stride];
+	mul.lo.u32 %r145, %r144, 2;
+	cvt.u64.u32 %r146, %r410;
+	shr.u32 %r147, %r145, 7;
+	mul.lo.u64 %r148, %r146, 4;
+	sub.u32 %r149, %r147, 1;
+	ld.shared.u32 %r150, [__cuda_local_var_64193_74_startDstA];
+	add.u32 %r151, %r150, %r410;
+	cvt.u64.u32 %r152, %r151;
+	mul.lo.u64 %r153, %r152, 4;
+	cvt.u32.u16 %r154, %ctaid.x;
+	and.b32 %r155, %r149, %r154;
+	sub.u32 %r156, %r154, %r155;
+	mul.lo.u32 %r157, %r156, 128;
+	cvt.u64.u32 %r158, %r157;
+	mul.lo.u64 %r159, %r158, 4;
+	add.u64 %r160, %r148, %r32;
+	ld.shared.u32 %r161, [%r160 + 0];
+	ld.param.u64 %r162, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj___val_paramd_DstKey];
+	add.u64 %r163, %r162, %r159;
+	add.u64 %r164, %r153, %r163;
+	st.global.u32 [%r164 + 0], %r161;
+	add.u64 %r165, %r148, %r33;
+	ld.shared.u32 %r166, [%r165 + 0];
+	ld.param.u64 %r167, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj___val_paramd_DstVal];
+	add.u64 %r168, %r167, %r159;
+	add.u64 %r169, %r153, %r168;
+	st.global.u32 [%r169 + 0], %r166;
+$BB_7_38:				/* $Lt_6_25090 */ 
+	ld.shared.u32 %r173, [__cuda_local_var_64193_65_lenSrcB];
+	setp.le.u32 %p174, %r173, %r410;
+	@%p174 bra $BB_7_40;
+$BB_7_39:
+	ld.param.u32 %r178, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj_stride];
+	mul.lo.u32 %r179, %r178, 2;
+	shr.u32 %r180, %r179, 7;
+	ld.shared.u32 %r181, [__cuda_local_var_64193_56_lenSrcA];
+	add.u32 %r182, %r181, %r410;
+	cvt.u64.u32 %r183, %r182;
+	mul.lo.u64 %r184, %r183, 4;
+	sub.u32 %r185, %r180, 1;
+	ld.shared.u32 %r186, [__cuda_local_var_64193_85_startDstB];
+	add.u32 %r187, %r186, %r410;
+	cvt.u64.u32 %r188, %r187;
+	mul.lo.u64 %r189, %r188, 4;
+	cvt.u32.u16 %r190, %ctaid.x;
+	and.b32 %r191, %r185, %r190;
+	sub.u32 %r192, %r190, %r191;
+	mul.lo.u32 %r193, %r192, 128;
+	cvt.u64.u32 %r194, %r193;
+	mul.lo.u64 %r195, %r194, 4;
+	add.u64 %r196, %r184, %r32;
+	ld.shared.u32 %r197, [%r196 + 0];
+	ld.param.u64 %r198, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj___val_paramd_DstKey];
+	add.u64 %r199, %r198, %r195;
+	add.u64 %r200, %r189, %r199;
+	st.global.u32 [%r200 + 0], %r197;
+	add.u64 %r201, %r184, %r33;
+	ld.shared.u32 %r202, [%r201 + 0];
+	ld.param.u64 %r203, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj___val_paramd_DstVal];
+	add.u64 %r204, %r203, %r195;
+	add.u64 %r205, %r189, %r204;
+	st.global.u32 [%r205 + 0], %r202;
+$BB_7_40:				/* $Lt_6_25602 */ 
+	exit;
+$BB_7_3:				/* $Lt_6_17154 */ 
+	add.u32 %r412, %r17, 1;
+$BB_7_4:				/* $Lt_6_16898 */ 
+	ld.param.u32 %r223, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj_stride];
+	mul.lo.u32 %r224, %r223, 2;
+	shr.u32 %r225, %r224, 7;
+	sub.u32 %r226, %r225, 1;
+	cvt.u32.u16 %r416, %ctaid.x;
+	and.b32 %r417, %r226, %r416;
+	sub.u32 %r229, %r416, %r417;
+	mul.lo.u32 %r230, %r229, 128;
+	ld.param.u32 %r231, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj_N];
+	sub.u32 %r232, %r231, %r230;
+	sub.u32 %r233, %r232, %r223;
+	min.u32 %r421, %r233, %r223;
+	shr.u32 %r235, %r421, 7;
+	and.b32 %r236, %r421, 127;
+	mov.u32 %r237, 0;
+	setp.ne.u32 %p238, %r236, %r237;
+	@%p238 bra $BB_7_6;
+$BB_7_5:
+	mov.s32 %r409, %r235;
+	bra.uni $BB_7_7;
+$BB_7_9:				/* $Lt_6_18178 */ 
+	ld.param.u32 %r264, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj_stride];
+	mov.s32 %r450, %r264;
+$BB_7_10:				/* $Lt_6_17922 */ 
+	@!%p432 bra $BB_7_12;
+$BB_7_11:
+	add.u32 %r290, %r416, 1;
+	cvt.u64.u32 %r291, %r290;
+	mul.lo.u64 %r292, %r291, 4;
+	ld.param.u64 %r293, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj_d_LimitsB];
+	add.u64 %r294, %r293, %r292;
+	ld.global.u32 %r462, [%r294 + 0];
+	bra.uni $BB_7_13;
+$BB_7_21:				/* $Lt_6_21250 */ 
+	mov.u32 %r306, 0;
+	mov.u32 %r307, 128;
+$BB_7_22:				/* $Lt_6_21506 */ 
+	add.u32 %r320, %r306, %r307;
+	ld.shared.u32 %r579, [__cuda_local_var_64193_65_lenSrcB];
+	min.u32 %r322, %r320, %r579;
+	sub.u32 %r323, %r322, 1;
+	cvt.u64.u32 %r324, %r323;
+	mul.lo.u64 %r325, %r324, 4;
+	add.u64 %r326, %r32, %r325;
+	ld.shared.u32 %r327, [%r326 + 512];
+	ld.shared.u32 %r328, [%r591 + 0];
+	setp.gt.u32 %p329, %r327, %r328;
+	selp.u32 %r306, %r322, %r306, %p329;
+	shr.u32 %r307, %r307, 1;
+	mov.u32 %r332, 0;
+	setp.ne.u32 %p333, %r307, %r332;
+	@%p333 bra $BB_7_22;
+$BB_7_23:
+	mov.s32 %r610, %r306;
+$BB_7_24:				/* $Lt_6_770 */ 
+	add.u32 %r357, %r610, %r410;
+	mov.s32 %r0, %r357;
+$BB_7_25:				/* $Lt_6_19970 */ 
+	setp.le.u32 %p370, %r579, %r410;
+	@%p370 bra $BB_7_32;
+$BB_7_26:
+	cvt.u64.u32 %r378, %r410;
+	mul.lo.u64 %r379, %r378, 4;
+	add.u64 %r35, %r379, %r32;
+	ld.shared.u32 %r381, [%r35 + 512];
+	mov.s32 %r4, %r381;
+	add.u64 %r383, %r379, %r33;
+	ld.shared.u32 %r384, [%r383 + 512];
+	mov.s32 %r5, %r384;
+	mov.u32 %r386, 0;
+	setp.ne.u32 %p387, %r31, %r386;
+	@%p387 bra $BB_7_28;
+$BB_7_27:
+	mov.u32 %r76, 0;
+	bra.uni $BB_7_31;
+$BB_7_6:				/* $Lt_6_17666 */ 
+	add.u32 %r409, %r235, 1;
+$BB_7_7:				/* $Lt_6_17410 */ 
+	cvt.u64.u32 %r422, %r416;
+	mul.lo.u64 %r423, %r422, 4;
+	ld.param.u64 %r424, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj_d_LimitsA];
+	add.u64 %r425, %r423, %r424;
+	ld.global.u32 %r426, [%r425 + 0];
+	st.shared.u32 [__cuda_local_var_64193_34_startSrcA], %r426;
+	ld.param.u64 %r427, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj_d_LimitsB];
+	add.u64 %r428, %r423, %r427;
+	ld.global.u32 %r429, [%r428 + 0];
+	st.shared.u32 [__cuda_local_var_64193_45_startSrcB], %r429;
+	add.u32 %r430, %r412, %r409;
+	add.u32 %r431, %r417, 1;
+	setp.gt.u32 %p432, %r430, %r431;
+	@!%p432 bra $BB_7_9;
+$BB_7_8:
+	add.u32 %r445, %r416, 1;
+	cvt.u64.u32 %r446, %r445;
+	mul.lo.u64 %r447, %r446, 4;
+	ld.param.u64 %r448, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj_d_LimitsA];
+	add.u64 %r449, %r448, %r447;
+	ld.global.u32 %r450, [%r449 + 0];
+	bra.uni $BB_7_10;
+$BB_7_12:				/* $Lt_6_18690 */ 
+	mov.s32 %r462, %r421;
+$BB_7_13:				/* $Lt_6_18434 */ 
+	sub.u32 %r474, %r450, %r426;
+	st.shared.u32 [__cuda_local_var_64193_56_lenSrcA], %r474;
+	sub.u32 %r475, %r462, %r429;
+	st.shared.u32 [__cuda_local_var_64193_65_lenSrcB], %r475;
+	add.u32 %r476, %r426, %r429;
+	st.shared.u32 [__cuda_local_var_64193_74_startDstA], %r476;
+	add.u32 %r477, %r450, %r429;
+	st.shared.u32 [__cuda_local_var_64193_85_startDstB], %r477;
+$BB_7_14:				/* $Lt_6_16386 */ 
+	bar.sync 0;
+	ld.shared.u32 %r485, [__cuda_local_var_64193_56_lenSrcA];
+	setp.le.u32 %p486, %r485, %r410;
+	@%p486 bra $BB_7_16;
+$BB_7_15:
+	mov.u64 %r494, __cuda_s_key18736;
+	mov.u64 %r495, __cuda_s_val19760;
+	ld.param.u32 %r496, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj_stride];
+	mul.lo.u32 %r497, %r496, 2;
+	cvt.u64.u32 %r498, %r410;
+	shr.u32 %r499, %r497, 7;
+	mul.lo.u64 %r500, %r498, 4;
+	sub.u32 %r501, %r499, 1;
+	ld.shared.u32 %r502, [__cuda_local_var_64193_34_startSrcA];
+	add.u32 %r503, %r502, %r410;
+	cvt.u64.u32 %r504, %r503;
+	mul.lo.u64 %r505, %r504, 4;
+	cvt.u32.u16 %r506, %ctaid.x;
+	and.b32 %r507, %r501, %r506;
+	sub.u32 %r508, %r506, %r507;
+	mul.lo.u32 %r509, %r508, 128;
+	cvt.u64.u32 %r510, %r509;
+	mul.lo.u64 %r511, %r510, 4;
+	ld.param.u64 %r512, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj___val_paramd_SrcKey];
+	add.u64 %r513, %r512, %r511;
+	add.u64 %r514, %r505, %r513;
+	ld.global.u32 %r515, [%r514 + 0];
+	add.u64 %r516, %r500, %r494;
+	st.shared.u32 [%r516 + 0], %r515;
+	ld.param.u64 %r517, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj___val_paramd_SrcVal];
+	add.u64 %r518, %r517, %r511;
+	add.u64 %r519, %r505, %r518;
+	ld.global.u32 %r520, [%r519 + 0];
+	add.u64 %r521, %r500, %r495;
+	st.shared.u32 [%r521 + 0], %r520;
+$BB_7_16:				/* $Lt_6_18946 */ 
+	mov.u64 %r32, __cuda_s_key18736;
+	mov.u64 %r33, __cuda_s_val19760;
+	ld.shared.u32 %r531, [__cuda_local_var_64193_65_lenSrcB];
+	setp.le.u32 %p532, %r531, %r410;
+	@%p532 bra $BB_7_18;
+$BB_7_17:
+	ld.param.u32 %r542, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj_stride];
+	mul.lo.u32 %r543, %r542, 2;
+	ld.shared.u32 %r544, [__cuda_local_var_64193_45_startSrcB];
+	add.u32 %r545, %r544, %r542;
+	shr.u32 %r546, %r543, 7;
+	sub.u32 %r547, %r546, 1;
+	add.u32 %r548, %r410, 128;
+	cvt.u64.u32 %r549, %r548;
+	mul.lo.u64 %r550, %r549, 4;
+	cvt.u32.u16 %r551, %ctaid.x;
+	and.b32 %r552, %r547, %r551;
+	add.u32 %r553, %r545, %r410;
+	cvt.u64.u32 %r554, %r553;
+	mul.lo.u64 %r555, %r554, 4;
+	sub.u32 %r556, %r551, %r552;
+	mul.lo.u32 %r557, %r556, 128;
+	cvt.u64.u32 %r558, %r557;
+	mul.lo.u64 %r559, %r558, 4;
+	ld.param.u64 %r560, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj___val_paramd_SrcKey];
+	add.u64 %r561, %r560, %r559;
+	add.u64 %r562, %r555, %r561;
+	ld.global.u32 %r563, [%r562 + 0];
+	add.u64 %r564, %r550, %r32;
+	st.shared.u32 [%r564 + 0], %r563;
+	ld.param.u64 %r565, [__cudaparm__Z30mergeElementaryIntervalsKernelILj0EEvPjS0_S0_S0_S0_S0_jj___val_paramd_SrcVal];
+	add.u64 %r566, %r565, %r559;
+	add.u64 %r567, %r555, %r566;
+	ld.global.u32 %r568, [%r567 + 0];
+	add.u64 %r569, %r550, %r33;
+	st.shared.u32 [%r569 + 0], %r568;
+$BB_7_18:				/* $Lt_6_19458 */ 
+	bar.sync 0;
+	ld.shared.u32 %r579, [__cuda_local_var_64193_65_lenSrcB];
+	ld.shared.u32 %r31, [__cuda_local_var_64193_56_lenSrcA];
+	setp.le.u32 %p581, %r31, %r410;
+	@%p581 bra $BB_7_25;
+$BB_7_19:
+	cvt.u64.u32 %r589, %r410;
+	mul.lo.u64 %r590, %r589, 4;
+	add.u64 %r591, %r590, %r32;
+	ld.shared.u32 %r592, [%r591 + 0];
+	mov.s32 %r1, %r592;
+	add.u64 %r594, %r590, %r33;
+	ld.shared.u32 %r595, [%r594 + 0];
+	mov.s32 %r3, %r595;
+	mov.u32 %r597, 0;
+	ld.shared.u32 %r579, [__cuda_local_var_64193_65_lenSrcB];
+	setp.ne.u32 %p599, %r579, %r597;
+	@%p599 bra $BB_7_21;
+$BB_7_20:
+	mov.u32 %r610, 0;
+	bra.uni $BB_7_24;
+}
+/*
+* Ocelot Version : 1.1.560
+*/
+.entry _Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj(.param  .u64 __cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj___val_paramd_DstKey,
+		.param  .u64 __cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj___val_paramd_DstVal,
+		.param  .u64 __cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj___val_paramd_SrcKey,
+		.param  .u64 __cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj___val_paramd_SrcVal,
+		.param  .u64 __cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj_d_LimitsA,
+		.param  .u64 __cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj_d_LimitsB,
+		.param  .u32 __cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj_stride,
+		.param  .u32 __cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj_N)
+{
+	.shared .align 1 .u32 __cuda_local_var_64193_34_startSrcA[1];
+	.shared .align 1 .u32 __cuda_local_var_64193_45_startSrcB[1];
+	.shared .align 1 .u32 __cuda_local_var_64193_56_lenSrcA[1];
+	.shared .align 1 .u32 __cuda_local_var_64193_65_lenSrcB[1];
+	.shared .align 1 .u32 __cuda_local_var_64193_74_startDstA[1];
+	.shared .align 1 .u32 __cuda_local_var_64193_85_startDstB[1];
+	.shared .align 4 .b8 __cuda_s_key16632[1024];
+	.shared .align 4 .b8 __cuda_s_val17656[1024];
+	.reg .u32 %r0;
+	.reg .u32 %r1;
+	.reg .u32 %r2;
+	.reg .u32 %r3;
+	.reg .u32 %r4;
+	.reg .u32 %r5;
+	.reg .u32 %r6;
+	.reg .u32 %r7;
+	.reg .pred %p8;
+	.reg .u32 %r16;
+	.reg .u32 %r17;
+	.reg .u32 %r18;
+	.reg .u32 %r19;
+	.reg .pred %p20;
+	.reg .u32 %r29;
+	.reg .u32 %r47;
+	.reg .u32 %r48;
+	.reg .u32 %r49;
+	.reg .u32 %r50;
+	.reg .u32 %r51;
+	.reg .u32 %r52;
+	.reg .u32 %r53;
+	.reg .u32 %r54;
+	.reg .u32 %r55;
+	.reg .u32 %r56;
+	.reg .u32 %r57;
+	.reg .u32 %r58;
+	.reg .u32 %r59;
+	.reg .u32 %r60;
+	.reg .u32 %r61;
+	.reg .pred %p62;
+	.reg .u32 %r75;
+	.reg .u64 %r101;
+	.reg .u64 %r102;
+	.reg .u64 %r103;
+	.reg .u64 %r104;
+	.reg .u32 %r105;
+	.reg .u64 %r106;
+	.reg .u64 %r107;
+	.reg .u32 %r108;
+	.reg .u32 %r109;
+	.reg .u32 %r110;
+	.reg .pred %p111;
+	.reg .u32 %r124;
+	.reg .u64 %r125;
+	.reg .u64 %r126;
+	.reg .u64 %r127;
+	.reg .u64 %r128;
+	.reg .u32 %r129;
+	.reg .u32 %r141;
+	.reg .u32 %r153;
+	.reg .u32 %r154;
+	.reg .u32 %r155;
+	.reg .u32 %r156;
+	.reg .u32 %r164;
+	.reg .pred %p165;
+	.reg .u64 %r173;
+	.reg .u64 %r174;
+	.reg .u32 %r175;
+	.reg .u32 %r176;
+	.reg .u64 %r177;
+	.reg .u32 %r178;
+	.reg .u64 %r179;
+	.reg .u32 %r180;
+	.reg .u32 %r181;
+	.reg .u32 %r182;
+	.reg .u64 %r183;
+	.reg .u64 %r184;
+	.reg .u32 %r185;
+	.reg .u32 %r186;
+	.reg .u32 %r187;
+	.reg .u32 %r188;
+	.reg .u64 %r189;
+	.reg .u64 %r190;
+	.reg .u64 %r191;
+	.reg .u64 %r192;
+	.reg .u64 %r193;
+	.reg .u32 %r194;
+	.reg .u64 %r195;
+	.reg .u64 %r196;
+	.reg .u64 %r197;
+	.reg .u64 %r198;
+	.reg .u32 %r199;
+	.reg .u64 %r200;
+	.reg .u32 %r210;
+	.reg .pred %p211;
+	.reg .u32 %r221;
+	.reg .u32 %r222;
+	.reg .u32 %r223;
+	.reg .u32 %r224;
+	.reg .u32 %r225;
+	.reg .u32 %r226;
+	.reg .u32 %r227;
+	.reg .u64 %r228;
+	.reg .u64 %r229;
+	.reg .u32 %r230;
+	.reg .u32 %r231;
+	.reg .u32 %r232;
+	.reg .u64 %r233;
+	.reg .u64 %r234;
+	.reg .u32 %r235;
+	.reg .u32 %r236;
+	.reg .u64 %r237;
+	.reg .u64 %r238;
+	.reg .u64 %r239;
+	.reg .u64 %r240;
+	.reg .u64 %r241;
+	.reg .u32 %r242;
+	.reg .u64 %r243;
+	.reg .u64 %r244;
+	.reg .u64 %r245;
+	.reg .u64 %r246;
+	.reg .u32 %r247;
+	.reg .u64 %r248;
+	.reg .pred %p260;
+	.reg .u64 %r268;
+	.reg .u64 %r269;
+	.reg .u32 %r271;
+	.reg .u64 %r273;
+	.reg .u32 %r274;
+	.reg .u32 %r276;
+	.reg .pred %p278;
+	.reg .u32 %r300;
+	.reg .u32 %r301;
+	.reg .u32 %r314;
+	.reg .u32 %r315;
+	.reg .u32 %r316;
+	.reg .u64 %r317;
+	.reg .u64 %r318;
+	.reg .u64 %r319;
+	.reg .u32 %r320;
+	.reg .u32 %r321;
+	.reg .pred %p322;
+	.reg .u32 %r325;
+	.reg .pred %p326;
+	.reg .u32 %r346;
+	.reg .u32 %r357;
+	.reg .pred %p358;
+	.reg .u32 %r368;
+	.reg .u64 %r369;
+	.reg .u64 %r370;
+	.reg .u32 %r371;
+	.reg .u64 %r372;
+	.reg .u32 %r373;
+	.reg .u64 %r374;
+	.reg .u32 %r381;
+	.reg .pred %p382;
+	.reg .u32 %r389;
+	.reg .u64 %r390;
+	.reg .u64 %r391;
+	.reg .u32 %r392;
+	.reg .u64 %r393;
+	.reg .u32 %r394;
+	.reg .u64 %r395;
+	.reg .u32 %r399;
+	.reg .pred %p400;
+	.reg .u32 %r404;
+	.reg .u32 %r405;
+	.reg .u64 %r406;
+	.reg .u32 %r407;
+	.reg .u64 %r408;
+	.reg .u32 %r409;
+	.reg .u32 %r410;
+	.reg .u32 %r411;
+	.reg .u64 %r412;
+	.reg .u64 %r413;
+	.reg .u32 %r414;
+	.reg .u32 %r415;
+	.reg .u32 %r416;
+	.reg .u32 %r417;
+	.reg .u64 %r418;
+	.reg .u64 %r419;
+	.reg .u64 %r420;
+	.reg .u32 %r421;
+	.reg .u64 %r422;
+	.reg .u64 %r423;
+	.reg .u64 %r424;
+	.reg .u64 %r425;
+	.reg .u32 %r426;
+	.reg .u64 %r427;
+	.reg .u64 %r428;
+	.reg .u64 %r429;
+	.reg .u64 %r431;
+	.reg .u64 %r432;
+	.reg .u32 %r433;
+	.reg .pred %p434;
+	.reg .u32 %r438;
+	.reg .u32 %r439;
+	.reg .u32 %r440;
+	.reg .u32 %r441;
+	.reg .u32 %r442;
+	.reg .u64 %r443;
+	.reg .u64 %r444;
+	.reg .u32 %r445;
+	.reg .u32 %r446;
+	.reg .u32 %r447;
+	.reg .u64 %r448;
+	.reg .u64 %r449;
+	.reg .u32 %r450;
+	.reg .u32 %r451;
+	.reg .u32 %r452;
+	.reg .u32 %r453;
+	.reg .u64 %r454;
+	.reg .u64 %r455;
+	.reg .u64 %r456;
+	.reg .u32 %r457;
+	.reg .u64 %r458;
+	.reg .u64 %r459;
+	.reg .u64 %r460;
+	.reg .u64 %r461;
+	.reg .u32 %r462;
+	.reg .u64 %r463;
+	.reg .u64 %r464;
+	.reg .u64 %r465;
+	.reg .u32 %r467;
+	.reg .u64 %r470;
+	.reg .u32 %r476;
+	.reg .u32 %r477;
+	.reg .u32 %r490;
+	.reg .u32 %r491;
+	.reg .u32 %r492;
+	.reg .u32 %r493;
+	.reg .u64 %r494;
+	.reg .u64 %r495;
+	.reg .u64 %r496;
+	.reg .u32 %r497;
+	.reg .u32 %r498;
+	.reg .pred %p499;
+	.reg .u32 %r502;
+	.reg .pred %p503;
+	.reg .u32 %r515;
+	.reg .u32 %r527;
+	.reg .pred %p540;
+	.reg .u64 %r548;
+	.reg .u64 %r549;
+	.reg .u64 %r550;
+	.reg .u32 %r551;
+	.reg .u64 %r553;
+	.reg .u32 %r554;
+	.reg .u32 %r556;
+	.reg .pred %p557;
+	.reg .u32 %r566;
+	.reg .u32 %r579;
+	.reg .u32 %r605;
+	.reg .u64 %r606;
+	.reg .u64 %r607;
+	.reg .u64 %r608;
+	.reg .u64 %r609;
+$BB_6_0:				/* $LBB1__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj */ 
+	cvt.u32.u16 %r6, %tid.x;
+	mov.u32 %r7, 0;
+	setp.ne.u32 %p8, %r6, %r7;
+	@%p8 bra $BB_6_14;
+$BB_6_1:
+	ld.param.u32 %r16, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj_stride];
+	shr.u32 %r17, %r16, 7;
+	and.b32 %r18, %r16, 127;
+	mov.u32 %r19, 0;
+	setp.ne.u32 %p20, %r18, %r19;
+	@%p20 bra $BB_6_3;
+$BB_6_2:
+	mov.s32 %r29, %r17;
+	bra.uni $BB_6_4;
+$BB_6_3:				/* $Lt_5_17154 */ 
+	add.u32 %r29, %r17, 1;
+$BB_6_4:				/* $Lt_5_16898 */ 
+	ld.param.u32 %r47, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj_stride];
+	mul.lo.u32 %r48, %r47, 2;
+	shr.u32 %r49, %r48, 7;
+	sub.u32 %r50, %r49, 1;
+	cvt.u32.u16 %r51, %ctaid.x;
+	and.b32 %r52, %r50, %r51;
+	sub.u32 %r53, %r51, %r52;
+	mul.lo.u32 %r54, %r53, 128;
+	ld.param.u32 %r55, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj_N];
+	sub.u32 %r56, %r55, %r54;
+	sub.u32 %r57, %r56, %r47;
+	min.u32 %r58, %r57, %r47;
+	shr.u32 %r59, %r58, 7;
+	and.b32 %r60, %r58, 127;
+	mov.u32 %r61, 0;
+	setp.ne.u32 %p62, %r60, %r61;
+	@%p62 bra $BB_6_6;
+$BB_6_5:
+	mov.s32 %r75, %r59;
+	bra.uni $BB_6_7;
+$BB_6_6:				/* $Lt_5_17666 */ 
+	add.u32 %r75, %r59, 1;
+$BB_6_7:				/* $Lt_5_17410 */ 
+	cvt.u64.u32 %r101, %r51;
+	mul.lo.u64 %r102, %r101, 4;
+	ld.param.u64 %r103, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj_d_LimitsA];
+	add.u64 %r104, %r102, %r103;
+	ld.global.u32 %r105, [%r104 + 0];
+	st.shared.u32 [__cuda_local_var_64193_34_startSrcA], %r105;
+	ld.param.u64 %r106, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj_d_LimitsB];
+	add.u64 %r107, %r102, %r106;
+	ld.global.u32 %r108, [%r107 + 0];
+	st.shared.u32 [__cuda_local_var_64193_45_startSrcB], %r108;
+	add.u32 %r109, %r29, %r75;
+	add.u32 %r110, %r52, 1;
+	setp.gt.u32 %p111, %r109, %r110;
+	@!%p111 bra $BB_6_9;
+$BB_6_8:
+	add.u32 %r124, %r51, 1;
+	cvt.u64.u32 %r125, %r124;
+	mul.lo.u64 %r126, %r125, 4;
+	ld.param.u64 %r127, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj_d_LimitsA];
+	add.u64 %r128, %r127, %r126;
+	ld.global.u32 %r129, [%r128 + 0];
+	bra.uni $BB_6_10;
+$BB_6_12:				/* $Lt_5_18690 */ 
+	mov.s32 %r141, %r58;
+$BB_6_13:				/* $Lt_5_18434 */ 
+	sub.u32 %r153, %r129, %r105;
+	st.shared.u32 [__cuda_local_var_64193_56_lenSrcA], %r153;
+	sub.u32 %r154, %r141, %r108;
+	st.shared.u32 [__cuda_local_var_64193_65_lenSrcB], %r154;
+	add.u32 %r155, %r105, %r108;
+	st.shared.u32 [__cuda_local_var_64193_74_startDstA], %r155;
+	add.u32 %r156, %r129, %r108;
+	st.shared.u32 [__cuda_local_var_64193_85_startDstB], %r156;
+$BB_6_14:				/* $Lt_5_16386 */ 
+	bar.sync 0;
+	ld.shared.u32 %r164, [__cuda_local_var_64193_56_lenSrcA];
+	setp.le.u32 %p165, %r164, %r6;
+	@%p165 bra $BB_6_16;
+$BB_6_15:
+	mov.u64 %r173, __cuda_s_key16632;
+	mov.u64 %r174, __cuda_s_val17656;
+	ld.param.u32 %r175, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj_stride];
+	mul.lo.u32 %r176, %r175, 2;
+	cvt.u64.u32 %r177, %r6;
+	shr.u32 %r178, %r176, 7;
+	mul.lo.u64 %r179, %r177, 4;
+	sub.u32 %r180, %r178, 1;
+	ld.shared.u32 %r181, [__cuda_local_var_64193_34_startSrcA];
+	add.u32 %r182, %r181, %r6;
+	cvt.u64.u32 %r183, %r182;
+	mul.lo.u64 %r184, %r183, 4;
+	cvt.u32.u16 %r185, %ctaid.x;
+	and.b32 %r186, %r180, %r185;
+	sub.u32 %r187, %r185, %r186;
+	mul.lo.u32 %r188, %r187, 128;
+	cvt.u64.u32 %r189, %r188;
+	mul.lo.u64 %r190, %r189, 4;
+	ld.param.u64 %r191, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj___val_paramd_SrcKey];
+	add.u64 %r192, %r191, %r190;
+	add.u64 %r193, %r184, %r192;
+	ld.global.u32 %r194, [%r193 + 0];
+	add.u64 %r195, %r179, %r173;
+	st.shared.u32 [%r195 + 0], %r194;
+	ld.param.u64 %r196, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj___val_paramd_SrcVal];
+	add.u64 %r197, %r196, %r190;
+	add.u64 %r198, %r184, %r197;
+	ld.global.u32 %r199, [%r198 + 0];
+	add.u64 %r200, %r179, %r174;
+	st.shared.u32 [%r200 + 0], %r199;
+$BB_6_16:				/* $Lt_5_18946 */ 
+	mov.u64 %r431, __cuda_s_key16632;
+	mov.u64 %r432, __cuda_s_val17656;
+	ld.shared.u32 %r210, [__cuda_local_var_64193_65_lenSrcB];
+	setp.le.u32 %p211, %r210, %r6;
+	@%p211 bra $BB_6_18;
+$BB_6_17:
+	ld.param.u32 %r221, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj_stride];
+	mul.lo.u32 %r222, %r221, 2;
+	ld.shared.u32 %r223, [__cuda_local_var_64193_45_startSrcB];
+	add.u32 %r224, %r223, %r221;
+	shr.u32 %r225, %r222, 7;
+	sub.u32 %r226, %r225, 1;
+	add.u32 %r227, %r6, 128;
+	cvt.u64.u32 %r228, %r227;
+	mul.lo.u64 %r229, %r228, 4;
+	cvt.u32.u16 %r230, %ctaid.x;
+	and.b32 %r231, %r226, %r230;
+	add.u32 %r232, %r224, %r6;
+	cvt.u64.u32 %r233, %r232;
+	mul.lo.u64 %r234, %r233, 4;
+	sub.u32 %r235, %r230, %r231;
+	mul.lo.u32 %r236, %r235, 128;
+	cvt.u64.u32 %r237, %r236;
+	mul.lo.u64 %r238, %r237, 4;
+	ld.param.u64 %r239, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj___val_paramd_SrcKey];
+	add.u64 %r240, %r239, %r238;
+	add.u64 %r241, %r234, %r240;
+	ld.global.u32 %r242, [%r241 + 0];
+	add.u64 %r243, %r229, %r431;
+	st.shared.u32 [%r243 + 0], %r242;
+	ld.param.u64 %r244, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj___val_paramd_SrcVal];
+	add.u64 %r245, %r244, %r238;
+	add.u64 %r246, %r234, %r245;
+	ld.global.u32 %r247, [%r246 + 0];
+	add.u64 %r248, %r229, %r432;
+	st.shared.u32 [%r248 + 0], %r247;
+$BB_6_18:				/* $Lt_5_19458 */ 
+	bar.sync 0;
+	ld.shared.u32 %r491, [__cuda_local_var_64193_65_lenSrcB];
+	ld.shared.u32 %r467, [__cuda_local_var_64193_56_lenSrcA];
+	setp.le.u32 %p260, %r467, %r6;
+	@%p260 bra $BB_6_25;
+$BB_6_19:
+	cvt.u64.u32 %r268, %r6;
+	mul.lo.u64 %r269, %r268, 4;
+	add.u64 %r470, %r269, %r431;
+	ld.shared.u32 %r271, [%r470 + 0];
+	mov.s32 %r1, %r271;
+	add.u64 %r273, %r269, %r432;
+	ld.shared.u32 %r274, [%r273 + 0];
+	mov.s32 %r4, %r274;
+	mov.u32 %r276, 0;
+	ld.shared.u32 %r491, [__cuda_local_var_64193_65_lenSrcB];
+	setp.ne.u32 %p278, %r491, %r276;
+	@%p278 bra $BB_6_21;
+$BB_6_20:
+	mov.u32 %r515, 0;
+	bra.uni $BB_6_24;
+$BB_6_28:				/* $Lt_5_23298 */ 
+	mov.u32 %r300, 0;
+	mov.u32 %r301, 128;
+$BB_6_29:				/* $Lt_5_23554 */ 
+	add.u32 %r314, %r300, %r301;
+	min.u32 %r315, %r314, %r467;
+	sub.u32 %r316, %r315, 1;
+	cvt.u64.u32 %r317, %r316;
+	mul.lo.u64 %r318, %r317, 4;
+	add.u64 %r319, %r431, %r318;
+	ld.shared.u32 %r320, [%r319 + 0];
+	ld.shared.u32 %r321, [%r550 + 512];
+	setp.le.u32 %p322, %r320, %r321;
+	selp.u32 %r300, %r315, %r300, %p322;
+	shr.u32 %r301, %r301, 1;
+	mov.u32 %r325, 0;
+	setp.ne.u32 %p326, %r301, %r325;
+	@%p326 bra $BB_6_29;
+$BB_6_30:
+	mov.s32 %r566, %r300;
+$BB_6_31:				/* $Lt_5_258 */ 
+	add.u32 %r346, %r566, %r6;
+	mov.s32 %r2, %r346;
+$BB_6_32:				/* $Lt_5_22018 */ 
+	bar.sync 0;
+	ld.shared.u32 %r357, [__cuda_local_var_64193_56_lenSrcA];
+	setp.le.u32 %p358, %r357, %r6;
+	@%p358 bra $BB_6_34;
+$BB_6_33:
+	mov.s32 %r368, %r0;
+	cvt.u64.u32 %r369, %r368;
+	mul.lo.u64 %r370, %r369, 4;
+	mov.s32 %r371, %r1;
+	add.u64 %r372, %r370, %r431;
+	st.shared.u32 [%r372 + 0], %r371;
+	mov.s32 %r373, %r4;
+	add.u64 %r374, %r370, %r432;
+	st.shared.u32 [%r374 + 0], %r373;
+$BB_6_34:				/* $Lt_5_24066 */ 
+	ld.shared.u32 %r381, [__cuda_local_var_64193_65_lenSrcB];
+	setp.le.u32 %p382, %r381, %r6;
+	@%p382 bra $BB_6_36;
+$BB_6_35:
+	mov.s32 %r389, %r2;
+	cvt.u64.u32 %r390, %r389;
+	mul.lo.u64 %r391, %r390, 4;
+	mov.s32 %r392, %r3;
+	add.u64 %r393, %r391, %r431;
+	st.shared.u32 [%r393 + 0], %r392;
+	mov.s32 %r394, %r5;
+	add.u64 %r395, %r391, %r432;
+	st.shared.u32 [%r395 + 0], %r394;
+$BB_6_36:				/* $Lt_5_24578 */ 
+	bar.sync 0;
+	ld.shared.u32 %r399, [__cuda_local_var_64193_56_lenSrcA];
+	setp.le.u32 %p400, %r399, %r6;
+	@%p400 bra $BB_6_38;
+$BB_6_37:
+	ld.param.u32 %r404, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj_stride];
+	mul.lo.u32 %r405, %r404, 2;
+	cvt.u64.u32 %r406, %r6;
+	shr.u32 %r407, %r405, 7;
+	mul.lo.u64 %r408, %r406, 4;
+	sub.u32 %r409, %r407, 1;
+	ld.shared.u32 %r410, [__cuda_local_var_64193_74_startDstA];
+	add.u32 %r411, %r410, %r6;
+	cvt.u64.u32 %r412, %r411;
+	mul.lo.u64 %r413, %r412, 4;
+	cvt.u32.u16 %r414, %ctaid.x;
+	and.b32 %r415, %r409, %r414;
+	sub.u32 %r416, %r414, %r415;
+	mul.lo.u32 %r417, %r416, 128;
+	cvt.u64.u32 %r418, %r417;
+	mul.lo.u64 %r419, %r418, 4;
+	add.u64 %r420, %r408, %r431;
+	ld.shared.u32 %r421, [%r420 + 0];
+	ld.param.u64 %r422, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj___val_paramd_DstKey];
+	add.u64 %r423, %r422, %r419;
+	add.u64 %r424, %r413, %r423;
+	st.global.u32 [%r424 + 0], %r421;
+	add.u64 %r425, %r408, %r432;
+	ld.shared.u32 %r426, [%r425 + 0];
+	ld.param.u64 %r427, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj___val_paramd_DstVal];
+	add.u64 %r428, %r427, %r419;
+	add.u64 %r429, %r413, %r428;
+	st.global.u32 [%r429 + 0], %r426;
+$BB_6_38:				/* $Lt_5_25090 */ 
+	ld.shared.u32 %r433, [__cuda_local_var_64193_65_lenSrcB];
+	setp.le.u32 %p434, %r433, %r6;
+	@%p434 bra $BB_6_40;
+$BB_6_39:
+	ld.param.u32 %r438, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj_stride];
+	mul.lo.u32 %r439, %r438, 2;
+	shr.u32 %r440, %r439, 7;
+	ld.shared.u32 %r441, [__cuda_local_var_64193_56_lenSrcA];
+	add.u32 %r442, %r441, %r6;
+	cvt.u64.u32 %r443, %r442;
+	mul.lo.u64 %r444, %r443, 4;
+	sub.u32 %r445, %r440, 1;
+	ld.shared.u32 %r446, [__cuda_local_var_64193_85_startDstB];
+	add.u32 %r447, %r446, %r6;
+	cvt.u64.u32 %r448, %r447;
+	mul.lo.u64 %r449, %r448, 4;
+	cvt.u32.u16 %r450, %ctaid.x;
+	and.b32 %r451, %r445, %r450;
+	sub.u32 %r452, %r450, %r451;
+	mul.lo.u32 %r453, %r452, 128;
+	cvt.u64.u32 %r454, %r453;
+	mul.lo.u64 %r455, %r454, 4;
+	add.u64 %r456, %r444, %r431;
+	ld.shared.u32 %r457, [%r456 + 0];
+	ld.param.u64 %r458, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj___val_paramd_DstKey];
+	add.u64 %r459, %r458, %r455;
+	add.u64 %r460, %r449, %r459;
+	st.global.u32 [%r460 + 0], %r457;
+	add.u64 %r461, %r444, %r432;
+	ld.shared.u32 %r462, [%r461 + 0];
+	ld.param.u64 %r463, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj___val_paramd_DstVal];
+	add.u64 %r464, %r463, %r455;
+	add.u64 %r465, %r449, %r464;
+	st.global.u32 [%r465 + 0], %r462;
+$BB_6_40:				/* $Lt_5_25602 */ 
+	exit;
+$BB_6_21:				/* $Lt_5_21250 */ 
+	mov.u32 %r476, 0;
+	mov.u32 %r477, 128;
+$BB_6_22:				/* $Lt_5_21506 */ 
+	add.u32 %r490, %r476, %r477;
+	ld.shared.u32 %r491, [__cuda_local_var_64193_65_lenSrcB];
+	min.u32 %r492, %r490, %r491;
+	sub.u32 %r493, %r492, 1;
+	cvt.u64.u32 %r494, %r493;
+	mul.lo.u64 %r495, %r494, 4;
+	add.u64 %r496, %r431, %r495;
+	ld.shared.u32 %r497, [%r496 + 512];
+	ld.shared.u32 %r498, [%r470 + 0];
+	setp.lt.u32 %p499, %r497, %r498;
+	selp.u32 %r476, %r492, %r476, %p499;
+	shr.u32 %r477, %r477, 1;
+	mov.u32 %r502, 0;
+	setp.ne.u32 %p503, %r477, %r502;
+	@%p503 bra $BB_6_22;
+$BB_6_23:
+	mov.s32 %r515, %r476;
+$BB_6_24:				/* $Lt_5_770 */ 
+	add.u32 %r527, %r515, %r6;
+	mov.s32 %r0, %r527;
+$BB_6_25:				/* $Lt_5_19970 */ 
+	setp.le.u32 %p540, %r491, %r6;
+	@%p540 bra $BB_6_32;
+$BB_6_26:
+	cvt.u64.u32 %r548, %r6;
+	mul.lo.u64 %r549, %r548, 4;
+	add.u64 %r550, %r549, %r431;
+	ld.shared.u32 %r551, [%r550 + 512];
+	mov.s32 %r3, %r551;
+	add.u64 %r553, %r549, %r432;
+	ld.shared.u32 %r554, [%r553 + 512];
+	mov.s32 %r5, %r554;
+	mov.u32 %r556, 0;
+	setp.ne.u32 %p557, %r467, %r556;
+	@%p557 bra $BB_6_28;
+$BB_6_27:
+	mov.u32 %r566, 0;
+	bra.uni $BB_6_31;
+$BB_6_9:				/* $Lt_5_18178 */ 
+	ld.param.u32 %r579, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj_stride];
+	mov.s32 %r129, %r579;
+$BB_6_10:				/* $Lt_5_17922 */ 
+	@!%p111 bra $BB_6_12;
+$BB_6_11:
+	add.u32 %r605, %r51, 1;
+	cvt.u64.u32 %r606, %r605;
+	mul.lo.u64 %r607, %r606, 4;
+	ld.param.u64 %r608, [__cudaparm__Z30mergeElementaryIntervalsKernelILj1EEvPjS0_S0_S0_S0_S0_jj_d_LimitsB];
+	add.u64 %r609, %r608, %r607;
+	ld.global.u32 %r141, [%r609 + 0];
+	bra.uni $BB_6_13;
+}

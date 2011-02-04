@@ -1,0 +1,101 @@
+/*
+* AUTO GENERATED OCELOT PTX FILE
+* Ocelot Version : 1.1.560
+* From file : ./exec.bin.devcode/ecfd84a370a114bc/compute_13
+*/
+
+.version 1.4
+.target sm_13
+
+/* Globals */
+.global .u64 prof_data_pt[1] = { 0 };
+.global .u32 prof_data_sz[1] = { 1 };
+
+/* Textures */
+
+/*
+* Ocelot Version : 1.1.560
+*/
+.entry _Z16dotProductKernelPfS_S_(.param  .u64 __cudaparm__Z16dotProductKernelPfS_S__v1,
+		.param  .u64 __cudaparm__Z16dotProductKernelPfS_S__v2,
+		.param  .u64 __cudaparm__Z16dotProductKernelPfS_S__r)
+{
+	.reg .pred %div;
+	.reg .u64 %dummy;
+	.reg .f32 %f1;
+	.reg .f32 %f2;
+	.reg .f32 %f3;
+	.reg .f32 %f4;
+	.reg .pred %firstThread;
+	.reg .pred %iWasSelected;
+	.reg .u32 %laneIdCopy;
+	.reg .pred %p1;
+	.reg .u32 %r1;
+	.reg .u64 %rd1;
+	.reg .u64 %rd2;
+	.reg .u64 %rd3;
+	.reg .u64 %rd4;
+	.reg .u64 %rd5;
+	.reg .u64 %rd6;
+	.reg .u64 %rd7;
+	.reg .u64 %rd8;
+	.reg .u64 %resultsArray;
+	.reg .u32 %selectedThreadId;
+	.reg .u16 %threadId;
+	.reg .pred %threadInSet;
+	.reg .pred %uni;
+$BB_1_0:				/* $LBB1__Z16dotProductKernelPfS_S_ */ 
+	ld.global.u64 %resultsArray, [prof_data_pt];
+	mov.u16 %threadId, %tid.x;
+	setp.eq.u16 %firstThread, %threadId, 0;
+	mov.u16 %threadId, %tid.y;
+	setp.eq.and.u16 %firstThread, %threadId, 0, %firstThread;
+	mov.u16 %threadId, %tid.z;
+	setp.eq.and.u16 %firstThread, %threadId, 0, %firstThread;
+	mov.u16 %threadId, %ctaid.x;
+	setp.eq.and.u16 %firstThread, %threadId, 0, %firstThread;
+	mov.u16 %threadId, %ctaid.y;
+	setp.eq.and.u16 %firstThread, %threadId, 0, %firstThread;
+	mov.u16 %threadId, %ctaid.z;
+	setp.eq.and.u16 %firstThread, %threadId, 0, %firstThread;
+	@!%firstThread bra _Z16dotProductKernelPfS_S__START;
+_Z16dotProductKernelPfS_S__inst_init:
+	mov.u64 %dummy, 0;
+	st.global.u64 [%resultsArray + 0], %dummy;
+_Z16dotProductKernelPfS_S__START:
+	cvt.u32.u16 %r1, %tid.x;
+	cvt.u64.u32 %rd1, %r1;
+	mul.lo.u64 %rd2, %rd1, 4;
+	ld.param.u64 %rd3, [__cudaparm__Z16dotProductKernelPfS_S__v1];
+	add.u64 %rd4, %rd3, %rd2;
+	ld.param.u64 %rd5, [__cudaparm__Z16dotProductKernelPfS_S__v2];
+	add.u64 %rd6, %rd5, %rd2;
+	ld.param.u64 %rd7, [__cudaparm__Z16dotProductKernelPfS_S__r];
+	add.u64 %rd8, %rd7, %rd2;
+	ld.global.f32 %f1, [%rd4 + 0];
+	ld.global.f32 %f2, [%rd6 + 0];
+	setp.gt.f32 %p1, %f1, %f2;
+	mov.u32 %selectedThreadId, 0;
+	mov.u32 %laneIdCopy, %laneid;
+$BB_1_0_split:
+	setp.eq.u32 %iWasSelected, %laneIdCopy, %selectedThreadId;
+	vote.any.pred %threadInSet, %iWasSelected;
+	add.u32 %selectedThreadId, %selectedThreadId, 1;
+	@!%threadInSet bra $BB_1_0_split;
+$BB_1_0_split_split:
+	@%iWasSelected atom.global.add.u64 %dummy, [%resultsArray + 8], 1;
+	vote.uni.pred %uni, %p1;
+	not.pred %div, %uni;
+	and.pred %div, %iWasSelected, %div;
+	@%div atom.global.add.u64 %dummy, [%resultsArray + 16], 1;
+	@!%p1 bra $BB_1_2;
+$BB_1_1:
+	add.f32 %f3, %f1, %f2;
+	st.global.f32 [%rd8 + 0], %f3;
+	bra.uni $BB_1_3;
+$BB_1_2:				/* $Lt_0_1282 */ 
+	mul.f32 %f4, %f1, %f2;
+	st.global.f32 [%rd8 + 0], %f4;
+$BB_1_3:				/* $Lt_0_1026 */ 
+	exit;
+}

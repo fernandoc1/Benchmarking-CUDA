@@ -1,0 +1,21 @@
+To build all Benchmarks just type "make all"
+
+TODO:
+
+* Update mynvcc with a more intuitive usage. (Maybe we should also change it's name).
+* Modularize and insert comments on files, so people can understand what they do and how they work internally.
+* Put every dependence for the benchmarks in the dependence folder.
+* Create simple and clean Makefiles to build each benchmark
+* Arrange the benchmarks in the benchmark folder, so we are able to see where are we going.
+
+
+ISSUES:
+
+ENVIRONMENT VARIABLES:
+
+Path for the shared objects files LD_LIBRARY_PATH
+
+Important links:
+
+http://www2.dcc.ufmg.br/laboratorios/llp/wiki/doku.php?id=howtoinstrument
+http://www2.dcc.ufmg.br/laboratorios/llp/wiki/doku.php?id=coutinho_mesuraments

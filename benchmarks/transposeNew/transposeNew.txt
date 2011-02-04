@@ -1,0 +1,36 @@
+./transposeNew Starting...
+
+> Device 0: "GeForce GTX 470"
+> SM Capability 2.0 detected:
+> CUDA device has 14 Multi-Processors
+> SM performance scaling factor = 4.2f
+
+Matrix size: 384x384 (24x24 tiles), tile size: 16x16, block size: 16x16
+
+
+transposeNew-Outer-simple copy           , Throughput = 1.1660 GB/s, Time = 0.94225 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-simple copy           , Throughput = 84.8444 GB/s, Time = 0.01295 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+
+transposeNew-Outer-shared memory copy    , Throughput = 1.0845 GB/s, Time = 1.01302 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-shared memory copy    , Throughput = 58.4310 GB/s, Time = 0.01880 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+
+transposeNew-Outer-naive transpose       , Throughput = 1.0965 GB/s, Time = 1.00199 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-naive transpose       , Throughput = 44.0853 GB/s, Time = 0.02492 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+
+transposeNew-Outer-coalesced transpose   , Throughput = 1.1086 GB/s, Time = 0.99100 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-coalesced transpose   , Throughput = 61.9113 GB/s, Time = 0.01775 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+
+transposeNew-Outer-no bank conflict trans, Throughput = 1.1359 GB/s, Time = 0.96718 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-no bank conflict trans, Throughput = 74.2592 GB/s, Time = 0.01479 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+
+transposeNew-Outer-coarse-grained        , Throughput = 1.1410 GB/s, Time = 0.96285 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-coarse-grained        , Throughput = 73.6049 GB/s, Time = 0.01493 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+
+transposeNew-Outer-fine-grained          , Throughput = 1.1483 GB/s, Time = 0.95677 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-fine-grained          , Throughput = 74.0654 GB/s, Time = 0.01483 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+
+transposeNew-Outer-diagonal transpose    , Throughput = 1.1460 GB/s, Time = 0.95866 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-diagonal transpose    , Throughput = 74.3155 GB/s, Time = 0.01478 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+
+PASSED
+

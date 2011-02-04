@@ -1,0 +1,20 @@
+./FDTD3d Starting...
+
+Set-up, based upon target device GMEM size...
+ getTargetDeviceGlobalMemSize
+ cudaGetDeviceCount
+ cudaGetDeviceProperties
+ calloc host_output
+ malloc input
+ malloc coeff
+ generateRandomData
+
+FDTD on 376 x 376 x 376 volume with symmetric filter radius 4 for 5 timesteps...
+
+fdtdReference...
+ calloc intermediate
+ Host FDTD loop
+	t = 0
+	t = 1
+	t = 2
+	t = 3

@@ -1,0 +1,133 @@
+./dxtc Starting...
+
+Loaded './data/lena_std.ppm', 512 x 512 pixels
+
+Running DXT Compression on 512 x 512 image...
+
+16384 Blocks, 64 Threads per Block, 1048576 Threads in Grid...
+
+dxtc, Throughput = 10.6148 MPixels/s, Time = 0.02470 s, Size = 262144 Pixels, NumDevsUsed = 1, Workgroup = 64
+
+Checking accuracy...
+Deviation at (115, 0):	0.166667 rms
+Deviation at (9, 1):	0.791667 rms
+Deviation at (99, 1):	1.041667 rms
+Deviation at (108, 2):	1.270833 rms
+Deviation at (90, 3):	0.166667 rms
+Deviation at (38, 4):	1.916667 rms
+Deviation at (34, 7):	1.687500 rms
+Deviation at (57, 7):	0.458333 rms
+Deviation at (77, 8):	1.270833 rms
+Deviation at (100, 8):	2.416667 rms
+Deviation at (30, 9):	2.375000 rms
+Deviation at (31, 9):	0.770833 rms
+Deviation at (58, 9):	0.791667 rms
+Deviation at (12, 10):	0.541667 rms
+Deviation at (29, 10):	0.020833 rms
+Deviation at (79, 10):	1.833333 rms
+Deviation at (13, 11):	1.041667 rms
+Deviation at (88, 11):	0.729167 rms
+Deviation at (28, 13):	0.562500 rms
+Deviation at (90, 13):	0.708333 rms
+Deviation at (25, 14):	0.520833 rms
+Deviation at (69, 14):	0.770833 rms
+Deviation at (87, 16):	0.708333 rms
+Deviation at (90, 17):	1.041667 rms
+Deviation at (24, 19):	0.916667 rms
+Deviation at (25, 19):	0.625000 rms
+Deviation at (26, 19):	1.041667 rms
+Deviation at (55, 20):	4.791667 rms
+Deviation at (99, 23):	3.312500 rms
+Deviation at (45, 24):	18.104166 rms
+Deviation at (123, 24):	2.437500 rms
+Deviation at (8, 28):	0.895833 rms
+Deviation at (21, 30):	1.562500 rms
+Deviation at (78, 32):	1.604167 rms
+Deviation at (115, 32):	24.104166 rms
+Deviation at (102, 33):	2.250000 rms
+Deviation at (50, 35):	26.958334 rms
+Deviation at (115, 36):	0.458333 rms
+Deviation at (12, 38):	2.166667 rms
+Deviation at (40, 40):	0.270833 rms
+Deviation at (86, 43):	0.604167 rms
+Deviation at (116, 43):	0.125000 rms
+Deviation at (43, 44):	2.250000 rms
+Deviation at (54, 44):	4.791667 rms
+Deviation at (40, 45):	4.125000 rms
+Deviation at (46, 46):	2.875000 rms
+Deviation at (76, 46):	0.875000 rms
+Deviation at (116, 46):	0.604167 rms
+Deviation at (4, 47):	0.708333 rms
+Deviation at (117, 48):	0.937500 rms
+Deviation at (23, 51):	3.520833 rms
+Deviation at (11, 52):	0.041667 rms
+Deviation at (67, 54):	5.687500 rms
+Deviation at (26, 55):	0.854167 rms
+Deviation at (21, 56):	5.000000 rms
+Deviation at (30, 57):	0.937500 rms
+Deviation at (126, 57):	1.208333 rms
+Deviation at (21, 59):	2.541667 rms
+Deviation at (120, 59):	0.104167 rms
+Deviation at (112, 60):	1.125000 rms
+Deviation at (76, 61):	1.666667 rms
+Deviation at (77, 61):	1.083333 rms
+Deviation at (114, 62):	4.958333 rms
+Deviation at (78, 66):	0.541667 rms
+Deviation at (16, 70):	3.104167 rms
+Deviation at (10, 71):	0.937500 rms
+Deviation at (108, 71):	0.354167 rms
+Deviation at (118, 72):	5.562500 rms
+Deviation at (11, 73):	0.541667 rms
+Deviation at (68, 74):	1.937500 rms
+Deviation at (124, 76):	3.354167 rms
+Deviation at (12, 78):	3.416667 rms
+Deviation at (103, 78):	0.375000 rms
+Deviation at (127, 78):	0.541667 rms
+Deviation at (108, 79):	0.083333 rms
+Deviation at (120, 81):	0.541667 rms
+Deviation at (43, 82):	24.979166 rms
+Deviation at (58, 82):	2.833333 rms
+Deviation at (67, 82):	3.125000 rms
+Deviation at (78, 82):	2.437500 rms
+Deviation at (71, 83):	0.541667 rms
+Deviation at (123, 84):	0.541667 rms
+Deviation at (127, 85):	0.187500 rms
+Deviation at (122, 87):	0.083333 rms
+Deviation at (124, 87):	0.541667 rms
+Deviation at (127, 88):	0.229167 rms
+Deviation at (93, 91):	0.666667 rms
+Deviation at (115, 92):	0.083333 rms
+Deviation at (115, 93):	0.083333 rms
+Deviation at (69, 95):	1.875000 rms
+Deviation at (107, 95):	3.708333 rms
+Deviation at (13, 96):	1.354167 rms
+Deviation at (115, 98):	0.187500 rms
+Deviation at (118, 98):	0.187500 rms
+Deviation at (116, 101):	0.187500 rms
+Deviation at (78, 105):	0.541667 rms
+Deviation at (67, 107):	0.708333 rms
+Deviation at (74, 107):	0.375000 rms
+Deviation at (65, 109):	0.770833 rms
+Deviation at (89, 109):	0.708333 rms
+Deviation at (118, 109):	3.854167 rms
+Deviation at (67, 110):	1.083333 rms
+Deviation at (88, 111):	0.208333 rms
+Deviation at (64, 113):	0.708333 rms
+Deviation at (84, 113):	0.333333 rms
+Deviation at (88, 113):	0.187500 rms
+Deviation at (84, 114):	1.666667 rms
+Deviation at (66, 115):	0.770833 rms
+Deviation at (88, 116):	0.187500 rms
+Deviation at (89, 116):	0.770833 rms
+Deviation at (19, 118):	5.270833 rms
+Deviation at (67, 120):	0.770833 rms
+Deviation at (76, 121):	0.104167 rms
+Deviation at (70, 122):	0.708333 rms
+Deviation at (91, 122):	0.208333 rms
+Deviation at (71, 123):	0.854167 rms
+Deviation at (75, 123):	0.854167 rms
+Deviation at (61, 124):	0.937500 rms
+RMS(reference, result) = 0.015224
+
+PASSED
+

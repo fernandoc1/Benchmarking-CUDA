@@ -1,0 +1,43 @@
+#!/bin/bash
+
+OPTIMIZATION_FLAG="-p block-unification"
+# OPTIMIZATION_FLAG="-p sync-elimination"
+
+NVCC="/usr/local/cuda/bin/nvcc"
+
+export PROF_KERNEL_EXEC_TIME_CPU=1
+
+make clean
+
+rm -rf *.ptx *.txt
+
+$NVCC -arch=compute_13 -int=none -ext=all -dir=srad.devcode -DUNIX --compiler-options -I../../../ -I/home/speed/undead/sdk30/shared/inc -I/home/speed/undead/sdk30/C/common/inc -L/home/speed/undead/sdk30/C/lib -L/home/speed/undead/sdk30/shared/lib -L/usr/local/cuda/include -L/usr/local/cuda/lib64 -L/home/speed/undead/sdk30/C/lib -L/home/speed/undead/sdk30/shared/lib -lcutil_x86_64 -lshrutil_x86_64 -o srad srad.cu
+
+COUNTER=0
+while [  $COUNTER -lt 8 ]; do
+  ./srad 512 480 0 127 0 127 0.5 100
+  for txt_name in $( ls *.txt )
+  do
+    echo "kernel name: $txt_name"
+    cat $txt_name
+  done
+  let COUNTER=COUNTER+1 
+done
+
+cp srad.devcode/*/compute_13 file.ptx
+
+PTXOptimizer -i file.ptx -o rig.ptx -p block-unification
+
+cp rig.ptx srad.devcode/*/compute_13
+
+COUNTER=0
+while [  $COUNTER -lt 8 ]; do
+  ./srad 512 480 0 127 0 127 0.5 100
+  for txt_name in $( ls *.txt )
+  do
+    echo "kernel name: $txt_name"
+    cat $txt_name
+  done
+  let COUNTER=COUNTER+1 
+done
+

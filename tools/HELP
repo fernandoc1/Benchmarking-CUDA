@@ -1,0 +1,6 @@
+instrument_cpu_code.py:
+	Inserts the code needed to instrument a file.
+mynvcc:
+	This script will extract the PTX code from the cuda program, and will instrument it using our version of ocelot
+
+

@@ -1,0 +1,239 @@
+	.version 1.4
+	.target sm_13
+	// compiled with /usr/local/cuda/open64/lib//be
+	// nvopencc 3.0 built on 2010-02-19
+
+	//-----------------------------------------------------------
+	// Compiling /tmp/tmpxft_00006c74_00000000-10_cuenergy_pre8_coalesce.cpp3.i (/tmp/ccBI#.whdUeT)
+	//-----------------------------------------------------------
+
+	//-----------------------------------------------------------
+	// Options:
+	//-----------------------------------------------------------
+	//  Target:ptx, ISA:sm_13, Endian:little, Pointer Size:64
+	//  -O3	(Optimization level)
+	//  -g0	(Debug level)
+	//  -m2	(Report advisories)
+	//-----------------------------------------------------------
+
+	.file	1	"<command-line>"
+	.file	2	"/tmp/tmpxft_00006c74_00000000-9_cuenergy_pre8_coalesce.cudafe2.gpu"
+	.file	3	"/usr/lib/gcc/x86_64-linux-gnu/4.3.4/include/stddef.h"
+	.file	4	"/usr/local/cuda/bin/../include/crt/device_runtime.h"
+	.file	5	"/usr/local/cuda/bin/../include/host_defines.h"
+	.file	6	"/usr/local/cuda/bin/../include/builtin_types.h"
+	.file	7	"/usr/local/cuda/bin/../include/device_types.h"
+	.file	8	"/usr/local/cuda/bin/../include/driver_types.h"
+	.file	9	"/usr/local/cuda/bin/../include/texture_types.h"
+	.file	10	"/usr/local/cuda/bin/../include/vector_types.h"
+	.file	11	"/usr/local/cuda/bin/../include/device_launch_parameters.h"
+	.file	12	"/usr/local/cuda/bin/../include/crt/storage_class.h"
+	.file	13	"/usr/include/bits/types.h"
+	.file	14	"/usr/include/time.h"
+	.file	15	"cuenergy_pre8_coalesce.cu"
+	.file	16	"/usr/local/cuda/bin/../include/common_functions.h"
+	.file	17	"/usr/local/cuda/bin/../include/crt/func_macro.h"
+	.file	18	"/usr/local/cuda/bin/../include/math_functions.h"
+	.file	19	"/usr/local/cuda/bin/../include/device_functions.h"
+	.file	20	"/usr/local/cuda/bin/../include/math_constants.h"
+	.file	21	"/usr/local/cuda/bin/../include/sm_11_atomic_functions.h"
+	.file	22	"/usr/local/cuda/bin/../include/sm_12_atomic_functions.h"
+	.file	23	"/usr/local/cuda/bin/../include/sm_13_double_functions.h"
+	.file	24	"/usr/local/cuda/bin/../include/sm_20_atomic_functions.h"
+	.file	25	"/usr/local/cuda/bin/../include/sm_20_intrinsics.h"
+	.file	26	"/usr/local/cuda/bin/../include/texture_fetch_functions.h"
+	.file	27	"/usr/local/cuda/bin/../include/math_functions_dbl_ptx3.h"
+
+	.const .align 16 .b8 atominfo[64000];
+
+	.entry _Z7cenergyifPf (
+		.param .s32 __cudaparm__Z7cenergyifPf_numatoms,
+		.param .f32 __cudaparm__Z7cenergyifPf_gridspacing,
+		.param .u64 __cudaparm__Z7cenergyifPf_energygrid)
+	{
+	.reg .u32 %r<33>;
+	.reg .u64 %rd<28>;
+	.reg .f32 %f<63>;
+	.reg .pred %p<4>;
+	.loc	15	32	0
+$LBB1__Z7cenergyifPf:
+	cvt.u32.u16 	%r1, %tid.x;
+	cvt.u32.u16 	%r2, %tid.y;
+	cvt.u32.u16 	%r3, %ntid.y;
+	cvt.u32.u16 	%r4, %ctaid.y;
+	cvt.u32.u16 	%r5, %ntid.x;
+	cvt.u32.u16 	%r6, %ctaid.x;
+	ld.param.s32 	%r7, [__cudaparm__Z7cenergyifPf_numatoms];
+	mov.u32 	%r8, 0;
+	setp.le.s32 	%p1, %r7, %r8;
+	@%p1 bra 	$Lt_0_2306;
+	ld.param.s32 	%r7, [__cudaparm__Z7cenergyifPf_numatoms];
+	mov.s32 	%r9, %r7;
+	mul24.lo.u32 	%r10, %r6, %r5;
+	mul24.lo.u32 	%r11, %r4, %r3;
+	ld.param.f32 	%f1, [__cudaparm__Z7cenergyifPf_gridspacing];
+	mov.f32 	%f2, 0f41800000;     	// 16
+	mul.f32 	%f3, %f1, %f2;
+	mul.lo.u32 	%r12, %r10, 8;
+	add.u32 	%r13, %r11, %r2;
+	add.u32 	%r14, %r12, %r1;
+	cvt.rn.f32.u32 	%f4, %r13;
+	mov.u64 	%rd1, atominfo;
+	cvt.rn.f32.u32 	%f5, %r14;
+	mul.f32 	%f6, %f4, %f1;
+	mul.f32 	%f7, %f5, %f1;
+	mov.s32 	%r15, 0;
+	mov.f32 	%f8, 0f00000000;     	// 0
+	mov.f32 	%f9, 0f00000000;     	// 0
+	mov.f32 	%f10, 0f00000000;    	// 0
+	mov.f32 	%f11, 0f00000000;    	// 0
+	mov.f32 	%f12, 0f00000000;    	// 0
+	mov.f32 	%f13, 0f00000000;    	// 0
+	mov.f32 	%f14, 0f00000000;    	// 0
+	mov.f32 	%f15, 0f00000000;    	// 0
+	mov.s32 	%r16, %r9;
+$Lt_0_1794:
+ //<loop> Loop body line 32, nesting depth: 1, estimated iterations: unknown
+	.loc	15	67	0
+	ld.const.f32 	%f16, [%rd1+12];
+	ld.const.f32 	%f17, [%rd1+8];
+	ld.const.f32 	%f18, [%rd1+4];
+	ld.const.f32 	%f19, [%rd1+0];
+	sub.f32 	%f20, %f6, %f18;
+	sub.f32 	%f21, %f7, %f19;
+	mad.f32 	%f22, %f20, %f20, %f17;
+	mad.f32 	%f23, %f21, %f21, %f22;
+	rsqrt.approx.f32 	%f24, %f23;
+	mad.f32 	%f15, %f16, %f24, %f15;
+	.loc	15	68	0
+	add.f32 	%f25, %f3, %f21;
+	mad.f32 	%f26, %f25, %f25, %f22;
+	rsqrt.approx.f32 	%f27, %f26;
+	mad.f32 	%f14, %f16, %f27, %f14;
+	.loc	15	69	0
+	add.f32 	%f28, %f3, %f25;
+	mad.f32 	%f29, %f28, %f28, %f22;
+	rsqrt.approx.f32 	%f30, %f29;
+	mad.f32 	%f13, %f16, %f30, %f13;
+	.loc	15	70	0
+	add.f32 	%f31, %f3, %f28;
+	mad.f32 	%f32, %f31, %f31, %f22;
+	rsqrt.approx.f32 	%f33, %f32;
+	mad.f32 	%f12, %f16, %f33, %f12;
+	.loc	15	71	0
+	add.f32 	%f34, %f3, %f31;
+	mad.f32 	%f35, %f34, %f34, %f22;
+	rsqrt.approx.f32 	%f36, %f35;
+	mad.f32 	%f11, %f16, %f36, %f11;
+	.loc	15	72	0
+	add.f32 	%f37, %f3, %f34;
+	mad.f32 	%f38, %f37, %f37, %f22;
+	rsqrt.approx.f32 	%f39, %f38;
+	mad.f32 	%f10, %f16, %f39, %f10;
+	.loc	15	73	0
+	add.f32 	%f40, %f3, %f37;
+	mad.f32 	%f41, %f40, %f40, %f22;
+	rsqrt.approx.f32 	%f42, %f41;
+	mad.f32 	%f9, %f16, %f42, %f9;
+	.loc	15	74	0
+	add.f32 	%f43, %f3, %f40;
+	mad.f32 	%f44, %f43, %f43, %f22;
+	rsqrt.approx.f32 	%f45, %f44;
+	mad.f32 	%f8, %f16, %f45, %f8;
+	add.s32 	%r15, %r15, 1;
+	add.u64 	%rd1, %rd1, 16;
+	.loc	15	32	0
+	ld.param.s32 	%r7, [__cudaparm__Z7cenergyifPf_numatoms];
+	.loc	15	74	0
+	setp.ne.s32 	%p2, %r7, %r15;
+	@%p2 bra 	$Lt_0_1794;
+	bra.uni 	$Lt_0_1282;
+$Lt_0_2306:
+	mul24.lo.u32 	%r17, %r6, %r5;
+	mul24.lo.u32 	%r18, %r4, %r3;
+	mul.lo.u32 	%r19, %r17, 8;
+	add.u32 	%r13, %r18, %r2;
+	add.u32 	%r14, %r19, %r1;
+	mov.f32 	%f8, 0f00000000;     	// 0
+	mov.f32 	%f9, 0f00000000;     	// 0
+	mov.f32 	%f10, 0f00000000;    	// 0
+	mov.f32 	%f11, 0f00000000;    	// 0
+	mov.f32 	%f12, 0f00000000;    	// 0
+	mov.f32 	%f13, 0f00000000;    	// 0
+	mov.f32 	%f14, 0f00000000;    	// 0
+	mov.f32 	%f15, 0f00000000;    	// 0
+$Lt_0_1282:
+	.loc	15	77	0
+	cvt.u32.u16 	%r20, %nctaid.x;
+	mul24.lo.u32 	%r21, %r20, %r5;
+	mul.lo.u32 	%r22, %r21, %r13;
+	mul.lo.u32 	%r23, %r22, 8;
+	add.u32 	%r24, %r23, %r14;
+	ld.param.u64 	%rd2, [__cudaparm__Z7cenergyifPf_energygrid];
+	cvt.u64.u32 	%rd3, %r24;
+	mul.lo.u64 	%rd4, %rd3, 4;
+	add.u64 	%rd5, %rd2, %rd4;
+	ld.global.f32 	%f46, [%rd5+0];
+	add.f32 	%f47, %f46, %f15;
+	st.global.f32 	[%rd5+0], %f47;
+	.loc	15	78	0
+	add.u32 	%r25, %r24, 16;
+	cvt.u64.u32 	%rd6, %r25;
+	mul.lo.u64 	%rd7, %rd6, 4;
+	add.u64 	%rd8, %rd2, %rd7;
+	ld.global.f32 	%f48, [%rd8+0];
+	add.f32 	%f49, %f48, %f14;
+	st.global.f32 	[%rd8+0], %f49;
+	.loc	15	79	0
+	add.u32 	%r26, %r24, 32;
+	cvt.u64.u32 	%rd9, %r26;
+	mul.lo.u64 	%rd10, %rd9, 4;
+	add.u64 	%rd11, %rd2, %rd10;
+	ld.global.f32 	%f50, [%rd11+0];
+	add.f32 	%f51, %f50, %f13;
+	st.global.f32 	[%rd11+0], %f51;
+	.loc	15	80	0
+	add.u32 	%r27, %r24, 48;
+	cvt.u64.u32 	%rd12, %r27;
+	mul.lo.u64 	%rd13, %rd12, 4;
+	add.u64 	%rd14, %rd2, %rd13;
+	ld.global.f32 	%f52, [%rd14+0];
+	add.f32 	%f53, %f52, %f12;
+	st.global.f32 	[%rd14+0], %f53;
+	.loc	15	81	0
+	add.u32 	%r28, %r24, 64;
+	cvt.u64.u32 	%rd15, %r28;
+	mul.lo.u64 	%rd16, %rd15, 4;
+	add.u64 	%rd17, %rd2, %rd16;
+	ld.global.f32 	%f54, [%rd17+0];
+	add.f32 	%f55, %f54, %f11;
+	st.global.f32 	[%rd17+0], %f55;
+	.loc	15	82	0
+	add.u32 	%r29, %r24, 80;
+	cvt.u64.u32 	%rd18, %r29;
+	mul.lo.u64 	%rd19, %rd18, 4;
+	add.u64 	%rd20, %rd2, %rd19;
+	ld.global.f32 	%f56, [%rd20+0];
+	add.f32 	%f57, %f56, %f10;
+	st.global.f32 	[%rd20+0], %f57;
+	.loc	15	83	0
+	add.u32 	%r30, %r24, 96;
+	cvt.u64.u32 	%rd21, %r30;
+	mul.lo.u64 	%rd22, %rd21, 4;
+	add.u64 	%rd23, %rd2, %rd22;
+	ld.global.f32 	%f58, [%rd23+0];
+	add.f32 	%f59, %f58, %f9;
+	st.global.f32 	[%rd23+0], %f59;
+	.loc	15	84	0
+	add.u32 	%r31, %r24, 112;
+	cvt.u64.u32 	%rd24, %r31;
+	mul.lo.u64 	%rd25, %rd24, 4;
+	add.u64 	%rd26, %rd2, %rd25;
+	ld.global.f32 	%f60, [%rd26+0];
+	add.f32 	%f61, %f60, %f8;
+	st.global.f32 	[%rd26+0], %f61;
+	.loc	15	85	0
+	exit;
+$LDWend__Z7cenergyifPf:
+	} // _Z7cenergyifPf
+

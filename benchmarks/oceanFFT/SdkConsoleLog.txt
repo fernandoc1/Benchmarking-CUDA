@@ -1,0 +1,12 @@
+CheckRender::dumpBin: <spatialDomain.bin>
+> compareBin2Bin <float> nelements=262144, epsilon=0.10, threshold=0.15
+   src_file <spatialDomain.bin>
+   ref_file <./data/ref_spatialDomain_sm13.bin>
+
+    4.2f(%) of bytes mismatched (count=81)
+   Data Matches
+CheckRender::dumpBin: <slopeShading.bin>
+> compareBin2Bin <float> nelements=524288, epsilon=0.10, threshold=0.15
+   src_file <slopeShading.bin>
+   ref_file <./data/ref_slopeShading_sm13.bin>
+   Data Matches

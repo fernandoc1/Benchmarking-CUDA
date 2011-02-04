@@ -1,0 +1,53 @@
+#!/bin/bash
+
+OPTIMIZATION_FLAG="-p block-unification"
+# OPTIMIZATION_FLAG="-p sync-elimination"
+
+FILES="oceanFFT.cpp oceanFFT_kernel.cu"
+
+cmd_line="--qatest --noprompt"
+
+bench_name=oceanFFT
+
+NVCC="/usr/local/cuda/bin/nvcc"
+
+export PROF_KERNEL_EXEC_TIME_CPU=1
+
+make clean
+
+rm -rf *.ptx *.txt
+
+$NVCC -arch=compute_13 -int=none -ext=all -dir=$bench_name.devcode -DUNIX --compiler-options -I../../../ -I/home/speed/undead/sdk30/shared/inc -I/home/speed/undead/sdk30/C/common/inc -L/home/speed/undead/sdk30/C/lib -L/home/speed/undead/sdk30/shared/lib -L/usr/local/cuda/include -L/usr/local/cuda/lib64 -L/home/speed/undead/sdk30/C/lib -L/home/speed/undead/sdk30/shared/lib -lcutil_x86_64 -lshrutil_x86_64 -lGL -lGLEW -lglut -lcufft -lrendercheckgl_x86_64 -o $bench_name $FILES
+
+COUNTER=0
+while [  $COUNTER -lt 8 ]; do
+  ./$bench_name $cmd_line
+  for txt_name in $( ls *prof*.txt )
+  do
+    echo "kernel name: $txt_name"
+    cat $txt_name
+  done
+  let COUNTER=COUNTER+1 
+done
+
+for codeDir in *.devcode/*
+do
+  suffix=${codeDir#*\.devcode/}
+  file="$(ls ${codeDir}/compute* | awk -F'/' '{print $NF}')"
+  arch="$(echo ${file} | cut -d '_' -f 2)"
+  cp ${codeDir}/${file} ./${file}_ori_${suffix}
+  PTXOptimizer -p block-unification -i ${file}_ori_${suffix} -o ${file}_opt_${suffix};
+  cp ./${file}_opt_${suffix} ${codeDir}/${file}
+done
+
+COUNTER=0
+while [  $COUNTER -lt 8 ]; do
+  ./$bench_name $cmd_line
+  for txt_name in $( ls *prof*.txt )
+  do
+    echo "kernel name: $txt_name"
+    cat $txt_name
+  done
+  let COUNTER=COUNTER+1 
+done
+

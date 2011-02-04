@@ -1,0 +1,369 @@
+/*
+* AUTO GENERATED OCELOT PTX FILE
+* Ocelot Version : 1.1.560
+* From file : ./exec.bin.devcode/b49b0f621de18624/compute_13
+*/
+
+.version 1.4
+.target sm_13
+
+/* Globals */
+.global .u64 prof_data_pt[1] = { 0 };
+.global .u32 prof_data_sz[1] = { 3 };
+
+/* Textures */
+
+/*
+* Ocelot Version : 1.1.560
+*/
+.entry _Z9matrixMulPfS_S_ii(.param  .u64 __cudaparm__Z9matrixMulPfS_S_ii_C,
+		.param  .u64 __cudaparm__Z9matrixMulPfS_S_ii_A,
+		.param  .u64 __cudaparm__Z9matrixMulPfS_S_ii_B,
+		.param  .s32 __cudaparm__Z9matrixMulPfS_S_ii_wA,
+		.param  .s32 __cudaparm__Z9matrixMulPfS_S_ii_wB)
+{
+	.shared .align 4 .b8 __cuda_As32[1024];
+	.shared .align 4 .b8 __cuda_Bs1056[1024];
+	.reg .pred %div;
+	.reg .u64 %dummy;
+	.reg .f32 %f1;
+	.reg .f32 %f10;
+	.reg .f32 %f11;
+	.reg .f32 %f12;
+	.reg .f32 %f13;
+	.reg .f32 %f14;
+	.reg .f32 %f15;
+	.reg .f32 %f16;
+	.reg .f32 %f17;
+	.reg .f32 %f18;
+	.reg .f32 %f19;
+	.reg .f32 %f2;
+	.reg .f32 %f20;
+	.reg .f32 %f21;
+	.reg .f32 %f22;
+	.reg .f32 %f23;
+	.reg .f32 %f24;
+	.reg .f32 %f25;
+	.reg .f32 %f26;
+	.reg .f32 %f27;
+	.reg .f32 %f28;
+	.reg .f32 %f29;
+	.reg .f32 %f3;
+	.reg .f32 %f30;
+	.reg .f32 %f31;
+	.reg .f32 %f32;
+	.reg .f32 %f33;
+	.reg .f32 %f34;
+	.reg .f32 %f35;
+	.reg .f32 %f4;
+	.reg .f32 %f5;
+	.reg .f32 %f6;
+	.reg .f32 %f7;
+	.reg .f32 %f8;
+	.reg .f32 %f9;
+	.reg .f64 %fd1;
+	.reg .f64 %fd10;
+	.reg .f64 %fd11;
+	.reg .f64 %fd12;
+	.reg .f64 %fd13;
+	.reg .f64 %fd2;
+	.reg .f64 %fd3;
+	.reg .f64 %fd4;
+	.reg .f64 %fd5;
+	.reg .f64 %fd6;
+	.reg .f64 %fd7;
+	.reg .f64 %fd8;
+	.reg .f64 %fd9;
+	.reg .pred %firstThread;
+	.reg .pred %iWasSelected;
+	.reg .u32 %laneIdCopy;
+	.reg .pred %p1;
+	.reg .pred %p2;
+	.reg .pred %p3;
+	.reg .u32 %r1;
+	.reg .u32 %r10;
+	.reg .u32 %r11;
+	.reg .u32 %r12;
+	.reg .u32 %r13;
+	.reg .u32 %r14;
+	.reg .u32 %r15;
+	.reg .u32 %r16;
+	.reg .u32 %r17;
+	.reg .u32 %r18;
+	.reg .u32 %r19;
+	.reg .u32 %r2;
+	.reg .u32 %r20;
+	.reg .u32 %r21;
+	.reg .u32 %r22;
+	.reg .u32 %r23;
+	.reg .u32 %r24;
+	.reg .u32 %r25;
+	.reg .u32 %r26;
+	.reg .u32 %r27;
+	.reg .u32 %r28;
+	.reg .u32 %r29;
+	.reg .u32 %r3;
+	.reg .u32 %r30;
+	.reg .u32 %r31;
+	.reg .u32 %r32;
+	.reg .u32 %r33;
+	.reg .u32 %r34;
+	.reg .u32 %r4;
+	.reg .u32 %r5;
+	.reg .u32 %r6;
+	.reg .u32 %r7;
+	.reg .u32 %r8;
+	.reg .u32 %r9;
+	.reg .u64 %rd1;
+	.reg .u64 %rd10;
+	.reg .u64 %rd11;
+	.reg .u64 %rd12;
+	.reg .u64 %rd13;
+	.reg .u64 %rd14;
+	.reg .u64 %rd15;
+	.reg .u64 %rd16;
+	.reg .u64 %rd17;
+	.reg .u64 %rd18;
+	.reg .u64 %rd19;
+	.reg .u64 %rd2;
+	.reg .u64 %rd20;
+	.reg .u64 %rd21;
+	.reg .u64 %rd22;
+	.reg .u64 %rd23;
+	.reg .u64 %rd24;
+	.reg .u64 %rd25;
+	.reg .u64 %rd26;
+	.reg .u64 %rd27;
+	.reg .u64 %rd3;
+	.reg .u64 %rd4;
+	.reg .u64 %rd5;
+	.reg .u64 %rd6;
+	.reg .u64 %rd7;
+	.reg .u64 %rd8;
+	.reg .u64 %rd9;
+	.reg .u64 %resultsArray;
+	.reg .u32 %selectedThreadId;
+	.reg .u16 %threadId;
+	.reg .pred %threadInSet;
+	.reg .pred %uni;
+$BB_1_0:				/* $LBB1__Z9matrixMulPfS_S_ii */ 
+	ld.global.u64 %resultsArray, [prof_data_pt];
+	mov.u16 %threadId, %tid.x;
+	setp.eq.u16 %firstThread, %threadId, 0;
+	mov.u16 %threadId, %tid.y;
+	setp.eq.and.u16 %firstThread, %threadId, 0, %firstThread;
+	mov.u16 %threadId, %tid.z;
+	setp.eq.and.u16 %firstThread, %threadId, 0, %firstThread;
+	mov.u16 %threadId, %ctaid.x;
+	setp.eq.and.u16 %firstThread, %threadId, 0, %firstThread;
+	mov.u16 %threadId, %ctaid.y;
+	setp.eq.and.u16 %firstThread, %threadId, 0, %firstThread;
+	mov.u16 %threadId, %ctaid.z;
+	setp.eq.and.u16 %firstThread, %threadId, 0, %firstThread;
+	@!%firstThread bra _Z9matrixMulPfS_S_ii_START;
+_Z9matrixMulPfS_S_ii_inst_init:
+	mov.u64 %dummy, 0;
+	st.global.u64 [%resultsArray + 0], %dummy;
+	mov.u64 %dummy, 2;
+	st.global.u64 [%resultsArray + 24], %dummy;
+	mov.u64 %dummy, 5;
+	st.global.u64 [%resultsArray + 48], %dummy;
+_Z9matrixMulPfS_S_ii_START:
+	cvt.s32.u16 %r1, %ctaid.x;
+	mul24.lo.s32 %r2, %r1, 16;
+	cvt.s32.u16 %r3, %ctaid.y;
+	ld.param.s32 %r4, [__cudaparm__Z9matrixMulPfS_S_ii_wA];
+	mul.lo.s32 %r5, %r3, %r4;
+	mul.lo.s32 %r6, %r5, 16;
+	add.s32 %r7, %r6, %r4;
+	sub.s32 %r8, %r7, 1;
+	cvt.s32.u16 %r9, %tid.x;
+	cvt.s32.u16 %r10, %tid.y;
+	ld.param.s32 %r11, [__cudaparm__Z9matrixMulPfS_S_ii_wB];
+	setp.lt.s32 %p1, %r8, %r6;
+	mov.u32 %selectedThreadId, 0;
+	mov.u32 %laneIdCopy, %laneid;
+$BB_1_0_split:
+	setp.eq.u32 %iWasSelected, %laneIdCopy, %selectedThreadId;
+	vote.any.pred %threadInSet, %iWasSelected;
+	add.u32 %selectedThreadId, %selectedThreadId, 1;
+	@!%threadInSet bra $BB_1_0_split;
+$BB_1_0_split_split:
+	@%iWasSelected atom.global.add.u64 %dummy, [%resultsArray + 8], 1;
+	vote.uni.pred %uni, %p1;
+	not.pred %div, %uni;
+	and.pred %div, %iWasSelected, %div;
+	@%div atom.global.add.u64 %dummy, [%resultsArray + 16], 1;
+	@%p1 bra $BB_1_7;
+$BB_1_1:
+	mov.u64 %rd1, __cuda_As32;
+	mov.u64 %rd2, __cuda_Bs1056;
+	ld.param.s32 %r4, [__cudaparm__Z9matrixMulPfS_S_ii_wA];
+	add.s32 %r12, %r4, 15;
+	shr.s32 %r13, %r12, 31;
+	mov.s32 %r14, 15;
+	and.b32 %r15, %r13, %r14;
+	add.s32 %r16, %r15, %r12;
+	shr.s32 %r17, %r16, 4;
+	ld.param.s32 %r11, [__cudaparm__Z9matrixMulPfS_S_ii_wB];
+	mul.lo.s32 %r18, %r10, %r11;
+	mul.lo.s32 %r19, %r10, %r4;
+	cvt.s64.s32 %rd3, %r9;
+	cvt.s64.s32 %rd4, %r10;
+	and.b32 %r20, %r9, 1;
+	add.s32 %r21, %r19, %r6;
+	mov.u32 %r22, 0;
+	setp.ne.u32 %p2, %r20, %r22;
+	add.s32 %r23, %r21, %r9;
+	mul.lo.u64 %rd5, %rd3, 4;
+	add.u64 %rd6, %rd2, %rd5;
+	mul.lo.u64 %rd7, %rd4, 64;
+	add.u64 %rd8, %rd1, %rd7;
+	mul.lo.u64 %rd9, %rd4, 16;
+	add.u64 %rd10, %rd3, %rd9;
+	mul.lo.u64 %rd11, %rd10, 4;
+	add.s32 %r24, %r19, %r8;
+	mul.lo.s32 %r25, %r11, 16;
+	cvt.s64.s32 %rd12, %r25;
+	mul.lo.u64 %rd13, %rd12, 4;
+	add.u64 %rd14, %rd11, %rd1;
+	add.u64 %rd15, %rd11, %rd2;
+	add.s32 %r26, %r24, %r9;
+	ld.param.u64 %rd16, [__cudaparm__Z9matrixMulPfS_S_ii_B];
+	add.s32 %r27, %r18, %r2;
+	add.s32 %r28, %r9, %r27;
+	cvt.s64.s32 %rd17, %r28;
+	mul.lo.u64 %rd18, %rd17, 4;
+	add.u64 %rd19, %rd16, %rd18;
+	ld.param.u64 %rd20, [__cudaparm__Z9matrixMulPfS_S_ii_A];
+	cvt.s64.s32 %rd21, %r23;
+	mul.lo.u64 %rd22, %rd21, 4;
+	add.u64 %rd23, %rd20, %rd22;
+	mov.f32 %f1, 0f00000000;
+	mov.s32 %r29, %r17;
+$BB_1_2:				/* $Lt_0_3586 */ 
+	ld.global.f32 %f2, [%rd23 + 0];
+	st.shared.f32 [%rd14 + 0], %f2;
+	ld.global.f32 %f3, [%rd19 + 0];
+	st.shared.f32 [%rd15 + 0], %f3;
+	cvt.f64.f32 %fd1, %f1;
+	mov.u32 %selectedThreadId, 0;
+	mov.u32 %laneIdCopy, %laneid;
+$BB_1_2_split:
+	setp.eq.u32 %iWasSelected, %laneIdCopy, %selectedThreadId;
+	vote.any.pred %threadInSet, %iWasSelected;
+	add.u32 %selectedThreadId, %selectedThreadId, 1;
+	@!%threadInSet bra $BB_1_2_split;
+$BB_1_2_split_split:
+	@%iWasSelected atom.global.add.u64 %dummy, [%resultsArray + 32], 1;
+	vote.uni.pred %uni, %p2;
+	not.pred %div, %uni;
+	and.pred %div, %iWasSelected, %div;
+	@%div atom.global.add.u64 %dummy, [%resultsArray + 40], 1;
+	@!%p2 bra $BB_1_4;
+$BB_1_3:
+	mov.f64 %fd2, 0dbff4cccccccccccd;
+	add.f64 %fd3, %fd1, %fd2;
+	mov.f64 %fd4, 0d40091eb851eb851f;
+	div.rn.f64 %fd5, %fd3, %fd4;
+	mov.f64 %fd6, 0d400999999999999a;
+	mad.rn.f64 %fd7, %fd1, %fd6, %fd5;
+	cvt.rn.f32.f64 %f1, %fd7;
+	bra.uni $BB_1_5;
+$BB_1_4:				/* $Lt_0_4098 */ 
+	mov.f64 %fd8, 0d4005ae147ae147ae;
+	div.rn.f64 %fd9, %fd1, %fd8;
+	mov.f64 %fd10, 0d3ffa8f5c28f5c28f;
+	add.f64 %fd11, %fd1, %fd10;
+	mov.f64 %fd12, 0d3ff028f5c28f5c29;
+	mad.rn.f64 %fd13, %fd11, %fd12, %fd9;
+	cvt.rn.f32.f64 %f1, %fd13;
+$BB_1_5:				/* $Lt_0_3842 */ 
+	bar.sync 0;
+	ld.shared.f32 %f4, [%rd8 + 0];
+	ld.shared.f32 %f5, [%rd6 + 0];
+	mad.f32 %f1, %f4, %f5, %f1;
+	ld.shared.f32 %f6, [%rd8 + 4];
+	ld.shared.f32 %f7, [%rd6 + 64];
+	mad.f32 %f1, %f6, %f7, %f1;
+	ld.shared.f32 %f8, [%rd8 + 8];
+	ld.shared.f32 %f9, [%rd6 + 128];
+	mad.f32 %f1, %f8, %f9, %f1;
+	ld.shared.f32 %f10, [%rd8 + 12];
+	ld.shared.f32 %f11, [%rd6 + 192];
+	mad.f32 %f1, %f10, %f11, %f1;
+	ld.shared.f32 %f12, [%rd8 + 16];
+	ld.shared.f32 %f13, [%rd6 + 256];
+	mad.f32 %f1, %f12, %f13, %f1;
+	ld.shared.f32 %f14, [%rd8 + 20];
+	ld.shared.f32 %f15, [%rd6 + 320];
+	mad.f32 %f1, %f14, %f15, %f1;
+	ld.shared.f32 %f16, [%rd8 + 24];
+	ld.shared.f32 %f17, [%rd6 + 384];
+	mad.f32 %f1, %f16, %f17, %f1;
+	ld.shared.f32 %f18, [%rd8 + 28];
+	ld.shared.f32 %f19, [%rd6 + 448];
+	mad.f32 %f1, %f18, %f19, %f1;
+	ld.shared.f32 %f20, [%rd8 + 32];
+	ld.shared.f32 %f21, [%rd6 + 512];
+	mad.f32 %f1, %f20, %f21, %f1;
+	ld.shared.f32 %f22, [%rd8 + 36];
+	ld.shared.f32 %f23, [%rd6 + 576];
+	mad.f32 %f1, %f22, %f23, %f1;
+	ld.shared.f32 %f24, [%rd8 + 40];
+	ld.shared.f32 %f25, [%rd6 + 640];
+	mad.f32 %f1, %f24, %f25, %f1;
+	ld.shared.f32 %f26, [%rd8 + 44];
+	ld.shared.f32 %f27, [%rd6 + 704];
+	mad.f32 %f1, %f26, %f27, %f1;
+	ld.shared.f32 %f28, [%rd8 + 48];
+	ld.shared.f32 %f29, [%rd6 + 768];
+	mad.f32 %f1, %f28, %f29, %f1;
+	ld.shared.f32 %f30, [%rd8 + 52];
+	ld.shared.f32 %f31, [%rd6 + 832];
+	mad.f32 %f1, %f30, %f31, %f1;
+	ld.shared.f32 %f32, [%rd8 + 56];
+	ld.shared.f32 %f33, [%rd6 + 896];
+	mad.f32 %f1, %f32, %f33, %f1;
+	ld.shared.f32 %f34, [%rd8 + 60];
+	ld.shared.f32 %f35, [%rd6 + 960];
+	mad.f32 %f1, %f34, %f35, %f1;
+	bar.sync 0;
+	add.u64 %rd19, %rd13, %rd19;
+	add.s32 %r23, %r23, 16;
+	add.u64 %rd23, %rd23, 64;
+	setp.le.s32 %p3, %r23, %r26;
+	mov.u32 %selectedThreadId, 0;
+	mov.u32 %laneIdCopy, %laneid;
+$BB_1_5_split:
+	setp.eq.u32 %iWasSelected, %laneIdCopy, %selectedThreadId;
+	vote.any.pred %threadInSet, %iWasSelected;
+	add.u32 %selectedThreadId, %selectedThreadId, 1;
+	@!%threadInSet bra $BB_1_5_split;
+$BB_1_5_split_split:
+	@%iWasSelected atom.global.add.u64 %dummy, [%resultsArray + 56], 1;
+	vote.uni.pred %uni, %p3;
+	not.pred %div, %uni;
+	and.pred %div, %iWasSelected, %div;
+	@%div atom.global.add.u64 %dummy, [%resultsArray + 64], 1;
+	@%p3 bra $BB_1_2;
+$BB_1_6:
+	bra.uni $BB_1_8;
+$BB_1_7:				/* $Lt_0_4610 */ 
+	ld.param.s32 %r11, [__cudaparm__Z9matrixMulPfS_S_ii_wB];
+	mul.lo.s32 %r18, %r10, %r11;
+	mov.f32 %f1, 0f00000000;
+$BB_1_8:				/* $Lt_0_3074 */ 
+	ld.param.u64 %rd24, [__cudaparm__Z9matrixMulPfS_S_ii_C];
+	ld.param.s32 %r11, [__cudaparm__Z9matrixMulPfS_S_ii_wB];
+	mul.lo.s32 %r30, %r11, %r3;
+	add.s32 %r31, %r1, %r30;
+	mul.lo.s32 %r32, %r31, 16;
+	add.s32 %r33, %r18, %r32;
+	add.s32 %r34, %r9, %r33;
+	cvt.s64.s32 %rd25, %r34;
+	mul.lo.u64 %rd26, %rd25, 4;
+	add.u64 %rd27, %rd24, %rd26;
+	st.global.f32 [%rd27 + 0], %f1;
+	exit;
+}

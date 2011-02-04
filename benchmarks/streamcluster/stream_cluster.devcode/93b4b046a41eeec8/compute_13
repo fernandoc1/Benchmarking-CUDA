@@ -1,0 +1,241 @@
+.version 1.4
+.target sm_13
+/* Module compute_13_ori_93b4b046a41eeec8 */
+
+/* Globals */
+.extern .shared .align 4 .b8 coord_s[];
+.global .u64 prof_data_pt[1] = { 0 };
+.global .u32 prof_data_sz[1] = { 0 };
+
+/* Textures */
+
+/*
+* Ocelot Version : 1.1.560
+*/
+.entry _Z12pgain_kerneliilP5PointiPfS1_PiPb(.param  .s32 __cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_num,
+		.param  .s32 __cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_dim,
+		.param  .s64 __cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_x,
+		.param  .u64 __cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_p,
+		.param  .s32 __cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_K,
+		.param  .u64 __cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_coord_d,
+		.param  .u64 __cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_work_mem_d,
+		.param  .u64 __cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_center_table_d,
+		.param  .u64 __cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_switch_membership_d)
+{
+	.reg .u32 %r0;
+	.reg .u32 %r1;
+	.reg .pred %p2;
+	.reg .u32 %r3;
+	.reg .u32 %r4;
+	.reg .pred %p5;
+	.reg .u64 %r10;
+	.reg .u32 %r11;
+	.reg .u32 %r12;
+	.reg .u32 %r13;
+	.reg .u64 %r14;
+	.reg .u64 %r15;
+	.reg .u64 %r16;
+	.reg .u64 %r17;
+	.reg .u64 %r18;
+	.reg .u64 %r19;
+	.reg .u64 %r20;
+	.reg .u32 %r21;
+	.reg .u32 %r22;
+	.reg .f32 %r29;
+	.reg .u32 %r33;
+	.reg .pred %p34;
+	.reg .u64 %r37;
+	.reg .u64 %r40;
+	.reg .u32 %r51;
+	.reg .u32 %r52;
+	.reg .u32 %r53;
+	.reg .u32 %r54;
+	.reg .u32 %r55;
+	.reg .u64 %r56;
+	.reg .u32 %r58;
+	.reg .u64 %r59;
+	.reg .u64 %r60;
+	.reg .u64 %r61;
+	.reg .u64 %r62;
+	.reg .u64 %r63;
+	.reg .u64 %r64;
+	.reg .u32 %r65;
+	.reg .u32 %r67;
+	.reg .f32 %r74;
+	.reg .f32 %r75;
+	.reg .f32 %r76;
+	.reg .u32 %r81;
+	.reg .pred %p82;
+	.reg .u32 %r89;
+	.reg .u64 %r90;
+	.reg .u64 %r91;
+	.reg .u64 %r92;
+	.reg .u64 %r93;
+	.reg .u32 %r94;
+	.reg .f32 %r99;
+	.reg .u16 %r101;
+	.reg .u16 %r102;
+	.reg .u32 %r104;
+	.reg .u32 %r105;
+	.reg .u32 %r106;
+	.reg .u32 %r107;
+	.reg .u32 %r108;
+	.reg .u32 %r109;
+	.reg .f32 %r110;
+	.reg .u64 %r113;
+	.reg .u64 %r114;
+	.reg .u64 %r115;
+	.reg .u64 %r116;
+	.reg .f32 %r117;
+	.reg .f32 %r118;
+	.reg .f32 %r119;
+	.reg .u32 %r120;
+	.reg .u64 %r121;
+	.reg .u32 %r122;
+	.reg .u32 %r123;
+	.reg .u64 %r124;
+	.reg .u64 %r125;
+	.reg .u64 %r126;
+	.reg .pred %p127;
+	.reg .u16 %r132;
+	.reg .u64 %r133;
+	.reg .u64 %r134;
+	.reg .u32 %r135;
+	.reg .f32 %r140;
+	.reg .s32 %r143;
+	.reg .u64 %r144;
+	.reg .u64 %r145;
+	.reg .u64 %r146;
+	.reg .f32 %r147;
+	.reg .f32 %r148;
+	.reg .f32 %r149;
+$BB_1_0:				/* $LBB1__Z12pgain_kerneliilP5PointiPfS1_PiPb */ 
+	ld.param.s32 %r0, [__cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_dim];
+	mov.s32 %r1, 0;
+	setp.gt.s32 %p2, %r0, %r1;
+	cvt.u32.u16 %r3, %tid.x;
+	mov.u32 %r4, 0;
+	setp.ne.u32 %p5, %r3, %r4;
+	@%p5 bra $BB_1_5;
+$BB_1_1:
+	@!%p2 bra $BB_1_4;
+$BB_1_2:
+	mov.u64 %r10, coord_s;
+	ld.param.s32 %r11, [__cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_dim];
+	mov.s32 %r12, %r11;
+	ld.param.s32 %r13, [__cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_num];
+	cvt.s64.s32 %r14, %r13;
+	mov.s64 %r15, %r10;
+	mul.lo.u64 %r16, %r14, 4;
+	ld.param.u64 %r17, [__cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_coord_d];
+	ld.param.s64 %r18, [__cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_x];
+	mul.lo.u64 %r19, %r18, 4;
+	add.u64 %r20, %r17, %r19;
+	mov.s32 %r21, 0;
+	mov.s32 %r22, %r12;
+$BB_1_3:				/* $Lt_0_4866 */ 
+	ld.global.f32 %r29, [%r20 + 0];
+	st.shared.f32 [%r15 + 0], %r29;
+	add.s32 %r21, %r21, 1;
+	add.u64 %r15, %r15, 4;
+	add.u64 %r20, %r20, %r16;
+	ld.param.s32 %r33, [__cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_dim];
+	setp.ne.s32 %p34, %r21, %r33;
+	@%p34 bra $BB_1_3;
+$BB_1_4:				/* $Lt_0_4354 */ 
+	mov.u64 %r37, coord_s;
+$BB_1_5:				/* $Lt_0_3842 */ 
+	mov.u64 %r40, coord_s;
+	bar.sync 0;
+	cvt.u32.u16 %r104, %ntid.x;
+	cvt.u32.u16 %r105, %ctaid.x;
+	mov.u16 %r101, %ctaid.y;
+	mov.u16 %r102, %nctaid.x;
+	@!%p2 bra $BB_1_9;
+$BB_1_6:
+	ld.param.s32 %r51, [__cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_dim];
+	mov.s32 %r52, %r51;
+	mul.wide.u16 %r53, %r101, %r102;
+	add.u32 %r54, %r53, %r105;
+	mul.lo.u32 %r55, %r54, %r104;
+	mov.s64 %r56, %r40;
+	add.u32 %r109, %r55, %r3;
+	ld.param.s32 %r58, [__cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_num];
+	cvt.s64.s32 %r59, %r58;
+	mul.lo.u64 %r60, %r59, 4;
+	ld.param.u64 %r61, [__cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_coord_d];
+	cvt.s64.s32 %r62, %r109;
+	mul.lo.u64 %r63, %r62, 4;
+	add.u64 %r64, %r61, %r63;
+	mov.s32 %r65, 0;
+	mov.f32 %r110, 0f00000000;
+	mov.s32 %r67, %r52;
+$BB_1_7:				/* $Lt_0_5890 */ 
+	ld.shared.f32 %r74, [%r56 + 0];
+	ld.global.f32 %r75, [%r64 + 0];
+	sub.f32 %r76, %r75, %r74;
+	mad.f32 %r110, %r76, %r76, %r110;
+	add.s32 %r65, %r65, 1;
+	add.u64 %r56, %r56, 4;
+	add.u64 %r64, %r64, %r60;
+	ld.param.s32 %r81, [__cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_dim];
+	setp.ne.s32 %p82, %r65, %r81;
+	@%p82 bra $BB_1_7;
+$BB_1_8:
+	bra.uni $BB_1_10;
+$BBweave_$BB_1_11_$BB_1_12_bra_5:
+$BB_1_13:				/* $Lt_0_6402 */ 
+	exit;
+$BBweave_$BB_1_11_$BB_1_12_bra_2:
+	ld.global.s32 %r94, [%r93 + 0];
+$BBweave_$BB_1_11_$BB_1_12_uni_3:
+	selp.s32 %r143, %r135, %r94, %p127;
+	cvt.u64.s32 %r144, %r143;
+	mul.lo.u64 %r145, %r144, 4;
+	add.u64 %r146, %r126, %r145;
+	ld.global.f32 %r147, [%r146 + 0];
+	@%p127 sub.f32 %r140, %r118, %r119;
+	@!%p127 sub.f32 %r99, %r119, %r118;
+	selp.f32 %r148, %r140, %r99, %p127;
+	add.f32 %r149, %r147, %r148;
+	st.global.f32 [%r146 + 0], %r149;
+	@!%p127 bra $BBweave_$BB_1_11_$BB_1_12_bra_5;
+$BBweave_$BB_1_11_$BB_1_12_ft_4:
+	bra.uni $BB_1_13;
+$BB_1_9:				/* $Lt_0_7170 */ 
+	mul.wide.u16 %r106, %r101, %r102;
+	add.u32 %r107, %r106, %r105;
+	mul.lo.u32 %r108, %r107, %r104;
+	add.u32 %r109, %r108, %r3;
+	mov.f32 %r110, 0f00000000;
+$BB_1_10:				/* $Lt_0_5378 */ 
+	cvt.u64.s32 %r113, %r109;
+	ld.param.u64 %r114, [__cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_p];
+	mul.lo.u64 %r115, %r113, 32;
+	add.u64 %r116, %r114, %r115;
+	ld.global.f32 %r117, [%r116 + 0];
+	mul.f32 %r118, %r117, %r110;
+	ld.global.f32 %r119, [%r116 + 24];
+	ld.param.s32 %r120, [__cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_K];
+	ld.param.u64 %r121, [__cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_work_mem_d];
+	add.s32 %r122, %r120, 1;
+	mul.lo.s32 %r123, %r109, %r122;
+	cvt.s64.s32 %r124, %r123;
+	mul.lo.u64 %r125, %r124, 4;
+	add.u64 %r126, %r121, %r125;
+	setp.gt.f32 %p127, %r119, %r118;
+$BBweave_$BB_1_11_$BB_1_12_uni_0:
+	@%p127 mov.s16 %r132, 1;
+	@!%p127 ld.global.s32 %r89, [%r116 + 16];
+	@%p127 ld.param.u64 %r133, [__cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_switch_membership_d];
+	@!%p127 ld.param.u64 %r90, [__cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_center_table_d];
+	@%p127 add.u64 %r134, %r133, %r113;
+	@!%p127 cvt.u64.s32 %r91, %r89;
+	@%p127 st.global.s8 [%r134 + 0], %r132;
+	@!%p127 mul.lo.u64 %r92, %r91, 4;
+	@%p127 ld.param.s32 %r135, [__cudaparm__Z12pgain_kerneliilP5PointiPfS1_PiPb_K];
+	@!%p127 add.u64 %r93, %r90, %r92;
+	@!%p127 bra $BBweave_$BB_1_11_$BB_1_12_bra_2;
+$BBweave_$BB_1_11_$BB_1_12_ft_1:
+	bra.uni $BBweave_$BB_1_11_$BB_1_12_uni_3;
+}

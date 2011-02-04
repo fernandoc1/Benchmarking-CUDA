@@ -1,0 +1,31 @@
+./BlackScholes Starting...
+
+Initializing data...
+...allocating CPU memory for options.
+...allocating GPU memory for options.
+...generating input data in CPU mem.
+...copying input data to GPU mem.
+Data init done.
+
+Executing Black-Scholes GPU kernel (512 iterations)...
+Options count             : 8000000     
+BlackScholesGPU() time    : 2.027582 msec
+Effective memory bandwidth: 39.455866 GB/s
+Gigaoptions per second    : 3.945587     
+
+BlackScholes, Throughput = 3.9456 GOptions/s, Time = 0.00203 s, Size = 8000000 options, NumDevsUsed = 1, Workgroup = 128
+
+Reading back GPU results...
+Checking the results...
+...running CPU calculations.
+
+Comparing the results...
+L1 norm: 1.766256e-07
+Max absolute error: 1.239777e-05
+
+Shutting down...
+...releasing GPU memory.
+...releasing CPU memory.
+Shutdown done.
+PASSED
+

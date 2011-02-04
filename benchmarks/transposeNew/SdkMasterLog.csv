@@ -1,0 +1,112 @@
+transposeNew-Outer-simple copy           , Throughput = 1.1150 GB/s, Time = 0.98528 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-simple copy           , Throughput = 82.0993 GB/s, Time = 0.01338 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-shared memory copy    , Throughput = 1.0423 GB/s, Time = 1.05400 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-shared memory copy    , Throughput = 57.3869 GB/s, Time = 0.01914 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-naive transpose       , Throughput = 1.0592 GB/s, Time = 1.03724 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-naive transpose       , Throughput = 43.1820 GB/s, Time = 0.02544 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-coalesced transpose   , Throughput = 1.0119 GB/s, Time = 1.08569 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-coalesced transpose   , Throughput = 55.1948 GB/s, Time = 0.01990 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-no bank conflict trans, Throughput = 0.9144 GB/s, Time = 1.20150 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-no bank conflict trans, Throughput = 64.2939 GB/s, Time = 0.01709 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-coarse-grained        , Throughput = 0.9209 GB/s, Time = 1.19306 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-coarse-grained        , Throughput = 64.6632 GB/s, Time = 0.01699 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-fine-grained          , Throughput = 0.9279 GB/s, Time = 1.18404 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-fine-grained          , Throughput = 64.9359 GB/s, Time = 0.01692 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-diagonal transpose    , Throughput = 0.9213 GB/s, Time = 1.19242 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-diagonal transpose    , Throughput = 64.8648 GB/s, Time = 0.01694 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-simple copy           , Throughput = 1.1592 GB/s, Time = 0.94775 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-simple copy           , Throughput = 84.7250 GB/s, Time = 0.01297 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-shared memory copy    , Throughput = 1.0806 GB/s, Time = 1.01673 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-shared memory copy    , Throughput = 58.4698 GB/s, Time = 0.01879 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-naive transpose       , Throughput = 1.0894 GB/s, Time = 1.00851 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-naive transpose       , Throughput = 43.7231 GB/s, Time = 0.02513 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-coalesced transpose   , Throughput = 1.1010 GB/s, Time = 0.99789 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-coalesced transpose   , Throughput = 62.0612 GB/s, Time = 0.01770 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-no bank conflict trans, Throughput = 0.9403 GB/s, Time = 1.16842 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-no bank conflict trans, Throughput = 65.6888 GB/s, Time = 0.01672 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-coarse-grained        , Throughput = 0.9449 GB/s, Time = 1.16273 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-coarse-grained        , Throughput = 65.8906 GB/s, Time = 0.01667 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-fine-grained          , Throughput = 0.9470 GB/s, Time = 1.16014 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-fine-grained          , Throughput = 65.8249 GB/s, Time = 0.01669 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-diagonal transpose    , Throughput = 0.9448 GB/s, Time = 1.16286 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-diagonal transpose    , Throughput = 66.1037 GB/s, Time = 0.01662 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-simple copy           , Throughput = 1.0474 GB/s, Time = 1.04893 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-simple copy           , Throughput = 78.1291 GB/s, Time = 0.01406 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-shared memory copy    , Throughput = 1.1300 GB/s, Time = 0.97222 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-shared memory copy    , Throughput = 60.3623 GB/s, Time = 0.01820 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-naive transpose       , Throughput = 1.1455 GB/s, Time = 0.95911 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-naive transpose       , Throughput = 44.6854 GB/s, Time = 0.02459 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-coalesced transpose   , Throughput = 1.1463 GB/s, Time = 0.95843 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-coalesced transpose   , Throughput = 63.4608 GB/s, Time = 0.01731 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-no bank conflict trans, Throughput = 0.9447 GB/s, Time = 1.16296 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-no bank conflict trans, Throughput = 66.4633 GB/s, Time = 0.01653 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-coarse-grained        , Throughput = 0.9560 GB/s, Time = 1.14916 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-coarse-grained        , Throughput = 66.3067 GB/s, Time = 0.01657 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-fine-grained          , Throughput = 0.9599 GB/s, Time = 1.14458 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-fine-grained          , Throughput = 66.7657 GB/s, Time = 0.01646 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-diagonal transpose    , Throughput = 0.9525 GB/s, Time = 1.15339 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-diagonal transpose    , Throughput = 66.4955 GB/s, Time = 0.01652 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-simple copy           , Throughput = 1.1522 GB/s, Time = 0.95347 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-simple copy           , Throughput = 83.6353 GB/s, Time = 0.01314 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-shared memory copy    , Throughput = 1.0645 GB/s, Time = 1.03208 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-shared memory copy    , Throughput = 57.9389 GB/s, Time = 0.01896 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-naive transpose       , Throughput = 1.0765 GB/s, Time = 1.02059 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-naive transpose       , Throughput = 43.9004 GB/s, Time = 0.02503 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-coalesced transpose   , Throughput = 1.1061 GB/s, Time = 0.99324 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-coalesced transpose   , Throughput = 61.7232 GB/s, Time = 0.01780 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-no bank conflict trans, Throughput = 1.1343 GB/s, Time = 0.96857 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-no bank conflict trans, Throughput = 74.2882 GB/s, Time = 0.01479 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-coarse-grained        , Throughput = 1.1419 GB/s, Time = 0.96208 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-coarse-grained        , Throughput = 74.6484 GB/s, Time = 0.01472 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-fine-grained          , Throughput = 1.1508 GB/s, Time = 0.95469 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-fine-grained          , Throughput = 74.1710 GB/s, Time = 0.01481 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-diagonal transpose    , Throughput = 1.1462 GB/s, Time = 0.95852 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-diagonal transpose    , Throughput = 75.2356 GB/s, Time = 0.01460 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-simple copy           , Throughput = 1.0898 GB/s, Time = 1.00807 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-simple copy           , Throughput = 80.7078 GB/s, Time = 0.01361 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-shared memory copy    , Throughput = 1.1576 GB/s, Time = 0.94905 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-shared memory copy    , Throughput = 60.7629 GB/s, Time = 0.01808 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-naive transpose       , Throughput = 1.1606 GB/s, Time = 0.94664 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-naive transpose       , Throughput = 45.1105 GB/s, Time = 0.02435 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-coalesced transpose   , Throughput = 1.1630 GB/s, Time = 0.94467 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-coalesced transpose   , Throughput = 63.9811 GB/s, Time = 0.01717 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-no bank conflict trans, Throughput = 0.9959 GB/s, Time = 1.10321 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-no bank conflict trans, Throughput = 66.3477 GB/s, Time = 0.01656 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-coarse-grained        , Throughput = 0.9600 GB/s, Time = 1.14441 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-coarse-grained        , Throughput = 66.6607 GB/s, Time = 0.01648 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-fine-grained          , Throughput = 0.9646 GB/s, Time = 1.13895 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-fine-grained          , Throughput = 66.6983 GB/s, Time = 0.01647 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-diagonal transpose    , Throughput = 0.9576 GB/s, Time = 1.14727 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-diagonal transpose    , Throughput = 66.6323 GB/s, Time = 0.01649 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-simple copy           , Throughput = 1.1422 GB/s, Time = 0.96185 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-simple copy           , Throughput = 83.1149 GB/s, Time = 0.01322 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-shared memory copy    , Throughput = 1.0566 GB/s, Time = 1.03975 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-shared memory copy    , Throughput = 57.3074 GB/s, Time = 0.01917 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-naive transpose       , Throughput = 1.0684 GB/s, Time = 1.02826 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-naive transpose       , Throughput = 43.4443 GB/s, Time = 0.02529 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-coalesced transpose   , Throughput = 1.0806 GB/s, Time = 1.01666 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-coalesced transpose   , Throughput = 61.4349 GB/s, Time = 0.01788 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-no bank conflict trans, Throughput = 0.9313 GB/s, Time = 1.17971 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-no bank conflict trans, Throughput = 65.7807 GB/s, Time = 0.01670 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-coarse-grained        , Throughput = 0.9522 GB/s, Time = 1.15375 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-coarse-grained        , Throughput = 66.3118 GB/s, Time = 0.01657 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-fine-grained          , Throughput = 0.9542 GB/s, Time = 1.15142 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-fine-grained          , Throughput = 66.5380 GB/s, Time = 0.01651 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-diagonal transpose    , Throughput = 0.9512 GB/s, Time = 1.15498 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-diagonal transpose    , Throughput = 66.5341 GB/s, Time = 0.01651 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-simple copy           , Throughput = 1.1660 GB/s, Time = 0.94225 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-simple copy           , Throughput = 84.8444 GB/s, Time = 0.01295 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-shared memory copy    , Throughput = 1.0845 GB/s, Time = 1.01302 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-shared memory copy    , Throughput = 58.4310 GB/s, Time = 0.01880 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-naive transpose       , Throughput = 1.0965 GB/s, Time = 1.00199 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-naive transpose       , Throughput = 44.0853 GB/s, Time = 0.02492 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-coalesced transpose   , Throughput = 1.1086 GB/s, Time = 0.99100 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-coalesced transpose   , Throughput = 61.9113 GB/s, Time = 0.01775 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-no bank conflict trans, Throughput = 1.1359 GB/s, Time = 0.96718 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-no bank conflict trans, Throughput = 74.2592 GB/s, Time = 0.01479 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-coarse-grained        , Throughput = 1.1410 GB/s, Time = 0.96285 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-coarse-grained        , Throughput = 73.6049 GB/s, Time = 0.01493 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-fine-grained          , Throughput = 1.1483 GB/s, Time = 0.95677 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-fine-grained          , Throughput = 74.0654 GB/s, Time = 0.01483 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Outer-diagonal transpose    , Throughput = 1.1460 GB/s, Time = 0.95866 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transposeNew-Inner-diagonal transpose    , Throughput = 74.3155 GB/s, Time = 0.01478 s, Size = 147456 fp32 elements, NumDevsUsed = 1, Workgroup = 256

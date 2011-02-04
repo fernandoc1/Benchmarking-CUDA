@@ -1,0 +1,10 @@
+./transpose Starting...
+
+Transposing a 256 by 4096 matrix of floats...
+Naive transpose average time:     0.3f ms
+Optimized transpose average time: 0.3f ms
+
+transpose-naive, Throughput = 0.1952, Time = 0.00537, Size = 1048576, NumDevsUsed = 1, Workgroup = 256
+transpose-optimized, Throughput = 0.1840, Time = 0.00570, Size = 1048576, NumDevsUsed = 1, Workgroup = 256
+
+PASSED

@@ -1,0 +1,13 @@
+./matrixMul Starting...
+
+
+Using Matrix Sizes: A(80 x 160), B(80 x 80), C(80 x 160)
+
+Run Kernels...
+
+matrixMul, Throughput = 17.0100 GFlop/s, Time = 0.00012 s, Size = 2048000 Ops, NumDevsUsed = 1, Workgroup = 256
+
+Check against Host computation...
+
+PASSED 
+
