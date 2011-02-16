@@ -1,6 +1,8 @@
 #! /usr/bin/env python
 
 import sqlite3
+import os
+import dircache
 
 def getKernelName(profFilePath):
 	token=profFilePath.split('.')
@@ -46,7 +48,20 @@ class ProfReader:
 			self._connection.commit()
 			index+=1
 
+def getProfFiles():
+	testsFolderFiles=dircache.listdir("results")
+	profFiles=[]
+	for entry in testsFolderFiles:
+		tmp=entry.split(".")
+		if(tmp[0]=="prof"):
+			profFiles.append(entry)
+	return profFiles
+
+
 pr=ProfReader("conf.txt")
-pr.insertProfData("prof.teste.txt")
+profEntries=getProfFiles()
+for entry in profEntries:
+	print entry
+	pr.insertProfData("results/"+entry)
 
 
