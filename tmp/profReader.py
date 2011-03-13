@@ -7,7 +7,6 @@ class profReader:
 	
 	_database=None
 	_profFolderPath=None
-	_
 
 	def __init__(self, profFolderPath):
 		self._database=Database('results.db')
@@ -22,13 +21,14 @@ class profReader:
 				profFiles.append(entry)
 		return profFiles
 	
-	def readProfs(self):
-		
+	def _insertDataInDatabase(
 
+	#regex examples: "(numA numB numC)"
+	#		"(numA numB)*"
 
-profreader=profReader('profs')
-x=profreader._getProfFilesPath()
-print x
-
+	def readProfs(self, regex):
+		profs=self._getProfFilesPath()
+		for entry in profs:
+			x.read
 
 
