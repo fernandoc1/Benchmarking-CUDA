@@ -31,10 +31,11 @@ class profReader:
 		token=profFileName.split('.')
 		return token[1]
 
-	def _insertDataInDatabase(self):
+	def _insertDataInDatabase(self, data):
 		tokens=self._regularExpression.split(' ')
+		#print len(tokens)
+		
 		for entry in tokens:
-			#TODO
 			print entry
 
 	#regex examples: "numA numB numC"
