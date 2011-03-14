@@ -11,8 +11,9 @@ if(len(sys.argv)==2):
 	index=0
 	while index<numberOfTimes:
 		print "-> "+str(index)
-		os.system("./benchmark.py all optimized \"-p block-unification\"")
-		os.system("./benchmark.py appendResults")
+		os.system("./benchmark.py all optimized")
+		#os.system("./benchmark.py appendResults")
+		os.system("./profReader.py")
 		os.system("./benchmark.py clean")
 		index+=1
 else:
