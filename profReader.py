@@ -1,67 +1,53 @@
 #! /usr/bin/env python
 
-import sqlite3
-import os
+from database import Database
 import dircache
 
-def getKernelName(profFilePath):
-	token=profFilePath.split('.')
-	return token[1]
-
-class ProfReader:
-	#These are the tags from the conf file.
-	_label=[]
-	_connection=None
+class profReader:
 	
+	_database=None
+	_profFolderPath=None
+	_regularExpression=""
+	_executionCounter=0
 
-	def __init__(self, confFilePath):
-		confData=open(confFilePath, 'r').read()
-		self._label=confData.split()
-		self._connection=sqlite3.connect('results.db')
-		self._initTables()
+	def __init__(self, profFolderPath, regularExpression):
+		self._database=Database('results.db')
+		self._profFolderPath=profFolderPath
+		self._regularExpression=regularExpression
 
-	def _initTables(self):
-		cursor=self._connection.cursor()
-		#Create kernel name tables
-		try:
-			cursor.execute("create table kernelNames (kernelName varchar(30) primary key, benchmarkName varchar(30))")
-		except:
-			print "kernelNames already created"
-		for label in self._label:
-			try:
-				sqlCommand="create table "+label+" (id integer primary key autoincrement, kernelName varchar(30) references kernelNames(kernelName), value float)"
-				#print sqlCommand
-				cursor.execute(sqlCommand)
-			except:
-				print label+" already created"
+	def _getProfFilesNames(self):
+		files=dircache.listdir(self._profFolderPath)
+		profFiles=[]
+		for entry in files:
+			token=entry.split('.')
+			if(token[0]=="prof"):
+				profFiles.append(entry)
+		return profFiles
+	
+	def incrementExecutionCounter(self):
+		self._executionCounter+=1
 
-	def insertProfData(self, profFilePath):
-		cursor=self._connection.cursor()
-		profFileData=open(profFilePath).read().split()
-		kernelName=getKernelName(profFilePath)
+	def _getKernelName(self, profFileName):
+		token=profFileName.split('.')
+		return token[1]
 
+	def _insertDataInDatabase(self, data, kernelName):
+		label=self._regularExpression.split()
+		tokens=data.split()
 		index=0
-		for label in self._label:
-			sqlCommand="insert into "+label+" (kernelName, value) values (\""+kernelName+"\", "+profFileData[index]+")"
-			print sqlCommand
-			cursor.execute(sqlCommand)
-			self._connection.commit()
-			index+=1
+		for entry in tokens:
+			print str(index)+" -- "+entry+"->"+label[index]+" kernel="+kernelName
+			self._database.insertData(str(self._executionCounter), kernelName, label[index], entry)
+			index=(index+1)%len(label)
 
-def getProfFiles():
-	testsFolderFiles=dircache.listdir("results")
-	profFiles=[]
-	for entry in testsFolderFiles:
-		tmp=entry.split(".")
-		if(tmp[0]=="prof"):
-			profFiles.append(entry)
-	return profFiles
+	def readProfs(self):
+		profs=self._getProfFilesNames()
+		for entry in profs:
+			data=open(self._profFolderPath+"/"+entry).read()
+			self._insertDataInDatabase(data, self._getKernelName(entry))
 
+profr=profReader('profs', "a b c")
+profr.readProfs()
 
-pr=ProfReader("conf.txt")
-profEntries=getProfFiles()
-for entry in profEntries:
-	print entry
-	pr.insertProfData("results/"+entry)
 
 
