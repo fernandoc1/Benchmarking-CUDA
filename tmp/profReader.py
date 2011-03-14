@@ -8,14 +8,14 @@ class profReader:
 	_database=None
 	_profFolderPath=None
 	_regularExpression=""
-	_executionCounteir=0
+	_executionCounter=0
 
 	def __init__(self, profFolderPath, regularExpression):
 		self._database=Database('results.db')
 		self._profFolderPath=profFolderPath
 		self._regularExpression=regularExpression
 
-	def _getProfFilesPath(self):
+	def _getProfFilesNames(self):
 		files=dircache.listdir(self._profFolderPath)
 		profFiles=[]
 		for entry in files:
@@ -27,23 +27,24 @@ class profReader:
 	def incrementExecutionCounter(self):
 		self._executionCounter+=1
 
-	def _getKernelName(profFileName):
+	def _getKernelName(self, profFileName):
 		token=profFileName.split('.')
 		return token[1]
 
-	def _insertDataInDatabase(self, data):
-		tokens=self._regularExpression.split(' ')
-		#print len(tokens)
-		
+	def _insertDataInDatabase(self, data, kernelName):
+		label=self._regularExpression.split()
+		tokens=data.split()
+		index=0
 		for entry in tokens:
-			print entry
-
-	#regex examples: "numA numB numC"
+			print str(index)+" -- "+entry+"->"+label[index]+" kernel="+kernelName
+			self._database.insertData(str(self._executionCounter), kernelName, label[index], entry)
+			index=(index+1)%len(label)
 
 	def readProfs(self):
-		profs=self._getProfFilesPath()
+		profs=self._getProfFilesNames()
 		for entry in profs:
-			self._insertDataInDatabase()
+			data=open(self._profFolderPath+"/"+entry).read()
+			self._insertDataInDatabase(data, self._getKernelName(entry))
 
 profr=profReader('profs', "a b c")
 profr.readProfs()
