@@ -46,7 +46,9 @@ class profReader:
 			data=open(self._profFolderPath+"/"+entry).read()
 			self._insertDataInDatabase(data, self._getKernelName(entry))
 
-profr=profReader('profs', "a b c")
+configString=open('conf.txt').read()
+
+profr=profReader("results", configString)
 profr.readProfs()
 
 
