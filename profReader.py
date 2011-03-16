@@ -27,6 +27,9 @@ class profReader:
 	def incrementExecutionCounter(self):
 		self._executionCounter+=1
 
+	def setExecutionCounter(self, number)
+		self._executionCounter=number
+
 	def _getKernelName(self, profFileName):
 		token=profFileName.split('.')
 		return token[1]
@@ -49,6 +52,14 @@ class profReader:
 configString=open('conf.txt').read()
 
 profr=profReader("results", configString)
+
+executionCounter=0
+
+if(len(sys.argv)==2):
+	executionCounter=int(sys.argv[1])
+
+profr.setExecutionCounter(executionCounter)
+
 profr.readProfs()
 
 
